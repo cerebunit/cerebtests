@@ -56,7 +56,7 @@ class InferencePopMeanLargeN(object):
     def deduce(tail, sigma_coeff, zscore):
         if (tail==">") and (zscore > sigma_coeff):
             return "reject H0 because test-statistic, z = "+ str(zscore) +" > "+ str(sigma_coeff)
-        elif (tail=="<") and (score < sigma_coeff):
+        elif (tail=="<") and (score < -sigma_coeff):
             return "reject H0 because test-statistic, z = "+ str(zscore) +" < "+ str(sigma_coeff)
         elif (tail=="=") and (abs(score) > sigma_coeff):
             return "reject H0 because test-statistic, |z| = "+str(abs(zscore))+" > "+str(sigma_coeff)
