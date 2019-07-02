@@ -40,8 +40,8 @@ class HtestAboutMeans:
 
     def test_outcome(self):
         self.pvalue = self._compute_pvalue()
-        symbol_null_value = unichr(0x3bc).encode('utf-8') + "0" # mu_0
-        symbol_sample_statistic = unichr(0x3bc).encode('utf-8') # mu
+        symbol_null_value = chr(0x3bc).encode('utf-8') + "0" # mu_0
+        symbol_sample_statistic = chr(0x3bc).encode('utf-8') # mu
         parameters = ( symbol_null_value +" = "+str(self.populn_parameter)+", "
                 + symbol_sample_statistic+" = "+str(self.sample_statistic)+", "
                 + "n = "+str(self.sample_size) )

@@ -56,6 +56,9 @@ class RestingVmTest(sciunit.Test):
                                                 units=observation["units"] )
         self.observation["SD"] = pq.Quantity( observation["SD"],
                                                            units=observation["units"] )
+        self.observation["standard_error"] = \
+                  pq.Quantity( observation["SD"] / numpy.sqrt(observation["sample_size"]),
+                               units=observation["units"] )
         print("Validated.")
 
     def generate_prediction(self, model, verbose=False):
@@ -66,8 +69,8 @@ class RestingVmTest(sciunit.Test):
         """
         #self.confidence = confidence # set confidence for test 90%, 95% (default), 99%
         #
-        runtimeparam = {"dt": 0.025, "celsius": 37, "tstop": 1000.0, "v_init": -80.}
-        stimparam = {"type": ["current", "IClamp"],                                                                    "stimlist": [ {"amp": 0., "dur": 200.0, "delay": 500.0} ],                                      "tstop": runtimeparam["tstop"] }
+        runtimeparam = {"dt": 0.025, "celsius": 30, "tstop": 1000.0, "v_init": -80.}
+        stimparam = {"type": ["current", "IClamp"],                                                                    "stimlist": [ {"amp": 0.006, "dur": 800.0, "delay": 100.0} ],                                      "tstop": runtimeparam["tstop"] }
         ec = ExecutiveControl()
         #ec.chosenmodel = model
         #ec.chosenmodel.restingVm = \
@@ -76,13 +79,8 @@ class RestingVmTest(sciunit.Test):
                                  capabilities = {"model": "produce_restingVm",
                                                  "vtest": ProducesEphysMeasurement},
                                  mode = "capability" )
-        #return pq.Quantity( numpy.mean(ec.chosenmodel.prediction), # prediction
-        #                    units = self.observation["units"] )
         return pq.Quantity( numpy.mean(model.prediction), # prediction
                             units = self.observation["units"] )
-
-    def _get_tmultiplier(self, confidence, n):
-        return student_t.ppf( (1+confidence)/2, n-1 )
 
     def compute_score(self, observation, prediction, verbose=False):
         """
@@ -99,6 +97,6 @@ class RestingVmTest(sciunit.Test):
         score = TScore(x)
         score.description = hypo.outcome
         print("Done.")
-        print score.description
+        print(score.description)
         return score
 

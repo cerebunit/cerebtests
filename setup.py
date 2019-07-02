@@ -21,7 +21,7 @@ setup(
                   "cerebunit.validation_tests",
                   "cerebunit.validation_tests.cells",
                   #"cerebunit.validation_tests.cells.general",
-                  #"cerebunit.validation_tests.cells.PurkinjeCell",
+                  "cerebunit.validation_tests.cells.Purkinje",
                   "cerebunit.validation_tests.cells.Granule",
                   #"cerebunit.validation_tests.cells.GolgiCell"
                   ],
