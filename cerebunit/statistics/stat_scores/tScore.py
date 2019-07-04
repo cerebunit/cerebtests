@@ -1,9 +1,9 @@
 # ============================================================================
-# ~/cerebunit/cerebunit/statScores.py
+# ~/cerebunit/cerebunit/stat_scores/tScore.py
 #
 # created 6 March 2019 Lungsi
 #
-# This py-file contains custum score functions initiated by
+# This py-file contains custom score functions initiated by
 #
 # from cerebunit import scoreScores
 # from cerebunit.scoreScores import ABCScore

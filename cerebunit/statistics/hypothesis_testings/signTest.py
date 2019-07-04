@@ -168,5 +168,5 @@ class HtestAboutMedians:
 
     def _register_statistics(self):
         return { "e0": self.specified_value, "e": self.sample_statistic, "n": self.sample_size,
-                 "below": self.below, "equal" self.equal, "above": self.above,
+                 "below": self.below, "equal": self.equal, "above": self.above,
                  "z": self.z_statistic, "p": self.pvalue, "side": self.side }

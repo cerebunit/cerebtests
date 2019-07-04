@@ -22,8 +22,11 @@ import quantities as pq
 from scipy.stats import t as student_t
 
 from cerebunit.capabilities.cells.measurements import ProducesEphysMeasurement
-from cerebunit.statistics.statScores import TScore
-from cerebunit.statistics.hypothesisTesting import HtestAboutMeans
+from cerebunit.statistics.data_conditions import NecessaryForHTMeans
+from cerebunit.statistics.stat_scores import TScore # if NecessaryForHTMeans passes
+from cerebunit.statistics.stat_scores import ZScoreForSignTest as ZScore
+from cerebunit.statistics.hypothesis_testings import HtestAboutMeans
+from cerebunit.statistics.hypothesis_testings import HtestAboutMedians
 
 # to execute the model you must be in ~/cerebmodels
 from executive import ExecutiveControl

@@ -14,6 +14,9 @@ setup(
                   #"cerebunit.file_manager",
                   #"cerebunit.test_manager",
                   "cerebunit.statistics",
+                  "cerebunit.statistics.data_conditions",
+                  "cerebunit.statistics.stat_scores",
+                  "cerebunit.statistics.hypothesis_testings",
                   # capabilities 
                   "cerebunit.capabilities",
                   "cerebunit.capabilities.cells",

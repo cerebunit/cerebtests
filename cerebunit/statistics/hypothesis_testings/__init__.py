@@ -1,4 +1,4 @@
-# ~/cerebunit/cerebunit/statistics/__init__.py
+# ~/cerebunit/cerebunit/statistics/hypothesis_testings/__init__.py
 
-from .statScores import TScore
-from .hypothesisTesting import HtestAboutMeans
+from .tTest import HtestAboutMeans
+from .signTest import HtestAboutMedians
