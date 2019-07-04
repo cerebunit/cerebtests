@@ -1,21 +1,18 @@
 # ============================================================================
-# ~/cerebunit/cerebunit/hypothesisTesting.py
+# ~/cerebunit/cerebunit/hypothesis_testings/tTest.py
 #
 # created 7 March 2019 Lungsi
+# modified 4 July 2019 Lungsi
 #
-# This py-file contains custum score functions initiated by
+# This py-file contains custom score functions initiated by
 #
 # from cerebunit.hypothesisTesting import XYZ
 # ============================================================================
 
-from scipy.stats import normaltest
 from scipy.stats import t as student_t
 import quantities as pq
 
-# ==========================HtestAboutMeans===================================
-# created  6 March 2019 Lungsi
-# modified 
-#
+
 class HtestAboutMeans:
     """
     Hypothesis Testing (significance testing) about means.
@@ -29,7 +26,7 @@ class HtestAboutMeans:
     +=====================================+=====================================+
     | sample size, n                      | experiment/observed n               |
     +-------------------------------------+-------------------------------------+
-    | optionally: data                    | experiment/observed data array      |
+    | optionally: raw data                | experiment/observed data array      |
     +-------------------------------------+-------------------------------------+
 
     Is n >= 30?
@@ -90,13 +87,17 @@ class HtestAboutMeans:
     5. Report.
     ----------
 
+    How to use.
+    ===========
+
+    ::
+
+       ht = HtestAboutMeans( observation, prediction, score,
+                             side="less_than" ) # side is optional
+       score.description = ht.outcome
+       score.statistics = ht.statistics
+
     """
-    #
-    # -----------------------------Use Case-----------------------------------
-    # score.description = HtestAboutMeans( observation, prediction, score,
-    #                                      side="less_than" ) # side is optional
-    # ------------------------------------------------------------------------
-    #
     def __init__(self, observation, prediction, t_statistic, side="not_equal"):
         """
         **Arguments**
@@ -116,42 +117,17 @@ class HtestAboutMeans:
         +----------+------------------------+---------------------------------+
 
         """
-        if self.check_data_condition(observation)==False:
-            self.outcome = False
-        else:
-            self.sample_statistic = observation["mean"] # quantities.Quantity
-            self.sample_size = observation["sample_size"]
-            self.popul_parameter = prediction # quantities.Quantity
-            self.t_statistic = t_statistic
-            self.side = side
-            self.deg_of_freedom = self.sample_size - 1
-            #
-            self.outcome = self.test_outcome()
-            #
-            self.standard_error = observation["standard_error"]
-            self.statistics = self._register_statistics()
-
-    @staticmethod
-    def check_normal_population(data):
-        """Test if sample is from a normal distribution.
-        scipy.stats.normaltest is based on D'Agostino & Pearson's omnibus test of normality.
-        """
-        alpha = 1e-3
-        k2, p = normaltest(data)
-        if p < alpha: # null hypothesis: sample comes from normal distribution
-            return True
-        else:
-            return False
-
-    @classmethod
-    def check_data_condition(cls, observation):
-        if cls.sample_size >= 30,
-            return True
-        else:
-            try:
-                return cls.check_normal_population(observation["data"])
-            except:
-                return False
+        self.sample_statistic = observation["mean"] # quantities.Quantity
+        self.sample_size = observation["sample_size"]
+        self.popul_parameter = prediction # quantities.Quantity
+        self.t_statistic = t_statistic
+        self.side = side
+        self.deg_of_freedom = self.sample_size - 1
+        #
+        self.outcome = self.test_outcome()
+        #
+        self.standard_error = observation["standard_error"]
+        self.statistics = self._register_statistics()
 
     @staticmethod
     def null_hypothesis(symbol_null_value, symbol_sample_statistic):

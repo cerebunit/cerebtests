@@ -1,25 +1,25 @@
 # ============================================================================
-# ~/cerebunit/cerebunit/hypothesisTesting.py
+# ~/cerebunit/cerebunit/hypothesis_testings/signTest.py
 #
-# created 7 March 2019 Lungsi
+# created 4 July 2019 Lungsi
 #
-# This py-file contains custum score functions initiated by
+# This py-file contains custom score functions initiated by
 #
 # from cerebunit.hypothesisTesting import XYZ
 # ============================================================================
 
-from scipy.stats import normaltest
-from scipy.stats import t as student_t
+import numpy as np
+from scipy.stats import norm
 import quantities as pq
 
-# ==========================HtestAboutMeans===================================
-# created  6 March 2019 Lungsi
-# modified 
-#
-class HtestAboutMeans:
+
+class HtestAboutMedians:
     """
-    Hypothesis Testing (significance testing) about means.
-    ======================================================
+    Hypothesis Testing (significance testing) about medians.
+    ========================================================
+
+    This is a nonparameteric test that does not assume specific type of distribution and hence **robust** (valid over broad range of circumstances) and **resistant** (to influence of outliers) test.
+
 
     1. Verify necessary data conditions.
     ------------------------------------
@@ -32,14 +32,8 @@ class HtestAboutMeans:
     | optionally: data                    | experiment/observed data array      |
     +-------------------------------------+-------------------------------------+
 
-    Is n >= 30?
-
-    If not, check if data is from normal distribution.
-
-    If both returns NO, you can't perform hypothesis testing about means.
-    Instead use sign test.
-
-    If either of the above two question returns YES continue below.
+    * n is **not** >= 30
+    * data is **not** from normal distribution.
 
     2. Defining __null__ and __alternate__ hypotheses.
     --------------------------------------------------
@@ -47,23 +41,23 @@ class HtestAboutMeans:
     +-------------------------------------+-------------------------------------+
     | Statistic                           | Interpretation                      |
     +=====================================+=====================================+
-    | sample statistic, u                 | experiment/observed mean            |
+    | sample statistic, e                 | experiment/observed median          |
     +-------------------------------------+-------------------------------------+
-    | null value/population parameter, u0 | model prediction                    |
+    | null value/population parameter, e0 | model prediction (specified value)  |
     +-------------------------------------+-------------------------------------+
-    | null hypothesis, H0                 | u = u0                              |
+    | null hypothesis, H0                 | e = e0                              |
     +-------------------------------------+-------------------------------------+
-    | alternate hypothesis, Ha            | u =/= or < or > u0                  |
+    | alternate hypothesis, Ha            | e =/= or < or > e0                  |
     +-------------------------------------+-------------------------------------+
 
     Two-sided hypothesis (default)
-        H0: u = u0 and Ha: u =/= u0
+        H0: e = e0 and Ha: e =/= e0
 
     One-side hypothesis (left-sided)
-        H0: u = u0 and Ha: u < u0
+        H0: e = e0 and Ha: e < e0
 
     One-side hypothesis (right-sided)
-        H0: u = u0 and Ha: u > u0
+        H0: e = e0 and Ha: e > e0
 
     3. Assuming H0 is true, find p-value.
     -------------------------------------
@@ -73,16 +67,16 @@ class HtestAboutMeans:
     +=====================================+=====================================+
     | sample size, n                      | experiment/observed n               |
     +-------------------------------------+-------------------------------------+
-    | standard error, SE                  | experiment/observed SE = SD/sqrt(n) |
-    | or                                  | or                                  |
-    | standard deviation, SD              | experiment/observed SD              |
+    | splus                               | number of values in sample > e0     |
     +-------------------------------------+-------------------------------------+
-    | t-statistic, t                      | test score = (u - u0)/SE            |
+    | sminus                              | number of values in sample < e0     |
     +-------------------------------------+-------------------------------------+
-    | degree of freedom, df               | n - 1                               |
+    | n_u = splus + sminus                | number of values in sample =/= e0   |
+    +-------------------------------------+-------------------------------------+
+    | z_statistic, z                      | (splus - (n_u/2))/sqrt(n_u/4)       |
     +-------------------------------------+-------------------------------------+
 
-    Using t and df look up table for t-distrubution which will return its corresponding p.
+    Using z look up table for standard normal curce which will return its corresponding p.
 
     4. Answer, Based on the p-value is the result (true H0) statistically significant?
     ----------------------------------------------------------------------------------
@@ -90,14 +84,18 @@ class HtestAboutMeans:
     5. Report.
     ----------
 
+    How to use.
+    ===========
+
+    ::
+
+       ht = HtestAboutMedians( observation, prediction, score,
+                               side="less_than" ) # side is optional
+       score.description = ht.outcome
+       score.statistics = ht.statistics
+
     """
-    #
-    # -----------------------------Use Case-----------------------------------
-    # score.description = HtestAboutMeans( observation, prediction, score,
-    #                                      side="less_than" ) # side is optional
-    # ------------------------------------------------------------------------
-    #
-    def __init__(self, observation, prediction, t_statistic, side="not_equal"):
+    def __init__(self, observation, prediction, z_statistic, side="not_equal"):
         """
         **Arguments**
 
@@ -105,53 +103,27 @@ class HtestAboutMeans:
         | Argument | Representation         | Value type                      |
         +==========+========================+=================================+
         | first    | experiment/observation | dictionary that must have keys; |
-        |          |                        | "mean" and "sample_size"        |
+        |          |                        |"median","sample_size","raw_data"|
         +----------+------------------------+---------------------------------+
         | second   | model prediction       | float                           |
         +----------+------------------------+---------------------------------+
-        | third    | test score/t-statistic | float                           |
+        | third    | test score/z-statistic | float                           |
         +----------+------------------------+---------------------------------+
         | fourth   | sidedness of test      | string; "not_equal" (default)   |
         |          |                        | or "less_than", "greater_than"  |
         +----------+------------------------+---------------------------------+
 
         """
-        if self.check_data_condition(observation)==False:
-            self.outcome = False
-        else:
-            self.sample_statistic = observation["mean"] # quantities.Quantity
-            self.sample_size = observation["sample_size"]
-            self.popul_parameter = prediction # quantities.Quantity
-            self.t_statistic = t_statistic
-            self.side = side
-            self.deg_of_freedom = self.sample_size - 1
-            #
-            self.outcome = self.test_outcome()
-            #
-            self.standard_error = observation["standard_error"]
-            self.statistics = self._register_statistics()
-
-    @staticmethod
-    def check_normal_population(data):
-        """Test if sample is from a normal distribution.
-        scipy.stats.normaltest is based on D'Agostino & Pearson's omnibus test of normality.
-        """
-        alpha = 1e-3
-        k2, p = normaltest(data)
-        if p < alpha: # null hypothesis: sample comes from normal distribution
-            return True
-        else:
-            return False
-
-    @classmethod
-    def check_data_condition(cls, observation):
-        if cls.sample_size >= 30,
-            return True
-        else:
-            try:
-                return cls.check_normal_population(observation["data"])
-            except:
-                return False
+        self.sample_statistic = observation["median"] # quantities.Quantity
+        self.sample_size = observation["sample_size"]
+        self.specified_value = prediction # quantities.Quantity
+        self.z_statistic = z_statistic
+        self.side = side
+        #
+        self.outcome = self.test_outcome()
+        #
+        self.get_below_equal_above(np.array(observation["raw_data"]))
+        self.statistics = self._register_statistics()
 
     @staticmethod
     def null_hypothesis(symbol_null_value, symbol_sample_statistic):
@@ -167,30 +139,34 @@ class HtestAboutMeans:
             return "\nHa: "+ symbol_sample_statistic +" =/= "+ symbol_null_value
 
     def _compute_pvalue(self):
-        left_side = student_t.cdf(self.t_statistic, self.deg_of_freedom)
+        right_side = norm.sf(self.z_statistic)
         if self.side is "less_than":
-            return left_side
+            return 1-right_side
         elif self.side is "greater_than":
-            return 1-left_side
+            return right_side
         else: #side is "not_equal"
-            return 2*(1-left_side)
+            return 2*( norm.sf(abs(self.z_statistic)) )
 
     def test_outcome(self):
         self.pvalue = self._compute_pvalue()
-        #symbol_null_value = unichr(0x3bc).encode('utf-8') + "0" # mu_0; chr for Python3
-        #symbol_sample_statistic = unichr(0x3bc).encode('utf-8') # mu
-        symbol_null_value = "u0"
-        symbol_sample_statistic = "u"
-        parameters = ( symbol_null_value +" = "+str(self.popul_parameter)+", "
+        #
+        symbol_null_value = "e0"
+        symbol_sample_statistic = "e"
+        parameters = ( symbol_null_value +" = "+str(self.specified_value)+", "
                 + symbol_sample_statistic+" = "+str(self.sample_statistic)+", "
                 + "n = "+str(self.sample_size) )
         outcome = ( self.null_hypothesis(symbol_null_value, symbol_sample_statistic)
              + self.alternate_hypothesis(self.side, symbol_null_value, symbol_sample_statistic)
-             + "\nTest statistic: t = "+ str(self.t_statistic)
+             + "\nTest statistic: z = "+ str(self.z_statistic)
              + "\nAssuming H0 is true, p-value = "+ str(self.pvalue) )
         return parameters+outcome
 
+    def get_below_equal_above(self, data):
+        self.below = (data < self.specified_value).sum()
+        self.equal = (data == self.specified_value).sum()
+        self.above = (data > self.specified_value).sum()
+
     def _register_statistics(self):
-        return { "u0": self.popul_parameter, "u": self.sample_statistic,
-                 "n": self.sample_size, "df": self.deg_of_freedom,
-                 "t": self.t_statistic, "se": self.standard_error }
+        return { "e0": self.specified_value, "e": self.sample_statistic, "n": self.sample_size,
+                 "below": self.below, "equal" self.equal, "above": self.above,
+                 "z": self.z_statistic, "p": self.pvalue, "side": self.side }
