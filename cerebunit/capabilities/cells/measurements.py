@@ -1,4 +1,4 @@
-# =========================================================================
+# =============================================================================
 # ~/cerebunit/cerebunit/capabilities/cells/measurements.py
 #
 # created  04 March 2019 Lungsi
@@ -11,18 +11,23 @@
 #       method in the capability class. Thus both the model class and the
 #       capability class must have the same method name.
 #
-# ---------------------------------------------------------------------
-#                    GENERAL CEREBELLAR CELL CAPABILITIES
-#            Class name               |          method name
-# ---------------------------------------------------------------------
-#   ProducesEphysMeasurement          |      produce_restingVm
-# ---------------------------------------------------------------------
-# =========================================================================
+# =============================================================================
+"""
+GENERAL CEREBELLAR CELL CAPABILITIES
+====================================
+
++-------------------------------------+---------------------------------------+
+|            Class name               |          method name                  |
++=====================================+=======================================+
+|:py:meth:`.ProducesEphysMeasurement` |:py:meth:`.produce_restingVm`          |
++-------------------------------------+---------------------------------------+
+
+"""
 
 import sciunit
 
 
-# ========================Produce Ephys Measurement========================
+# ========================Produce Ephys Measurement============================
 class ProducesEphysMeasurement(sciunit.Capability):
     '''
     The model produces resting membrane voltage.
