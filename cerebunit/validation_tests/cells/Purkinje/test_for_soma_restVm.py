@@ -31,8 +31,36 @@ from executive import ExecutiveControl
 from sciunit.scores import NoneScore#, ErrorScore
 
 class SomaRestingVmTest(sciunit.Test):
-    """
-    This test compares the measured resting Vm observed in real animal (in-vitro or in-vivo, depending on the data) generated from neuron against those by the model.
+    """This test compares the measured resting Vm observed in real animal (in-vitro or in-vivo, depending on the data) generated from neuron against those by the model.
+
+    The test class has three levels of mechanisms.
+
+    Level-1: :py:meth`.validate_observation`
+    ----------------------------------------
+
+    Given that the experimental/observed data has the following: __mean__, __SD__, __sample_size__, __units__, and __raw_data__, :py:meth`.validate_observation` checks for them. The method then checks the data condition by asking ``NecessaryForHTMeans``. Depending on the data condition the appropriate ``score_type`` is assigned and corresponding necessary parameter; for t-Test, the parameter ``observation["standard_error"]`` and for sign-Test, the parameter ``observation["median"]``.
+
+    Level-2: :py:meth`.generate_prediction`
+    ---------------------------------------
+
+    The model is executed to get the model prediction. The prediction is a the resting Vm from the soma of a PurkinjeCell returned as a ``quantities.Quantity`` object.
+
+    Level-3: :py:meths`.compute_score`
+    ----------------------------------
+
+    The prediction made by the model is then used as the __null value__ for the compatible ``score_type`` based on the ``datacond`` determined by :py:meth`.validate_observation`. The level ends by returning the compatible test-statistic (t or z-statistic) as a ``score``.
+
+    How to use:
+    ~~~~~~~~~~~
+
+    ::
+       from cerebunit.validation_tests.cells.Purkinje import SomaRestingVmTest
+       data = json.load(open("/home/main-dev/cerebdata/expdata/cells/PurkinjeCell/Llinas_Sugimori_1980_soma_restVm.json"))
+       test = SomaRestingVmTest( data )
+       s = test.judge(chosenmodel, deep_error=True)
+
+    Then to get the test report call ``s.description``. If one is interested in getting the computed statistics call ``s.statistics``.
+
     """
     required_capabilities = (ProducesEphysMeasurement,)
     score_type = NoneScore # Placeholder which will be set at validate_observation
@@ -58,15 +86,15 @@ class SomaRestingVmTest(sciunit.Test):
                                                 units=observation["units"] )
         self.observation["SD"] = pq.Quantity( observation["SD"],
                                                            units=observation["units"] )
-        self.observation["standard_error"] = \
-                  pq.Quantity( observation["SD"] / numpy.sqrt(observation["sample_size"]),
-                               units=observation["units"] )
         self.observation["raw_data"] = pq.Quantity( observation["raw_data"],
                                                     units=observation["units"] )
         self.datacond = NecessaryForHTMeans.ask( observation["sample_size"],
                                                  observation["raw_data"] )
         if self.datacond==True:
             self.score_type = TScore
+            self.observation["standard_error"] = \
+                  pq.Quantity( observation["SD"] / numpy.sqrt(observation["sample_size"]),
+                               units=observation["units"] )
         else:
             self.score_type = ZScore
             self.observation["median"] = numpy.median(self.observation["raw_data"])
@@ -80,6 +108,7 @@ class SomaRestingVmTest(sciunit.Test):
         """
         #self.confidence = confidence # set confidence for test 90%, 95% (default), 99%
         #
+        print("Testing ...")
         runtimeparam = {"dt": 0.025, "celsius": 30, "tstop": 1000.0, "v_init": -80.}
         stimparam = {"type": ["current", "IClamp"],                                                                    "stimlist": [ {"amp": 0.006, "dur": 800.0, "delay": 100.0} ],                                      "tstop": runtimeparam["tstop"] }
         ec = ExecutiveControl()
