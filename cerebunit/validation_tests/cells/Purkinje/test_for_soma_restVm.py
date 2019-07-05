@@ -24,14 +24,13 @@ from cerebunit.capabilities.cells.measurements import ProducesEphysMeasurement
 from cerebunit.statistics.data_conditions import NecessaryForHTMeans
 from cerebunit.statistics.stat_scores import TScore # if NecessaryForHTMeans passes
 from cerebunit.statistics.stat_scores import ZScoreForSignTest as ZScore
-from cerebunit.statistics.hypothesis_testings import HtestAboutMeans
-from cerebunit.statistics.hypothesis_testings import HtestAboutMedians
+from cerebunit.statistics.hypothesis_testings import HtestAboutMeans, HtestAboutMedians
 
 # to execute the model you must be in ~/cerebmodels
 from executive import ExecutiveControl
 from sciunit.scores import NoneScore#, ErrorScore
 
-class RestingVmTest(sciunit.Test):
+class SomaRestingVmTest(sciunit.Test):
     """
     This test compares the measured resting Vm observed in real animal (in-vitro or in-vivo, depending on the data) generated from neuron against those by the model.
     """
