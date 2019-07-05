@@ -54,7 +54,7 @@ class ZScoreForSignTest(sciunit.Score):
         data = np.array( observation["raw_data"] )
         splus = ( data < prediction ).sum()
         n_u = (data != prediction ).sum()
-        self.score = (splus - (n_u/2)) /  sqrt(n_u/4)
+        self.score = (splus - (n_u/2)) / np.sqrt(n_u/4)
         return self.score # z_statistic
 
     @property

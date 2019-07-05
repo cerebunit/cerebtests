@@ -81,14 +81,10 @@ class HtestAboutMeans:
 
     Using t and df look up table for t-distrubution which will return its corresponding p.
 
-    4. Answer, Based on the p-value is the result (true H0) statistically significant?
-    ----------------------------------------------------------------------------------
+    4. Report and Answer the question, __Based on the p-value is the result (true H0) statistically significant?__
+    --------------------------------------------------------------------------------------------------------------
 
-    5. Report.
-    ----------
-
-    How to use.
-    ===========
+    Answer is not provided by the class but its is up to the person viewing the reported result. The results are obtained calling the attributed ``.statistics`` and ``.description``. This is illustrated below.
 
     ::
 
@@ -99,7 +95,8 @@ class HtestAboutMeans:
 
     """
     def __init__(self, observation, prediction, t_statistic, side="not_equal"):
-        """
+        """This constructor method generates ``.statistics`` and ``.outcome`` (which is then assigned to ``.description`` within the validation test class where this hypothesis test class is implemented).
+
         **Arguments**
 
         +----------+------------------------+---------------------------------+
@@ -131,10 +128,12 @@ class HtestAboutMeans:
 
     @staticmethod
     def null_hypothesis(symbol_null_value, symbol_sample_statistic):
+        "Returns the statement for the null hypothesis, H0."
         return "\nH0: "+ symbol_sample_statistic +" = "+ symbol_null_value
 
     @staticmethod
     def alternate_hypothesis(side, symbol_null_value, symbol_sample_statistic):
+        "Returns the statement for the alternate hypothesis, Ha."
         if side is "less_than":
             return "\nHa: "+ symbol_sample_statistic +" < "+ symbol_null_value
         elif side is "greater_than":
@@ -143,6 +142,7 @@ class HtestAboutMeans:
             return "\nHa: "+ symbol_sample_statistic +" =/= "+ symbol_null_value
 
     def _compute_pvalue(self):
+        "Returns the p-value."
         left_side = student_t.cdf(self.t_statistic, self.deg_of_freedom)
         if self.side is "less_than":
             return left_side
@@ -152,6 +152,8 @@ class HtestAboutMeans:
             return 2*(1-left_side)
 
     def test_outcome(self):
+        """Puts together the returned values of :py:meth:`.null_hypothesis`, :py:meth:`.alternate_hypothesis`, and :py:meth:`._compute_pvalue`. Then returns the string value for ``.outcome``.
+        """
         self.pvalue = self._compute_pvalue()
         #symbol_null_value = unichr(0x3bc).encode('utf-8') + "0" # mu_0; chr for Python3
         #symbol_sample_statistic = unichr(0x3bc).encode('utf-8') # mu
@@ -167,6 +169,7 @@ class HtestAboutMeans:
         return parameters+outcome
 
     def _register_statistics(self):
+        "Returns dictionary value for the ``.statistics``."
         return { "u0": self.popul_parameter, "u": self.sample_statistic,
                  "n": self.sample_size, "df": self.deg_of_freedom,
                  "t": self.t_statistic, "se": self.standard_error }

@@ -11,15 +11,6 @@ from scipy.stats import normaltest
 class NecessaryForHTMeans(object):
     """doc
     """
-    def __init__(self, observation):
-        if observation["sample_size"] >= 30:
-            return True
-        else:
-            try:
-                return self.check_normal_population(observation["raw_data"])
-            except:
-                return False
-
     @staticmethod
     def check_normal_population(data):
         """Test if sample is from a normal distribution.
@@ -31,4 +22,14 @@ class NecessaryForHTMeans(object):
             return True
         else:
             return False
+
+    @classmethod
+    def ask(cls, sample_size, experimental_data):
+        if sample_size >= 30:
+            return True
+        else:
+            try:
+                return cls.check_normal_population( experimental_data )
+            except:
+                return False
 

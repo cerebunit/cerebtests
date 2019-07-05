@@ -78,14 +78,10 @@ class HtestAboutMedians:
 
     Using z look up table for standard normal curce which will return its corresponding p.
 
-    4. Answer, Based on the p-value is the result (true H0) statistically significant?
-    ----------------------------------------------------------------------------------
+    4. Report and Answer the question, __Based on the p-value is the result (true H0) statistically significant?__
+    --------------------------------------------------------------------------------------------------------------
 
-    5. Report.
-    ----------
-
-    How to use.
-    ===========
+    Answer is not provided by the class but it is up to the person viewing the reported result. The reports are obtained calling the attributes ``.statistics`` and ``.description``. This is illustrated below.
 
     ::
 
@@ -96,7 +92,8 @@ class HtestAboutMedians:
 
     """
     def __init__(self, observation, prediction, z_statistic, side="not_equal"):
-        """
+        """This constructor method generated ``.statistics`` and ``.outcome`` (which is then assigned to ``.descirption`` within the validation test class where this hypothesis test class is implemented).
+
         **Arguments**
 
         +----------+------------------------+---------------------------------+
@@ -127,10 +124,12 @@ class HtestAboutMedians:
 
     @staticmethod
     def null_hypothesis(symbol_null_value, symbol_sample_statistic):
+        "Returns the statement for the null hypothesis, H0."
         return "\nH0: "+ symbol_sample_statistic +" = "+ symbol_null_value
 
     @staticmethod
     def alternate_hypothesis(side, symbol_null_value, symbol_sample_statistic):
+        "Returns the statement for the alternate hypothesis, Ha."
         if side is "less_than":
             return "\nHa: "+ symbol_sample_statistic +" < "+ symbol_null_value
         elif side is "greater_than":
@@ -139,6 +138,7 @@ class HtestAboutMedians:
             return "\nHa: "+ symbol_sample_statistic +" =/= "+ symbol_null_value
 
     def _compute_pvalue(self):
+        "Returns the p-value."
         right_side = norm.sf(self.z_statistic)
         if self.side is "less_than":
             return 1-right_side
@@ -148,6 +148,8 @@ class HtestAboutMedians:
             return 2*( norm.sf(abs(self.z_statistic)) )
 
     def test_outcome(self):
+        """Puts together the returned values of :py:meth:`.null_hypothesis`, :py:meth:`.alternate_hypothesis`, and :py:meth:`._compute_pvalue`. Then returns the string value for ``.outcome``.
+        """
         self.pvalue = self._compute_pvalue()
         #
         symbol_null_value = "e0"
@@ -162,11 +164,13 @@ class HtestAboutMedians:
         return parameters+outcome
 
     def get_below_equal_above(self, data):
+        "Set values for the attributes ``.below``, ``.equal``, and ``.above`` the null value, e0 = ``.specified_value``."
         self.below = (data < self.specified_value).sum()
         self.equal = (data == self.specified_value).sum()
         self.above = (data > self.specified_value).sum()
 
     def _register_statistics(self):
+        "Returns dictionary value for the ``.statistics``."
         return { "e0": self.specified_value, "e": self.sample_statistic, "n": self.sample_size,
                  "below": self.below, "equal": self.equal, "above": self.above,
                  "z": self.z_statistic, "p": self.pvalue, "side": self.side }
