@@ -41,23 +41,23 @@ class HtestAboutMedians:
     +-------------------------------------+-------------------------------------+
     | Statistic                           | Interpretation                      |
     +=====================================+=====================================+
-    | sample statistic, e                 | experiment/observed median          |
+    | sample statistic, eta               | experiment/observed median          |
     +-------------------------------------+-------------------------------------+
-    | null value/population parameter, e0 | model prediction (specified value)  |
+    |null value/population parameter, eta0| model prediction (specified value)  |
     +-------------------------------------+-------------------------------------+
-    | null hypothesis, H0                 | e = e0                              |
+    | null hypothesis, H0                 | eta = eta0                          |
     +-------------------------------------+-------------------------------------+
-    | alternate hypothesis, Ha            | e =/= or < or > e0                  |
+    | alternate hypothesis, Ha            | eta =/= or < or > eta0              |
     +-------------------------------------+-------------------------------------+
 
     Two-sided hypothesis (default)
-        H0: e = e0 and Ha: e =/= e0
+        H0: eta = eta0 and Ha: eta =/= eta0
 
     One-side hypothesis (left-sided)
-        H0: e = e0 and Ha: e < e0
+        H0: eta = eta0 and Ha: eta < eta0
 
     One-side hypothesis (right-sided)
-        H0: e = e0 and Ha: e > e0
+        H0: eta = eta0 and Ha: eta > eta0
 
     3. Assuming H0 is true, find p-value.
     -------------------------------------
@@ -67,11 +67,11 @@ class HtestAboutMedians:
     +=====================================+=====================================+
     | sample size, n                      | experiment/observed n               |
     +-------------------------------------+-------------------------------------+
-    | splus                               | number of values in sample > e0     |
+    | splus                               | number of values in sample > eta0   |
     +-------------------------------------+-------------------------------------+
-    | sminus                              | number of values in sample < e0     |
+    | sminus                              | number of values in sample < eta0   |
     +-------------------------------------+-------------------------------------+
-    | n_u = splus + sminus                | number of values in sample =/= e0   |
+    | n_u = splus + sminus                | number of values in sample =/= eta0 |
     +-------------------------------------+-------------------------------------+
     | z_statistic, z                      | (splus - (n_u/2))/sqrt(n_u/4)       |
     +-------------------------------------+-------------------------------------+
@@ -152,8 +152,8 @@ class HtestAboutMedians:
         """
         self.pvalue = self._compute_pvalue()
         #
-        symbol_null_value = "e0"
-        symbol_sample_statistic = "e"
+        symbol_null_value = "eta0"
+        symbol_sample_statistic = "eta"
         parameters = ( symbol_null_value +" = "+str(self.specified_value)+", "
                 + symbol_sample_statistic+" = "+str(self.sample_statistic)+", "
                 + "n = "+str(self.sample_size) )
@@ -171,6 +171,7 @@ class HtestAboutMedians:
 
     def _register_statistics(self):
         "Returns dictionary value for the ``.statistics``."
-        return { "e0": self.specified_value, "e": self.sample_statistic, "n": self.sample_size,
+        return { "eta0": self.specified_value, "eta": self.sample_statistic,
+                 "n": self.sample_size,
                  "below": self.below, "equal": self.equal, "above": self.above,
                  "z": self.z_statistic, "p": self.pvalue, "side": self.side }
