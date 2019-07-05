@@ -59,7 +59,7 @@ class SomaRestingVmTest(sciunit.Test):
        test = SomaRestingVmTest( data )
        s = test.judge(chosenmodel, deep_error=True)
 
-    Then to get the test report call ``s.description``. If one is interested in getting the computed statistics call ``s.statistics``.
+    Then to get the test score ``s.score`` and test report call ``s.description``. If one is interested in getting the computed statistics call ``s.statistics``.
 
     """
     required_capabilities = (ProducesEphysMeasurement,)
