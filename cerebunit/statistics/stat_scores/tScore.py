@@ -13,20 +13,32 @@ import sciunit
 
 
 # ==========================TScore=======================================
-# created  6 March 2019 Lungsi
-# modified 
-#
 class TScore(sciunit.Score):
-    '''
-    Compute t-statistic as the standardized statistic
+    """
+    Compute t-statistic as the standardized statistic as
+
+    +------------------------+-------------------------------+
+    | Definitions            | Interpreation                 |
+    +========================+===============================+
+    | sample_mean, xbar      | observation["mean"]           |
+    +------------------------+-------------------------------+
+    | null_value, mu0        | model prediction              |
+    +------------------------+-------------------------------+
+    | standard_error, se     | observation["standard_error"] |
+    +------------------------+-------------------------------+
+    | t-statistic, t         | t = (xbar - mu0)/se           |
+    +------------------------+-------------------------------+
+
+    Note: se = s/sqrt(n), where n is the sample size and s is the standard deviation.
     
-    '''
-    #
-    # -----------------------------Use Case-----------------------------------
-    # x = TScore.compute( observation, prediction )
-    # score = TScore(x)
-    # ------------------------------------------------------------------------
-    #
+    **Use Case**
+
+    ::
+
+      x = TScore.compute( observation, prediction )
+      score = TScore(x)
+
+    """
     #_allowed_types = (float,)
     _description = ( "TScore gives the student-t as the standardized statistic applied to means. "
                    + "The experimental data (observation) is taken as the sample. "
@@ -48,14 +60,3 @@ class TScore(sciunit.Score):
     def __str__(self):
         return "TScore is " + str(self.score)
 # ============================================================================
-#
-# ==========================Score=============================================
-class NameHereScore(sciunit.Score):
-    '''
-    text
-    '''
-
-    def __init__(self):
-        pass
-# ============================================================================
-

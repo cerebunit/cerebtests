@@ -14,7 +14,6 @@ import sciunit
 
 
 # ==========================ZScoreForSignTest==================================
-#
 class ZScoreForSignTest(sciunit.Score):
     """
     Compute z-statistic for Sign Test.
@@ -33,13 +32,14 @@ class ZScoreForSignTest(sciunit.Score):
     | z-statistic, z | z = (splus - (n_u/2))/sqrt(n_u/4) |
     +----------------+-----------------------------------+
     
+    **Use Case:**
+
+    ::
+
+      x = ZScoreForSignTest.compute( observation, prediction )
+      score = ZScoreForSignTest(x)
+
     """
-    #
-    # -----------------------------Use Case-----------------------------------
-    # x = ZScoreForSignTest.compute( observation, prediction )
-    # score = ZScoreForSignTest(x)
-    # ------------------------------------------------------------------------
-    #
     #_allowed_types = (float,)
     _description = ( "ZScoreForSignTest gives the z-statistic applied to medians. "
                    + "The experimental data (observation) is taken as the sample. "
