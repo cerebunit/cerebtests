@@ -19,8 +19,8 @@ GENERAL CEREBELLAR CELL CAPABILITIES
 +-------------------------------------+---------------------------------------+
 |            Class name               |          method name                  |
 +=====================================+=======================================+
-|:py:meth:`.ProducesEphysMeasurement` |:py:meth:`.produce_restingVm`          |
-|                                     |:py:meth:`.produce_spikeheight`        |
+|:py:meth:`.ProducesEphysMeasurement` |:py:meth:`.produce_soma_restingVm`     |
+|                                     |:py:meth:`.produce_soma_spikeheight`   |
 +-------------------------------------+---------------------------------------+
 
 """
@@ -35,13 +35,13 @@ class ProducesEphysMeasurement(sciunit.Capability):
     '''
     def __init__(self):
         pass
-    def produce_restingVm(self):
-        "The model produces resting membrance voltage."
-        raise NotImplementedError("Must implement produce_restingVm")
+    def produce_soma_restingVm(self):
+        "The model produces resting membrane voltage from soma."
+        raise NotImplementedError("Must implement produce_soma_restingVm")
 
-    def produce_spikeheight(self):
-        "The model produces spike height measured from resting potential."
-        raise NotImplementedError("Must implement produce_spikeheight")
+    def produce_soma_spikeheight(self):
+        "The model produces spike height measured from resting potential from soma."
+        raise NotImplementedError("Must implement produce_soma_spikeheight")
 # ========================================================================
 
 
