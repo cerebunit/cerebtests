@@ -116,7 +116,7 @@ class SomaRestingVmTest(sciunit.Test):
         #ec.chosenmodel.restingVm = \
         model = ec.launch_model( parameters = runtimeparam, stimparameters = stimparam,
                                  stimloc = model.cell.soma, onmodel = model,
-                                 capabilities = {"model": "produce_restingVm",
+                                 capabilities = {"model": "produce_soma_restingVm",
                                                  "vtest": ProducesEphysMeasurement},
                                  mode = "capability" )
         return pq.Quantity( numpy.mean(model.prediction), # prediction
