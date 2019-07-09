@@ -1,4 +1,4 @@
-# ~/cerebunit/cerebunit/validation_tests/cells/Granule/test_for_soma_restVm.py
+# ~/cerebunit/cerebunit/validation_tests/cells/Purkinje/test_for_soma_restVm.py
 #
 # =============================================================================
 # test_for_soma_restVm.py 
