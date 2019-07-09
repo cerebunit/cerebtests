@@ -109,7 +109,7 @@ class SomaRestingVmTest(sciunit.Test):
         #self.confidence = confidence # set confidence for test 90%, 95% (default), 99%
         #
         print("Testing ...")
-        runtimeparam = {"dt": 0.025, "celsius": 30, "tstop": 500.0, "v_init": -65.}
+        runtimeparam = {"dt": 0.025, "celsius": 37, "tstop": 500.0, "v_init": -65.}
         stimparam = {"type": ["current", "IClamp"],                                                                    "stimlist": [ {"amp": 0.00, "dur": 300.0, "delay": 200.0} ],                                      "tstop": runtimeparam["tstop"] }
         ec = ExecutiveControl()
         #ec.chosenmodel = model
