@@ -171,5 +171,6 @@ class HtestAboutMeans:
     def _register_statistics(self):
         "Returns dictionary value for the ``.statistics``."
         return { "u0": self.popul_parameter, "u": self.sample_statistic,
+                 "hypotest": "t-Test for HT about means",
                  "n": self.sample_size, "df": self.deg_of_freedom,
                  "t": self.t_statistic, "se": self.standard_error }

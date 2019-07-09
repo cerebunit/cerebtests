@@ -172,6 +172,6 @@ class HtestAboutMedians:
     def _register_statistics(self):
         "Returns dictionary value for the ``.statistics``."
         return { "eta0": self.specified_value, "eta": self.sample_statistic,
-                 "n": self.sample_size,
+                 "n": self.sample_size, "hypotest": "Sign Test for HT about medians",
                  "below": self.below, "equal": self.equal, "above": self.above,
                  "z": self.z_statistic, "p": self.pvalue, "side": self.side }
