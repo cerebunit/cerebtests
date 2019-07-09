@@ -79,7 +79,10 @@ class SomaRestingVmTest(sciunit.Test):
              "SD" not in observation or
              "sample_size" not in observation or
              "units" not in observation or
-             "raw_data" not in observation ):
+             "raw_data" not in observation or
+             "protocol_parameters" not in observation or # these last two are required for
+             "temperature" not in observation["protocol_parameters"] or # for running the
+             "initial_resting_Vm" not in observation["protocol_parameters"] ): # test correctly
             raise sciunit.ObservationError
         self.observation = observation
         self.observation["mean"] = pq.Quantity( observation["mean"],
@@ -98,6 +101,10 @@ class SomaRestingVmTest(sciunit.Test):
         else:
             self.score_type = ZScore
             self.observation["median"] = numpy.median(self.observation["raw_data"])
+        # parameters for properly running the test
+        self.observation["celsius"] = observation["protocol_parameters"]["temperature"]
+        self.observation["v_init"] = observation["protocol_parameters"]["initial_resting_Vm"]
+        #
         print("Validated.")
 
     def generate_prediction(self, model, verbose=False):
@@ -109,7 +116,8 @@ class SomaRestingVmTest(sciunit.Test):
         #self.confidence = confidence # set confidence for test 90%, 95% (default), 99%
         #
         print("Testing ...")
-        runtimeparam = {"dt": 0.025, "celsius": 37, "tstop": 500.0, "v_init": -65.}
+        runtimeparam = {"dt": 0.025, "celsius": self.observation["celsius"],
+                        "tstop": 500.0, "v_init": self.observation["v_init"]}
         stimparam = {"type": ["current", "IClamp"],                                                                    "stimlist": [ {"amp": 0.00, "dur": 300.0, "delay": 200.0} ],                                      "tstop": runtimeparam["tstop"] }
         ec = ExecutiveControl()
         #ec.chosenmodel = model
