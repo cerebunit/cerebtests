@@ -42,6 +42,10 @@ class ProducesEphysMeasurement(sciunit.Capability):
     def produce_soma_spikeheight(self):
         "The model produces spike height measured from resting potential from soma."
         raise NotImplementedError("Must implement produce_soma_spikeheight")
+
+    def produce_soma_inputR(self):
+        "The model produces input resistance from soma."
+        raise NotImplementedError("Must implement produce_soma_inputR")
 # ========================================================================
 
 
