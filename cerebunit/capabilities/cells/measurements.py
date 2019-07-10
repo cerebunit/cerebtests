@@ -21,6 +21,7 @@ GENERAL CEREBELLAR CELL CAPABILITIES
 +=====================================+=======================================+
 |:py:meth:`.ProducesEphysMeasurement` |:py:meth:`.produce_soma_restingVm`     |
 |                                     |:py:meth:`.produce_soma_spikeheight`   |
+|                                     |:py:meth:`.produce_soma_inputR`        |
 +-------------------------------------+---------------------------------------+
 
 """
