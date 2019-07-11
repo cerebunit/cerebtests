@@ -1,4 +1,4 @@
-# ~/cerebunit/setup.py
+# ~/cerebtests/setup.py
 try:
     from setuptools import setup, find_packages
 except ImportError:
