@@ -1,4 +1,4 @@
-# ~/cerebunit/cerebunit/validation_tests/cells/Purkinje/test_for_soma_spikeheight.py
+# ~/cerebtests/cerebunit/validation_tests/cells/Purkinje/test_for_soma_spikeheight.py
 #
 # =============================================================================
 # test_for_soma_spikeheight.py 

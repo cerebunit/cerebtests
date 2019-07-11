@@ -1,5 +1,5 @@
 # =============================================================================
-# ~/cerebunit/cerebunit/statistics/data_conditions/forHTmeans.py
+# ~/cerebtests/cerebunit/statistics/data_conditions/forHTmeans.py
 #
 # create 3 July 2019 Lungsi
 #

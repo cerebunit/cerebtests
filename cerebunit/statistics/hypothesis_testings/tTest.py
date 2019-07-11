@@ -1,5 +1,5 @@
 # ============================================================================
-# ~/cerebunit/cerebunit/hypothesis_testings/tTest.py
+# ~/cerebtests/cerebunit/hypothesis_testings/tTest.py
 #
 # created 7 March 2019 Lungsi
 # modified 4 July 2019 Lungsi

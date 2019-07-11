@@ -1,5 +1,5 @@
 # ============================================================================
-# ~/cerebunit/cerebunit/hypothesis_testings/signTest.py
+# ~/cerebtests/cerebunit/hypothesis_testings/signTest.py
 #
 # created 4 July 2019 Lungsi
 #

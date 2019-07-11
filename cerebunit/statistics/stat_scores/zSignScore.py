@@ -1,5 +1,5 @@
 # ============================================================================
-# ~/cerebunit/cerebunit/stat_scores/zSignScore.py
+# ~/cerebtests/cerebunit/stat_scores/zSignScore.py
 #
 # created 6 March 2019 Lungsi
 #

@@ -1,4 +1,4 @@
-# ~/cerebtest/cerebunit/validation_tests/cells/Purkinje/test_for_soma_Rin.py
+# ~/cerebtests/cerebunit/validation_tests/cells/Purkinje/test_for_soma_Rin.py
 #
 # =============================================================================
 # test_for_soma_Rin.py 
