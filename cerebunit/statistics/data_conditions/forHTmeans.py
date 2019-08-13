@@ -41,7 +41,7 @@ class NecessaryForHTMeans(object):
         Algorithm to check if population is normal
         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-        .. math::
+        ::
 
            \\textbf{Given:} data
            \\textbf{Parameter:} \\alpha = 0.001
@@ -53,7 +53,7 @@ class NecessaryForHTMeans(object):
 
         *Note:*
 
-        * :math:`\\alpha` is an arbitrarily small value, here taken as equal to 0.001
+        * `\\alpha` is an arbitrarily small value, here taken as equal to 0.001
         * `scipy.stats.normaltest <https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.normaltest.html>`_ is based on `D'Agostino <https://doi.org/10.1093/biomet/58.2.341>`_ & `Pearson's <https://doi.org/10.1093/biomet/60.3.613>`_ omnibus test of normality.
 
         """
@@ -71,7 +71,7 @@ class NecessaryForHTMeans(object):
         Algorithm that asks if the distribution of an experimental data is normal, given its sample size.
         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         
-        .. math::
+        ::
 
            \\textbf{Given:} sample_size, experimental_data
            \\textbf{if} sample_size >= 30
