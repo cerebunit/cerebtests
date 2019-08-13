@@ -41,13 +41,13 @@ class NecessaryForHTMeans(object):
         Algorithm to check if population is normal
         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-        **Given:** data
-        **Parameter:** :math:`\\alpha = 0.001`
-        **Compute:** p :math:`\\leftarrow` normaltest(data)
-        **if** p < :math:`\\alpha`
-                "data is normal"
-        **else**
-                "data is not normal"
+        | **Given:** data
+        | **Parameter:** :math:`\\alpha = 0.001`
+        | **Compute:** p :math:`\\leftarrow` normaltest(data)
+        | **if** p < :math:`\\alpha`
+        |        "data is normal"
+        |**else**
+        |        "data is not normal"
 
         *Note:*
 
