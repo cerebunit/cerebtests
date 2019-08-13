@@ -69,11 +69,13 @@ class NecessaryForHTMeans(object):
         Algorithm that asks if the distribution of an experimental data is normal, given its sample size.
         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-        **Given:** sample_size, experimental_data
-        **if** sample_size :math:`\\geq` 30
-               "data is normal"
-        **else**
-               *invoke* :py:meth:`.check_normal_population`
+        .. code-block:: text
+
+           **Given:** sample_size, experimental_data
+           **if** sample_size :math:`\\geq` 30
+                  "data is normal"
+           **else**
+                  *invoke* :py:meth:`.check_normal_population`
 
         *Note:*
 
