@@ -44,12 +44,14 @@ class NecessaryForHTMeans(object):
         .. math::
 
            \\textbf{Given:} data
+
            \\textbf{Parameter:} \\alpha = 0.001
-           \\textbf{Compute:} p \\leftarrow normaltest(data)
-           \\textbf{if} p < alpha
-                   "data is normal"
+
+           \\textbf{Compute:} p \\leftarrow \\texttt{normaltest}(data)
+           \\textbf{if} p < \\alpha
+                   \\text{"data is normal"}
            \\textbf{else}
-                   "data is not normal"
+                   \\text{"data is not normal"}
 
         *Note:*
 
@@ -74,10 +76,11 @@ class NecessaryForHTMeans(object):
         .. math::
 
            \\textbf{Given:} sample_size, experimental_data
-           \\textbf{if} sample_size >= 30
-                   "data is normal"
+
+           \\textbf{if} sample_size \\geq 30
+                   \\text{"data is normal"}
            \\textbf{else}
-                   invoke :py:meth:`.check_normal_population`
+                   \\textit{invoke} :py:meth:`.check_normal_population`
 
         *Note:*
 
