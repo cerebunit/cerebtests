@@ -33,6 +33,18 @@ class NecessaryForHTMeans(object):
     | :py:meth:`.check_normal_population` | data                           |
     +-------------------------------------+--------------------------------+
 
+    +-----------------------------------------------------+
+    | Algorithm                                           |
+    +=====================================================+
+    | **Given:** data                                     |
+    | **Parameter:** :math:`\\alpha = 0.001`              |
+    | **Compute:** p :math:`\\leftarrow` normaltest(data) |
+    | **if** p < :math:`\\alpha`                          |
+    |        "data is normal"                             |
+    | **else**                                            |
+    |        "data is not normal"                         |
+    +-----------------------------------------------------+
+
     """
     @staticmethod
     def check_normal_population(data):
