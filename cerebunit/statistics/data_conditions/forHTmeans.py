@@ -41,7 +41,7 @@ class NecessaryForHTMeans(object):
         Algorithm to check if population is normal
         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-        ::
+        .. math::
 
            \\textbf{Given:} data
            \\textbf{Parameter:} \\alpha = 0.001
@@ -71,7 +71,7 @@ class NecessaryForHTMeans(object):
         Algorithm that asks if the distribution of an experimental data is normal, given its sample size.
         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         
-        ::
+        .. math::
 
            \\textbf{Given:} sample_size, experimental_data
            \\textbf{if} sample_size >= 30
