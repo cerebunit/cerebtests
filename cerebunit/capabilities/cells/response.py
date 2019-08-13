@@ -11,13 +11,19 @@
 #       method in the capability class. Thus both the model class and the
 #       capability class must have the same method name.
 #
-# ---------------------------------------------------------------------
-#                    GENERAL CEREBELLAR CELL CAPABILITIES
-#            Class name               |          method name
-# ---------------------------------------------------------------------
-#   ProducesElectricalResponse        |      produce_voltage_response
-# ---------------------------------------------------------------------
 # =========================================================================
+"""
+Capabilities w.r.t response from a cerebellar cell in general
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
++--------------------------------------+--------------------------------------+
+|        Class name (capability)       |        method name (capacity)        |
++======================================+======================================+
+| ``ProducesElectricalResponse``       | - ``produce_voltage_response``       |
++--------------------------------------+--------------------------------------+
+
+"""
+
 
 import sciunit
 
@@ -25,13 +31,13 @@ import sciunit
 # ======================Produce Electrical Capability=====================
 class ProducesElectricalResponse(sciunit.Capability):
     '''
-    The model produces electrical responses.
+    capability to produce electrical response.
     '''
     def __init__(self):
         pass
     def produce_voltage_response(self):
         '''
-        get voltage response
+        capacity (getting voltage response) to fulfill the capability.
         '''
         raise NotImplementedError("Must implement produce_voltage_response")
 # ========================================================================

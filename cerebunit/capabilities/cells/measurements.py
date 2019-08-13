@@ -13,11 +13,11 @@
 #
 # =============================================================================
 """
-GENERAL CEREBELLAR CELL CAPABILITIES
-====================================
+Capabilities w.r.t measurements attainable from a cerebellar cell in general
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 +-------------------------------------+---------------------------------------+
-|            Class name               |          method name                  |
+|      Class name (capabilities)      |        method name (capacities)       |
 +=====================================+=======================================+
 |:py:meth:`.ProducesEphysMeasurement` |:py:meth:`.produce_soma_restingVm`     |
 |                                     |:py:meth:`.produce_soma_spikeheight`   |
@@ -32,20 +32,20 @@ import sciunit
 # ========================Produce Ephys Measurement============================
 class ProducesEphysMeasurement(sciunit.Capability):
     '''
-    The model produces resting membrane voltage.
+    capability to produce electrophysiological measurments.
     '''
     def __init__(self):
         pass
     def produce_soma_restingVm(self):
-        "The model produces resting membrane voltage from soma."
+        "capacity (of getting soma resting membrane voltage) to fulfill the capability."
         raise NotImplementedError("Must implement produce_soma_restingVm")
 
     def produce_soma_spikeheight(self):
-        "The model produces spike height measured from resting potential from soma."
+        "capacity (of getting soma spike height) to fulfill the capability."
         raise NotImplementedError("Must implement produce_soma_spikeheight")
 
     def produce_soma_inputR(self):
-        "The model produces input resistance from soma."
+        "capacity (of getting soma input resistance) to fulfill the capability."
         raise NotImplementedError("Must implement produce_soma_inputR")
 # ========================================================================
 
