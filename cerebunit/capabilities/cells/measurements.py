@@ -16,13 +16,13 @@
 Capabilities w.r.t measurements attainable from a cerebellar cell in general
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-+-------------------------------------+---------------------------------------+
-|      Class name (capabilities)      |        method name (capacities)       |
-+=====================================+=======================================+
-|:py:meth:`.ProducesEphysMeasurement` |:py:meth:`.produce_soma_restingVm`     |
-|                                     |:py:meth:`.produce_soma_spikeheight`   |
-|                                     |:py:meth:`.produce_soma_inputR`        |
-+-------------------------------------+---------------------------------------+
++-------------------------------------+-----------------------------------------+
+|      Class name (capabilities)      |        method name (capacities)         |
++=====================================+=========================================+
+|:py:class:`.ProducesEphysMeasurement`|- :py:meth:`.produce_soma_restingVm`     |
+|                                     |- :py:meth:`.produce_soma_spikeheight`   |
+|                                     |- :py:meth:`.produce_soma_inputR`        |
++-------------------------------------+-----------------------------------------+
 
 """
 
