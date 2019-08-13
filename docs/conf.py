@@ -50,7 +50,9 @@ templates_path = ['_templates']
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 
 # to avoid breaking the building process due to external dependencies not met
-autodoc_mock_imports = ["neuron"]
+autodoc_mock_imports = [
+    "neuron", "sciunit", "cerebunit", "ExecutiveControl"
+]
 
 
 # -- Options for HTML output -------------------------------------------------
