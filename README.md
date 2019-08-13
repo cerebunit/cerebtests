@@ -1,11 +1,13 @@
 <!-- ![Alt CerebUnit](cerebunit.png?raw=true "Title") -->
 <div><img src="https://raw.githubusercontent.com/cerebunit/cerebtests/master/resources/images/cerebunit.png" alt="CerebUnit" height="23%" width="15%" align="right"></div>
 
-# cerebellum-unit
+# cerebtests
 Package for running validation test on cerebellum models.
 
 ## Description
-This repository is at the develomental stage.
+This repository is at develomental stage.
+
+[Documentation](https://cerebtests.readthedocs.io/en/latest/)
 
 ## ~~Table of Contents~~
 
