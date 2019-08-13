@@ -34,3 +34,10 @@ Test Statistics (Test Score)
    :maxdepth: 1
    :caption: Contents:
 
+Checks for Data Conditions (to determine appropriate testing)
+=============================================================
+.. toctree::
+   :maxdepth: 1
+   :caption: Contents:
+
+   statistics/data_conditions/forHTmeans.rst
