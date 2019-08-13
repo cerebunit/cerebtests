@@ -36,7 +36,8 @@ class NecessaryForHTMeans(object):
     """
     @staticmethod
     def check_normal_population(data):
-        """Tests if sample is from a normal distribution.
+        """
+        Tests if sample is from a normal distribution.
 
         +-----------------------------------------------------+
         | Algorithm                                           |
@@ -65,7 +66,8 @@ class NecessaryForHTMeans(object):
 
     @classmethod
     def ask(cls, sample_size, experimental_data):
-        """If the sample size is large the data condition is met otherwise check if the distribution of the raw data is normal.
+        """
+        If the sample size is large the data condition is met otherwise check if the distribution of the raw data is normal.
 
         +------------------------------------------------------+
         | Algorithm                                            |
