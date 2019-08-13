@@ -53,7 +53,7 @@ class NecessaryForHTMeans(object):
 
         *Note:*
 
-        * `\\alpha` is an arbitrarily small value, here taken as equal to 0.001
+        * :math:`\\alpha` is an arbitrarily small value, here taken as equal to 0.001
         * `scipy.stats.normaltest <https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.normaltest.html>`_ is based on `D'Agostino <https://doi.org/10.1093/biomet/58.2.341>`_ & `Pearson's <https://doi.org/10.1093/biomet/60.3.613>`_ omnibus test of normality.
 
         """
