@@ -41,17 +41,13 @@ class NecessaryForHTMeans(object):
         Algorithm to check if population is normal
         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-        .. math::
-
-           \\textbf{Given:} data
-
-           \\textbf{Parameter:} \\alpha = 0.001
-
-           \\textbf{Compute:} p \\leftarrow \\texttt{normaltest}(data)
-           \\textbf{if} p < \\alpha
-                   \\text{"data is normal"}
-           \\textbf{else}
-                   \\text{"data is not normal"}
+        **Given:** data
+        **Parameter:** :math:`\\alpha = 0.001`
+        **Compute:** p :math:`\\leftarrow` normaltest(data)
+        **if** p < :math:`\\alpha`
+                "data is normal"
+        **else**
+                "data is not normal"
 
         *Note:*
 
@@ -72,14 +68,12 @@ class NecessaryForHTMeans(object):
 
         Algorithm that asks if the distribution of an experimental data is normal, given its sample size.
         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        
-        ::
 
-           **Given:** sample_size, experimental_data
-           **if** sample_size :math:\\geq 30
-                   "data is normal"
-           **else**
-                   *invoke* :py:meth:`.check_normal_population`
+        **Given:** sample_size, experimental_data
+        **if** sample_size :math:`\\geq` 30
+               "data is normal"
+        **else**
+               *invoke* :py:meth:`.check_normal_population`
 
         *Note:*
 
