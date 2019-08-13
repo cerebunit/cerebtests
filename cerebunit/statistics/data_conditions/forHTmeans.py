@@ -39,7 +39,7 @@ class NecessaryForHTMeans(object):
         """Tests if sample is from a normal distribution.
 
         Algorithm to check if population is normal
-        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        ------------------------------------------
 
 
         | **Given:** data                                     
@@ -68,7 +68,7 @@ class NecessaryForHTMeans(object):
         """If the sample size is large the data condition is met otherwise check if the distribution of the raw data is normal.
 
         Algorithm that asks if the distribution of an experimental data is normal, given its sample size.
-        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        -------------------------------------------------------------------------------------------------
 
 
         |  **Given:** sample_size, experimental_data             
