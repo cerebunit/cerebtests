@@ -70,10 +70,10 @@ class NecessaryForHTMeans(object):
         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
         |  **Given:** sample_size, experimental_data             
-        |   **if** sample_size :math:`\\geq` 30                  
-        |          "data is normal"                              
-        |   **else**                                             
-        |          *invoke* :py:meth:`.check_normal_population`  
+        |  **if** sample_size :math:`\\geq` 30                  
+        |         "data is normal"                              
+        |  **else**                                             
+        |         *invoke* :py:meth:`.check_normal_population`  
 
         *Note:*
 
