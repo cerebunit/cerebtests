@@ -70,7 +70,7 @@ class HtestAboutMeans:
       standard error, SE                    experiment/observed SE = :math:`\\frac{SD}{\\sqrt{n}}`
       or                                    or                                  
       standard deviation, SD                experiment/observed SD              
-      t-statistic, t                        test score, :math:`t = \\frac{\\mu - \\mu_0}{SE}
+      t-statistic, t                        test score, :math:`t = \\frac{\\mu - \\mu_0}{SE}`
       degree of freedom, df                 :math:`df = n - 1`
     ====================================== ========================================================
 
