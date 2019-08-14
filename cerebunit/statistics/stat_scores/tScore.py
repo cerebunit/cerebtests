@@ -1,5 +1,5 @@
 # ============================================================================
-# ~/cerebtests/cerebunit/stat_scores/tScore.py
+# ~/cerebtests/cerebunit/statistics/stat_scores/tScore.py
 #
 # created 6 March 2019 Lungsi
 #
@@ -17,19 +17,19 @@ class TScore(sciunit.Score):
     """
     Compute t-statistic as the standardized statistic as
 
-    +------------------------+-------------------------------+
-    | Definitions            | Interpreation                 |
-    +========================+===============================+
-    | sample_mean, xbar      | observation["mean"]           |
-    +------------------------+-------------------------------+
-    | null_value, mu0        | model prediction              |
-    +------------------------+-------------------------------+
-    | standard_error, se     | observation["standard_error"] |
-    +------------------------+-------------------------------+
-    | t-statistic, t         | t = (xbar - mu0)/se           |
-    +------------------------+-------------------------------+
+    +---------------------------------+-------------------------------------------+
+    | Definitions                     | Interpreation                             |
+    +=================================+===========================================+
+    | sample_mean, :math:`\\bar{x}`   | observation["mean"]                       |
+    +---------------------------------+-------------------------------------------+
+    | null_value, :math:`\\mu_0`      | model prediction                          |
+    +---------------------------------+-------------------------------------------+
+    | standard_error, se              | observation["standard_error"]             |
+    +---------------------------------+-------------------------------------------+
+    | t-statistic, t                  | t = :math:`\\frac{\\bar{x} - \\mu_0}{se}` |
+    +---------------------------------+-------------------------------------------+
 
-    Note: se = s/sqrt(n), where n is the sample size and s is the standard deviation.
+    Note: se = :math:`\\frac{s}{\\sqr{n}}`, where n is the sample size and s is the standard deviation.
     
     **Use Case**
 
@@ -37,6 +37,12 @@ class TScore(sciunit.Score):
 
       x = TScore.compute( observation, prediction )
       score = TScore(x)
+
+    *Note*: As part of the `SciUnit <http://scidash.github.io/sciunit.html>`_ framework this custom :py:class:`.TScore` should have the following methods,
+
+    * :py:meth:`.compute` (class method)
+    * :py:meth:`.sort_key` (property)
+    * :py:meth:`.__str__`
 
     """
     #_allowed_types = (float,)
@@ -47,9 +53,14 @@ class TScore(sciunit.Score):
 
     @classmethod
     def compute(self, observation, prediction):
-        # observation (sample) is in dictionary form with keys mean and
-        # standard_error whose value has magnitude and python quantity
-        # the populations parameter is the predicted value
+        """
+        *Note:*
+
+        * observation (sample) is in dictionary form with keys mean and
+        * standard_error whose value has magnitude and python quantity
+        * the populations parameter is the predicted value
+
+        """
         self.score = ((observation["mean"] - prediction)/observation["standard_error"])
         return self.score # t_statistic
 

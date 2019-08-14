@@ -34,6 +34,8 @@ Test Statistics (Test Score)
    :maxdepth: 1
    :caption: Contents:
 
+   statistics/stat_scores/tScore.rst
+
 Checks for Data Conditions (to determine appropriate testing)
 =============================================================
 .. toctree::
