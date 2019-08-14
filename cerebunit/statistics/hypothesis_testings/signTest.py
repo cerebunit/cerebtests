@@ -158,7 +158,7 @@ class HtestAboutMedians:
         return parameters+outcome
 
     def get_below_equal_above(self, data):
-        "Set values for the attributes ``.below``, ``.equal``, and ``.above`` the null value, e0 = ``.specified_value``."
+        "Set values for the attributes ``.below``, ``.equal``, and ``.above`` the null value, :math:`\\eta_0` = ``.specified_value``."
         self.below = (data < self.specified_value).sum()
         self.equal = (data == self.specified_value).sum()
         self.above = (data > self.specified_value).sum()
