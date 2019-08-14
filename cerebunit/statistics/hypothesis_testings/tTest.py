@@ -37,7 +37,7 @@ class HtestAboutMeans:
 
     If either of the above two question returns YES continue below.
 
-    **2. Defining *null* and *alternate* hypotheses.**
+    **2. Defining null and alternate hypotheses.**
 
     .. table:: Title here
 
@@ -59,7 +59,7 @@ class HtestAboutMeans:
     One-side hypothesis (right-sided)
         :math:`H_0`: :math:`\\mu = \\mu_0` and :math:`H_a`: :math:`\\mu > \\mu_0`
 
-    **3. Assuming :math:`H_0` is true, find p-value.**
+    **3. Assuming H0 is true, find p-value.**
 
     .. table:: Title here
 
@@ -76,7 +76,7 @@ class HtestAboutMeans:
 
     Using t and df look up table for t-distrubution which will return its corresponding p.
 
-    **4. Report and Answer the question, *Based on the p-value is the result (true :math:`H_a`) statistically significant?* **
+    **4. Report and Answer the question, based on the p-value is the result (true H0) statistically significant?**
 
     Answer is not provided by the class but its is up to the person viewing the reported result. The results are obtained calling the attributed ``.statistics`` and ``.description``. This is illustrated below.
 
