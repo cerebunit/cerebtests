@@ -22,11 +22,13 @@ Available Capabilities
 Statistics
 **********
 
-Hypthesis Testing
-=================
+Hypothesis Testing
+==================
 .. toctree::
    :maxdepth: 1
    :caption: Contents:
+
+   statistics/hypothesis_testings/tTest.rst
 
 Test Statistics (Test Score)
 ============================

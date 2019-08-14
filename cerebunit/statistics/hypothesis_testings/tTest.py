@@ -1,5 +1,5 @@
 # ============================================================================
-# ~/cerebtests/cerebunit/hypothesis_testings/tTest.py
+# ~/cerebtests/cerebunit/statistics/hypothesis_testings/tTest.py
 #
 # created 7 March 2019 Lungsi
 # modified 4 July 2019 Lungsi
@@ -41,43 +41,38 @@ class HtestAboutMeans:
     2. Defining __null__ and __alternate__ hypotheses.
     --------------------------------------------------
 
-    +-------------------------------------+-------------------------------------+
-    | Statistic                           | Interpretation                      |
-    +=====================================+=====================================+
-    | sample statistic, u                 | experiment/observed mean            |
-    +-------------------------------------+-------------------------------------+
-    | null value/population parameter, u0 | model prediction                    |
-    +-------------------------------------+-------------------------------------+
-    | null hypothesis, H0                 | u = u0                              |
-    +-------------------------------------+-------------------------------------+
-    | alternate hypothesis, Ha            | u =/= or < or > u0                  |
-    +-------------------------------------+-------------------------------------+
+    ================================================ =====================================
+      Statistic                                       Interpretation                      
+    ================================================ =====================================
+     sample statistic, :math:`\\mu`                   experiment/observed mean         
+     null value/population parameter, :math:`\\mu_0`  model prediction                  
+     null hypothesis, :math:`H_0`                     :math:`\\mu = \\mu_0`             
+     alternate hypothesis, :math:`H_a`                :math:`\\mu \\neq or < or > \\mu_0`
+    ================================================ =====================================
 
     Two-sided hypothesis (default)
-        H0: u = u0 and Ha: u =/= u0
+        :math:`H_0`: :math:`\\mu = \\mu_0` and :math:`H_a`: :math:`\\mu \\neq \\mu_0`
 
     One-side hypothesis (left-sided)
-        H0: u = u0 and Ha: u < u0
+        :math:`H_0`: :math:`\\mu = \\mu_0` and :math:`H_a`: :math:`\\mu < \\mu_0`
 
     One-side hypothesis (right-sided)
-        H0: u = u0 and Ha: u > u0
+        :math:`H_0`: :math:`\\mu = \\mu_0` and :math:`H_a`: :math:`\\mu > \\mu_0`
 
     3. Assuming H0 is true, find p-value.
     -------------------------------------
 
     +-------------------------------------+-------------------------------------+
-    | Statistic                           | Interpretation                      |
-    +=====================================+=====================================+
-    | sample size, n                      | experiment/observed n               |
-    +-------------------------------------+-------------------------------------+
-    | standard error, SE                  | experiment/observed SE = SD/sqrt(n) |
-    | or                                  | or                                  |
-    | standard deviation, SD              | experiment/observed SD              |
-    +-------------------------------------+-------------------------------------+
-    | t-statistic, t                      | test score = (u - u0)/SE            |
-    +-------------------------------------+-------------------------------------+
-    | degree of freedom, df               | n - 1                               |
-    +-------------------------------------+-------------------------------------+
+    ====================================== ========================================================
+      Statistic                             Interpretation                      
+    ====================================== ========================================================
+      sample size, n                        experiment/observed n               
+      standard error, SE                    experiment/observed SE = :math:`\\frac{SD}{\\sqrt{n}}`
+      or                                    or                                  
+      standard deviation, SD                experiment/observed SD              
+      t-statistic, t                        test score, :math:`t = \\frac{\\mu - \\mu_0}{SE}
+      degree of freedom, df                 :math:`df = n - 1`
+    ====================================== ========================================================
 
     Using t and df look up table for t-distrubution which will return its corresponding p.
 
