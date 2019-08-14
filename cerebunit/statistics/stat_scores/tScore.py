@@ -18,7 +18,7 @@ class TScore(sciunit.Score):
     Compute t-statistic as the standardized statistic as
 
     +---------------------------------+-------------------------------------------+
-    | Definitions                     | Interpreation                             |
+    | Definitions                     | Interpretation                            |
     +=================================+===========================================+
     | sample_mean, :math:`\\bar{x}`   | observation["mean"]                       |
     +---------------------------------+-------------------------------------------+
@@ -29,7 +29,13 @@ class TScore(sciunit.Score):
     | t-statistic, t                  | t = :math:`\\frac{\\bar{x} - \\mu_0}{se}` |
     +---------------------------------+-------------------------------------------+
 
-    Note: se = :math:`\\frac{s}{\\sqr{n}}`, where n is the sample size and s is the standard deviation.
+    | Definitions                      Interpretation                            
+    | sample_mean, :math:`\\bar{x}`    observation["mean"]                       
+    | null_value, :math:`\\mu_0`       model prediction                          
+    | standard_error, se               observation["standard_error"]             
+    | t-statistic, t                   t = :math:`\\frac{\\bar{x} - \\mu_0}{se}` 
+
+    Note: se = :math:`\\frac{s}{\\sqrt{n}}`, where n is the sample size and s is the standard deviation.
     
     **Use Case**
 
