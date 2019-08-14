@@ -29,17 +29,16 @@ class TScore(sciunit.Score):
     | t-statistic, t                  | t = ``bar{x} - mu_0``/se                  |
     +---------------------------------+-------------------------------------------+
 
-    +---------------------------------+-------------------------------------------+
-    | Definitions                     | Interpretation                            |
-    +=================================+===========================================+
-    | sample_mean, :math:`\\bar{x}`   | observation["mean"]                       |
-    +---------------------------------+-------------------------------------------+
-    | null_value, :math:`\\mu_0`      | model prediction                          |
-    +---------------------------------+-------------------------------------------+
-    | standard_error, se              | observation["standard_error"]             |
-    +---------------------------------+-------------------------------------------+
-    | t-statistic, t                  | t = :math:`\\frac{\\bar{x} - \\mu_0}{se}` |
-    +---------------------------------+-------------------------------------------+
+    .. table:: Title here
+
+    ================================== ===========================================
+      Definitions                       Interpretation                            
+    ================================== ===========================================
+      sample_mean, :math:`\\bar{x}`     observation["mean"]                       
+      null_value, :math:`\\mu_0`        model prediction                          
+      standard_error, se                observation["standard_error"]             
+      t-statistic, t                    t = :math:`\\frac{\\bar{x} - \\mu_0}{se}` 
+    ================================== ===========================================
 
     | Definitions                      Interpretation                            
     | sample_mean, :math:`\\bar{x}`    observation["mean"]                       
