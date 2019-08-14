@@ -50,8 +50,20 @@ class NecessaryForHTMeans(object):
         | **else**                                            
         |        "data is not normal"                         
 
-        --------
+        .. table:: Algorithm
 
+        ======================================================
+          Algorithm
+        ======================================================
+          **Given:** data                                     
+          **Parameter:** :math:`\\alpha = 0.001`              
+          **Compute:** p :math:`\\leftarrow` normaltest(data) 
+          **if** p < :math:`\\alpha`                          
+                 "data is normal"                             
+          **else**                                            
+                 "data is not normal"                        
+        ======================================================
+ 
         *Note:*
 
         * :math:`\\alpha` is an arbitrarily small value, here taken as equal to 0.001
