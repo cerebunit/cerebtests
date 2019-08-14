@@ -25,7 +25,7 @@ Statistics
 Hypothesis Testing
 ==================
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    :caption: Contents:
 
    statistics/hypothesis_testings/tTest.rst
@@ -34,7 +34,7 @@ Hypothesis Testing
 Test Statistics (Test Score)
 ============================
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    :caption: Contents:
 
    statistics/stat_scores/tScore.rst
