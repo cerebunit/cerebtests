@@ -35,6 +35,8 @@ class TScore(sciunit.Score):
     | standard_error, se               observation["standard_error"]             
     | t-statistic, t                   t = :math:`\\frac{\\bar{x} - \\mu_0}{se}` 
 
+    .. raw:: html
+
     <table style="width:100%">
        <tr>
        <th>Name</th>
