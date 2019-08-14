@@ -15,8 +15,8 @@ import quantities as pq
 
 class HtestAboutMeans:
     """
-    Hypothesis Testing (significance testing) about means.
-    ======================================================
+    **Hypothesis Testing (significance testing) about means.**
+
 
     **1. Verify necessary data conditions.**
 

@@ -9,21 +9,18 @@ from scipy.stats import normaltest
 
 class NecessaryForHTMeans(object):
     """
-    Checks for situations for which Hypothesis Testing About Means is valid, i.e, is t-Test valid?
-    ==============================================================================================
+    **Checks for situations for which Hypothesis Testing About Means is valid, i.e, is t-Test valid?**
 
-    Situation-1
-    -----------
+
+    **Situation-1**
 
     For large sample sizes, n >= 30, where 30 is the arbitrary demarcation for __large__. This situtation assumes that the population of the measurements (of interest) is not normal.
 
-    Situation-2
-    -----------
+    **Situation-2**
 
     When there is not evidence of extreme outliers or skewed population shape. This is usually the case for population of the measurements that are approximately normal.
 
-    Implementation
-    --------------
+    **Implementation**
 
     +-------------------------------------+--------------------------------+
     | Method name                         | Arguments                      |
