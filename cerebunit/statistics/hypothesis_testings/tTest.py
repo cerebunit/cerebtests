@@ -37,7 +37,7 @@ class HtestAboutMeans:
 
     If either of the above two question returns YES continue below.
 
-    **2. Defining __null__ and __alternate__ hypotheses.**
+    **2. Defining *null* and *alternate* hypotheses.**
 
     .. table:: Title here
 
@@ -59,7 +59,7 @@ class HtestAboutMeans:
     One-side hypothesis (right-sided)
         :math:`H_0`: :math:`\\mu = \\mu_0` and :math:`H_a`: :math:`\\mu > \\mu_0`
 
-    **3. Assuming H0 is true, find p-value.**
+    **3. Assuming :math:`H_0` is true, find p-value.**
 
     .. table:: Title here
 
@@ -76,7 +76,7 @@ class HtestAboutMeans:
 
     Using t and df look up table for t-distrubution which will return its corresponding p.
 
-    **4. Report and Answer the question, __Based on the p-value is the result (true H0) statistically significant?__**
+    **4. Report and Answer the question, *Based on the p-value is the result (true :math:`H_a`) statistically significant?* **
 
     Answer is not provided by the class but its is up to the person viewing the reported result. The results are obtained calling the attributed ``.statistics`` and ``.description``. This is illustrated below.
 
@@ -87,26 +87,27 @@ class HtestAboutMeans:
        score.description = ht.outcome
        score.statistics = ht.statistics
 
+    **Arguments**
+
+    +----------+------------------------+---------------------------------+
+    | Argument | Representation         | Value type                      |
+    +==========+========================+=================================+
+    | first    | experiment/observation | dictionary that must have keys; |
+    |          |                        | "mean" and "sample_size"        |
+    +----------+------------------------+---------------------------------+
+    | second   | model prediction       | float                           |
+    +----------+------------------------+---------------------------------+
+    | third    | test score/t-statistic | float                           |
+    +----------+------------------------+---------------------------------+
+    | fourth   | sidedness of test      | string; "not_equal" (default)   |
+    |          |                        | or "less_than", "greater_than"  |
+    +----------+------------------------+---------------------------------+
+
+    The constructor method generates :py:attr:`.statistics` and  :py:attr:`.outcome` (which is then assigned to :py:attr:`.description` within the validation test class where this hypothesis test class is implemented).
+
     """
     def __init__(self, observation, prediction, t_statistic, side="not_equal"):
         """This constructor method generates ``.statistics`` and ``.outcome`` (which is then assigned to ``.description`` within the validation test class where this hypothesis test class is implemented).
-
-        **Arguments**
-
-        +----------+------------------------+---------------------------------+
-        | Argument | Representation         | Value type                      |
-        +==========+========================+=================================+
-        | first    | experiment/observation | dictionary that must have keys; |
-        |          |                        | "mean" and "sample_size"        |
-        +----------+------------------------+---------------------------------+
-        | second   | model prediction       | float                           |
-        +----------+------------------------+---------------------------------+
-        | third    | test score/t-statistic | float                           |
-        +----------+------------------------+---------------------------------+
-        | fourth   | sidedness of test      | string; "not_equal" (default)   |
-        |          |                        | or "less_than", "greater_than"  |
-        +----------+------------------------+---------------------------------+
-
         """
         self.sample_statistic = observation["mean"] # quantities.Quantity
         self.sample_size = observation["sample_size"]
