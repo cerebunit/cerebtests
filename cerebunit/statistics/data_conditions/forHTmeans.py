@@ -52,17 +52,17 @@ class NecessaryForHTMeans(object):
 
         .. table:: Algorithm
 
-        ======================================================
-          Algorithm
-        ======================================================
-          **Given:** data                                     
-          **Parameter:** :math:`\\alpha = 0.001`              
-          **Compute:** p :math:`\\leftarrow` normaltest(data) 
-          **if** p < :math:`\\alpha`                          
-                 "data is normal"                             
-          **else**                                            
-                 "data is not normal"                        
-        ======================================================
+        ====== ====================================================== ======
+                 Algorithm
+        ====== ====================================================== ======
+                **Given:** data                                     
+                **Parameter:** :math:`\\alpha = 0.001`              
+                **Compute:** p :math:`\\leftarrow` normaltest(data) 
+                **if** p < :math:`\\alpha`                          
+                       "data is normal"                             
+                **else**                                            
+                       "data is not normal"                        
+        ====== ====================================================== ======
  
         *Note:*
 
