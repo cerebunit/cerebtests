@@ -14,7 +14,7 @@ class NecessaryForHTMeans(object):
 
     **Situation-1**
 
-    For large sample sizes, n >= 30, where 30 is the arbitrary demarcation for __large__. This situtation assumes that the population of the measurements (of interest) is not normal.
+    For large sample sizes, n >= 30, where 30 is the arbitrary demarcation for *large*. This situtation assumes that the population of the measurements (of interest) is not normal.
 
     **Situation-2**
 
