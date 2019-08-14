@@ -18,8 +18,7 @@ class HtestAboutMeans:
     Hypothesis Testing (significance testing) about means.
     ======================================================
 
-    1. Verify necessary data conditions.
-    ------------------------------------
+    **1. Verify necessary data conditions.**
 
     +-------------------------------------+-------------------------------------+
     | Statistic                           | Interpretation                      |
@@ -29,7 +28,7 @@ class HtestAboutMeans:
     | optionally: raw data                | experiment/observed data array      |
     +-------------------------------------+-------------------------------------+
 
-    Is n >= 30?
+    Is :math:`n \\geq 30`?
 
     If not, check if data is from normal distribution.
 
@@ -38,8 +37,7 @@ class HtestAboutMeans:
 
     If either of the above two question returns YES continue below.
 
-    2. Defining __null__ and __alternate__ hypotheses.
-    --------------------------------------------------
+    **2. Defining __null__ and __alternate__ hypotheses.**
 
     ================================================ =====================================
       Statistic                                       Interpretation                      
@@ -59,8 +57,7 @@ class HtestAboutMeans:
     One-side hypothesis (right-sided)
         :math:`H_0`: :math:`\\mu = \\mu_0` and :math:`H_a`: :math:`\\mu > \\mu_0`
 
-    3. Assuming H0 is true, find p-value.
-    -------------------------------------
+    **3. Assuming H0 is true, find p-value.**
 
     +-------------------------------------+-------------------------------------+
     ====================================== ========================================================
@@ -76,8 +73,7 @@ class HtestAboutMeans:
 
     Using t and df look up table for t-distrubution which will return its corresponding p.
 
-    4. Report and Answer the question, __Based on the p-value is the result (true H0) statistically significant?__
-    --------------------------------------------------------------------------------------------------------------
+    **4. Report and Answer the question, __Based on the p-value is the result (true H0) statistically significant?__**
 
     Answer is not provided by the class but its is up to the person viewing the reported result. The results are obtained calling the attributed ``.statistics`` and ``.description``. This is illustrated below.
 
