@@ -60,19 +60,19 @@ class HtestAboutMedians:
 
     .. table:: Title here
 
-    =============================== ===================================================================
+    =============================== ====================================================================
      Statistic                       Interpretation                      
-    =============================== ===================================================================
+    =============================== ====================================================================
      sample size, n                  experiment/observed n               
      :math:`s_{+}`                   number of values in sample :math:`> \\eta_0`   
      :math:`s_{-}`                   number of values in sample :math:`< \\eta_0`   
      :math:`n_u = s_{+} + s_{-}`     number of values in sample :math:`\\neq \\eta_0` 
-     z_statistic, z                  z = :math:`\\frac{s_{+} - \\frac{n_u}{2}}{\\sqrt{\\frac{n_u}{4}}}
-    =============================== ===================================================================
+     z_statistic, z                  z = :math:`\\frac{s_{+} - \\frac{n_u}{2}}{\\sqrt{\\frac{n_u}{4}}}`
+    =============================== ====================================================================
 
     Using z look up table for standard normal curce which will return its corresponding p.
 
-    **4. Report and Answer the question, based on the p-value is the result (true H0) statistically significant?
+    **4. Report and Answer the question, based on the p-value is the result (true H0) statistically significant?**
 
     Answer is not provided by the class but it is up to the person viewing the reported result. The reports are obtained calling the attributes ``.statistics`` and ``.description``. This is illustrated below.
 
