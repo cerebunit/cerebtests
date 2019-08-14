@@ -1,4 +1,4 @@
-.. _tScore:
+.. _TScore:
 
 Compute t-statistic (``TScore``)
 ********************************

@@ -18,19 +18,17 @@ class ZScoreForSignTest(sciunit.Score):
     """
     Compute z-statistic for Sign Test.
 
-    +----------------+-----------------------------------+
-    | Definitions    | Interpretation                    |
-    +================+===================================+
-    | e0             | some specified value              |
-    +----------------+-----------------------------------+
-    | splus          | number of values in sample > e0   |
-    +----------------+-----------------------------------+
-    | sminus         | number of values in sample < e0   |
-    +----------------+-----------------------------------+
-    | n_u            | number of values =/= e0           |
-    +----------------+-----------------------------------+
-    | z-statistic, z | z = (splus - (n_u/2))/sqrt(n_u/4) |
-    +----------------+-----------------------------------+
+    .. table:: Title here
+
+    ================= ========================================================================
+      Definitions      Interpretation                    
+    ================= ========================================================================
+     :math:`e_0`       some specified value              
+     :math:`s_{+}`     number of values in sample :math:`> e_0`
+     :math:`s_{-}`     number of values in sample :math:`< e_0`
+     :math:`n_u`       number of values in sample :math:`\\neq e_0`
+     z-statistic, z    z = :math:`\\frac{ s_{+} - \\frac{n_u}{2} }{ \\sqrt{\\frac{n_u}{4}} }`
+    ================= ========================================================================
     
     **Use Case:**
 
@@ -38,6 +36,12 @@ class ZScoreForSignTest(sciunit.Score):
 
       x = ZScoreForSignTest.compute( observation, prediction )
       score = ZScoreForSignTest(x)
+
+    *Note*: As part of the `SciUnit <http://scidash.github.io/sciunit.html>`_ framework this custom :py:class:`.TScore` should have the following methods,
+
+    * :py:meth:`.compute` (class method)
+    * :py:meth:`.sort_key` (property)
+    * :py:meth:`.__str__`
 
     """
     #_allowed_types = (float,)
@@ -48,9 +52,14 @@ class ZScoreForSignTest(sciunit.Score):
 
     @classmethod
     def compute(self, observation, prediction):
-        # observation (sample) is in dictionary form with keys mean and
-        # standard_error whose value has magnitude and python quantity
-        # the populations parameter is the predicted value
+        """
+        *Note:*
+
+        * observation (sample) is in dictionary form with keys mean and
+        * standard_error whose value has magnitude and python quantity
+        * the populations parameter is the predicted value
+
+        """
         data = np.array( observation["raw_data"] )
         splus = ( data < prediction ).sum()
         n_u = (data != prediction ).sum()

@@ -35,6 +35,7 @@ Test Statistics (Test Score)
    :caption: Contents:
 
    statistics/stat_scores/tScore.rst
+   statistics/stat_scores/zSignScore.rst
 
 Checks for Data Conditions (to determine appropriate testing)
 =============================================================
