@@ -35,6 +35,18 @@ class TScore(sciunit.Score):
     | standard_error, se               observation["standard_error"]             
     | t-statistic, t                   t = :math:`\\frac{\\bar{x} - \\mu_0}{se}` 
 
+    <table style="width:100%">
+       <tr>
+       <th>Name</th>
+       <th colspan="2">Telephone</th>
+       </tr>
+       <tr>
+       <td>Bill Gates</td>
+       <td>55577854</td>
+       <td>55577855</td>
+       </tr>
+    </table>
+
     Note: se = :math:`\\frac{s}{\\sqrt{n}}`, where n is the sample size and s is the standard deviation.
     
     **Use Case**
