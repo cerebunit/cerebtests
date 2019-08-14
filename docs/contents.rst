@@ -29,6 +29,7 @@ Hypothesis Testing
    :caption: Contents:
 
    statistics/hypothesis_testings/tTest.rst
+   statistics/hypothesis_testings/signTest.rst
 
 Test Statistics (Test Score)
 ============================

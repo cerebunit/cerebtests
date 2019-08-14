@@ -1,5 +1,5 @@
 # ============================================================================
-# ~/cerebtests/cerebunit/hypothesis_testings/signTest.py
+# ~/cerebtests/cerebunit/statistics/hypothesis_testings/signTest.py
 #
 # created 4 July 2019 Lungsi
 #
@@ -15,14 +15,13 @@ import quantities as pq
 
 class HtestAboutMedians:
     """
-    Hypothesis Testing (significance testing) about medians.
-    ========================================================
+    **Hypothesis Testing (significance testing) about medians.**
+
 
     This is a nonparameteric test that does not assume specific type of distribution and hence **robust** (valid over broad range of circumstances) and **resistant** (to influence of outliers) test.
 
 
-    1. Verify necessary data conditions.
-    ------------------------------------
+    **1. Verify necessary data conditions.**
 
     +-------------------------------------+-------------------------------------+
     | Statistic                           | Interpretation                      |
@@ -32,54 +31,48 @@ class HtestAboutMedians:
     | optionally: data                    | experiment/observed data array      |
     +-------------------------------------+-------------------------------------+
 
-    * n is **not** >= 30
+    * :math`n \\ngeq 30`
     * data is **not** from normal distribution.
 
-    2. Defining __null__ and __alternate__ hypotheses.
-    --------------------------------------------------
+    **2. Defining null and alternate hypotheses.**
 
-    +-------------------------------------+-------------------------------------+
-    | Statistic                           | Interpretation                      |
-    +=====================================+=====================================+
-    | sample statistic, eta               | experiment/observed median          |
-    +-------------------------------------+-------------------------------------+
-    |null value/population parameter, eta0| model prediction (specified value)  |
-    +-------------------------------------+-------------------------------------+
-    | null hypothesis, H0                 | eta = eta0                          |
-    +-------------------------------------+-------------------------------------+
-    | alternate hypothesis, Ha            | eta =/= or < or > eta0              |
-    +-------------------------------------+-------------------------------------+
+    .. table:: Title here
+
+    ================================================== ========================================
+     Statistic                                          Interpretation                      
+    ================================================== ========================================
+     sample statistic, :math:`\\eta`                    experiment/observed median          
+     null value/population parameter, :math:`\\eta_0`   model prediction (specified value)  
+     null hypothesis, :math:`H_0`                       :math:`\\eta = \\eta_0`      
+     alternate hypothesis, :math:`H_a`                  :math:`\\eta \\neq or < or > \\eta_0`
+    ================================================== ========================================
 
     Two-sided hypothesis (default)
-        H0: eta = eta0 and Ha: eta =/= eta0
+        :math:`H_0`: :math:`\\eta = \\eta_0` and :math:`H_a`: :math:`\\eta \\neq \\eta_0`
 
     One-side hypothesis (left-sided)
-        H0: eta = eta0 and Ha: eta < eta0
+        :math:`H_0`: :math:`\\eta = \\eta_0` and :math:`H_a`: :math:`\\eta < \\eta_0`
 
     One-side hypothesis (right-sided)
-        H0: eta = eta0 and Ha: eta > eta0
+        :math:`H_0`: :math:`\\eta = \\eta_0` and :math:`H_a`: :math:`\\eta > \\eta_0`
 
-    3. Assuming H0 is true, find p-value.
-    -------------------------------------
+    **3. Assuming H0 is true, find p-value.**
 
-    +-------------------------------------+-------------------------------------+
-    | Statistic                           | Interpretation                      |
-    +=====================================+=====================================+
-    | sample size, n                      | experiment/observed n               |
-    +-------------------------------------+-------------------------------------+
-    | splus                               | number of values in sample > eta0   |
-    +-------------------------------------+-------------------------------------+
-    | sminus                              | number of values in sample < eta0   |
-    +-------------------------------------+-------------------------------------+
-    | n_u = splus + sminus                | number of values in sample =/= eta0 |
-    +-------------------------------------+-------------------------------------+
-    | z_statistic, z                      | (splus - (n_u/2))/sqrt(n_u/4)       |
-    +-------------------------------------+-------------------------------------+
+    .. table:: Title here
+
+    =============================== ===================================================================
+     Statistic                       Interpretation                      
+    =============================== ===================================================================
+     sample size, n                  experiment/observed n               
+     :math:`s_{+}`                   number of values in sample :math:`> \\eta_0`   
+     :math:`s_{-}`                   number of values in sample :math:`< \\eta_0`   
+     :math:`n_u = s_{+} + s_{-}`     number of values in sample :math:`\\neq \\eta_0` 
+     z_statistic, z                  z = :math:`\\frac{s_{+} - \\frac{n_u}{2}}{\\sqrt{\\frac{n_u}{4}}}
+    =============================== ===================================================================
 
     Using z look up table for standard normal curce which will return its corresponding p.
 
-    4. Report and Answer the question, __Based on the p-value is the result (true H0) statistically significant?__
-    --------------------------------------------------------------------------------------------------------------
+    **4. Report and Answer the question, based on the p-value is the result (true H0) statistically significant?
 
     Answer is not provided by the class but it is up to the person viewing the reported result. The reports are obtained calling the attributes ``.statistics`` and ``.description``. This is illustrated below.
 
@@ -90,26 +83,27 @@ class HtestAboutMedians:
        score.description = ht.outcome
        score.statistics = ht.statistics
 
+    **Arguments**
+
+    +----------+------------------------+---------------------------------+
+    | Argument | Representation         | Value type                      |
+    +==========+========================+=================================+
+    | first    | experiment/observation | dictionary that must have keys; |
+    |          |                        |"median","sample_size","raw_data"|
+    +----------+------------------------+---------------------------------+
+    | second   | model prediction       | float                           |
+    +----------+------------------------+---------------------------------+
+    | third    | test score/z-statistic | float                           |
+    +----------+------------------------+---------------------------------+
+    | fourth   | sidedness of test      | string; "not_equal" (default)   |
+    |          |                        | or "less_than", "greater_than"  |
+    +----------+------------------------+---------------------------------+
+
+    This constructor method generated :py:attr:`.statistics` and :py:attr:`.outcome` (which is then assigned to :py:attr:`.descirption` within the validation test class where this hypothesis test class is implemented).
+
     """
     def __init__(self, observation, prediction, z_statistic, side="not_equal"):
         """This constructor method generated ``.statistics`` and ``.outcome`` (which is then assigned to ``.descirption`` within the validation test class where this hypothesis test class is implemented).
-
-        **Arguments**
-
-        +----------+------------------------+---------------------------------+
-        | Argument | Representation         | Value type                      |
-        +==========+========================+=================================+
-        | first    | experiment/observation | dictionary that must have keys; |
-        |          |                        |"median","sample_size","raw_data"|
-        +----------+------------------------+---------------------------------+
-        | second   | model prediction       | float                           |
-        +----------+------------------------+---------------------------------+
-        | third    | test score/z-statistic | float                           |
-        +----------+------------------------+---------------------------------+
-        | fourth   | sidedness of test      | string; "not_equal" (default)   |
-        |          |                        | or "less_than", "greater_than"  |
-        +----------+------------------------+---------------------------------+
-
         """
         self.sample_statistic = observation["median"] # quantities.Quantity
         self.sample_size = observation["sample_size"]
