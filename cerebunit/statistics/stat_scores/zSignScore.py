@@ -53,11 +53,17 @@ class ZScoreForSignTest(sciunit.Score):
     @classmethod
     def compute(self, observation, prediction):
         """
+        +----------------------------+------------------------------------------------+
+        | Argument                   | Value type                                     |
+        +============================+================================================+
+        | first argument             | dictionary; observation/experimental data      |
+        +----------------------------+------------------------------------------------+
+        | second argument            | floating number                                |
+        +----------------------------+------------------------------------------------+
+
         *Note:*
 
-        * observation (sample) is in dictionary form with keys mean and
-        * standard_error whose value has magnitude and python quantity
-        * the populations parameter is the predicted value
+        * observation **must** have the key "raw_data" whose value is the list of numbers
 
         """
         data = np.array( observation["raw_data"] )
