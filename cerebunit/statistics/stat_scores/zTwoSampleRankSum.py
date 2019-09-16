@@ -26,9 +26,10 @@ class ZScoreForTwoSampleRankSumTest(sciunit.Score):
     :math:`\eta_0`    some specified value              
     :math:`n_1`       sample size for sample 1
     :math:`n_2`       sample size for sample 2
-    :math:`N`         total sample size, :math`n_1 + n_2`
+    :math:`N`         total sample size, :math:`n_1 + n_2`
     :math:`W`         sum of ranks for observations in sample 1 (post dataset ranking)
-    :math:`\mu_W`     assuming :math:`H_0` is true, :math:`\mu_W` = :math:`\\frac{ n_1(1+N) }{ 2 }`
+    :math:`\mu_W`     assuming :math:`H_0` is true,
+                      :math:`\mu_W` = :math:`\\frac{ n_1(1+N) }{ 2 }`
     :math:`\sigma_W`  assuming :math:`H_0` is true,
                       :math:`\mu_W` = :math:`\\sqrt{ \\frac{ n_1 n_2 (1+N) }{12} }`
     z-statistic, z    z = :math:`\\frac{ W - \mu_W }{ \sigma_W }`
