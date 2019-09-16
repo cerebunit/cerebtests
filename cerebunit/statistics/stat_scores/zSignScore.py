@@ -20,15 +20,15 @@ class ZScoreForSignTest(sciunit.Score):
 
     .. table:: Title here
 
-    ================= ========================================================================
+    ================= =============================================================================
       Definitions      Interpretation                    
-    ================= ========================================================================
-     :math:`e_0`       some specified value              
-     :math:`s_{+}`     number of values in sample :math:`> e_0`
-     :math:`s_{-}`     number of values in sample :math:`< e_0`
-     :math:`n_u`       number of values in sample :math:`\\neq e_0`
-     z-statistic, z    z = :math:`\\frac{ s_{+} - \\frac{n_u}{2} }{ \\sqrt{\\frac{n_u}{4}} }`
-    ================= ========================================================================
+    ================= =============================================================================
+     :math:`\eta_0`       some specified value              
+     :math:`S^{+}`     number of values in sample :math:`> \eta_0`
+     :math:`S^{-}`     number of values in sample :math:`< \eta_0`
+     :math:`n_u`       number of values in sample :math:`\\neq \eta_0`, i.e., :math:`S^{+} + S^{-}`
+     z-statistic, z    z = :math:`\\frac{ S^{+} - \\frac{n_u}{2} }{ \\sqrt{\\frac{n_u}{4}} }`
+    ================= =============================================================================
     
     **Use Case:**
 
