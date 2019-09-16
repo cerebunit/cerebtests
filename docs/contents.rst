@@ -39,6 +39,7 @@ Test Statistics (Test Score)
 
    statistics/stat_scores/tScore.rst
    statistics/stat_scores/zSignScore.rst
+   statistics/stat_scores/zTwoSampleRankSum.rst
 
 Checks for Data Conditions (to determine appropriate testing)
 =============================================================
