@@ -105,14 +105,22 @@ class ZScoreForTwoSampleRankSumTest(sciunit.Score):
         *Example for describing what 'ranking' means:*
 
         :math:`sample1 = [65, 60, 62, 70]`
+
         :math:`sample2 = [60, 55, 65, 70]`
+
         Then,
-        :math:`ordered_data = [55, 60, 60, 62, 65, 65, 70, 70]`
-        :math:`raw_ranks    = [ 1,  2,  3,  4,  5,  6,  7,  8]`
+
+        :math:`ordered\_data = [55, 60, 60, 62, 65, 65, 70, 70]`
+
+        :math:`raw\_ranks    = [ 1,  2,  3,  4,  5,  6,  7,  8]`
+
         and
-        :math:`correct_ranks= [ 1, 2.5, 2.5, 4, 5.5, 5.5, 7.5, 7.5]`
+
+        :math:`correct\_ranks= [ 1, 2.5, 2.5, 4, 5.5, 5.5, 7.5, 7.5]`
+
         Therefore, ranks for sample1 is
-        :math:`sample1_ranks = [5.5, 2.5, 4, 7.5]`
+
+        :math:`sample1\_ranks = [5.5, 2.5, 4, 7.5]`
 
         """
         ordered_data, all_ranks = self.__orderdata_ranks(observation, prediction)
