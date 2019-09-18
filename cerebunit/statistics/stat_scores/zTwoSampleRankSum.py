@@ -53,12 +53,17 @@ class ZScoreForTwoSampleRankSumTest(sciunit.Score):
     * :py:meth:`.sort_key` (property)
     * :py:meth:`.__str__`
 
+    Additionally,
+
+    * :py:meth:`.get_observation_rank` (instance method)
+    * :py:meth:`__orderdata_ranks` (private method)
+
     """
     #_allowed_types = (float,)
-    _description = ( "ZScoreForSignTest gives the z-statistic applied to medians. "
-                   + "The experimental data (observation) is taken as the sample. "
-                   + "The sample statistic is 'median' or computed median form 'raw_data'. "
-                   + "The null-value is the 'some' specified value whic is taken to be the predicted value generated from running the model. " )
+    _description = ( "ZScoreForTwoSampleRankSumTest gives the z-statistic applied to medians of two populations being compared. "
+                   + "The experimental data (observation) is taken as the sample-1. "
+                   + "The simulated data (prediction) is taken as sample-2. "
+                   + "There is no null-value, instead H0: n1=n2; median of sample-1 = median of sample-2. " )
 
     @classmethod
     def compute(self, observation, prediction):
@@ -81,12 +86,13 @@ class ZScoreForTwoSampleRankSumTest(sciunit.Score):
         n2 = len( prediction["raw_data"] )
         N = n1 + n2
         #
-        muW = n1*(1+N)/2
-        sigmaW = np.sqrt( n1*n2*(1+N)/12 )
-        data = np.array( observation["raw_data"] )
-        splus = ( data < prediction ).sum()
-        n_u = (data != prediction ).sum()
-        self.score = (splus - (n_u/2)) / np.sqrt(n_u/4)
+        mu_W = n1*(1+N)/2
+        sigma_W = np.sqrt( n1*n2*(1+N)/12 )
+        #
+        obs_rank = self.get_observation_rank( observation, prediction )
+        W = np.sum( obs_rank )
+        #
+        self.score = (W - mu_W) / sigma_W
         return self.score # z_statistic
 
     @property
@@ -121,6 +127,11 @@ class ZScoreForTwoSampleRankSumTest(sciunit.Score):
         Therefore, ranks for sample1 is
 
         :math:`sample1\_ranks = [5.5, 2.5, 4, 7.5]`
+
+        **NOTE:**
+
+        * corrected ranks have midranks for repeated values
+        * the returned sample1 rank is numpy array 
 
         """
         ordered_data, all_ranks = self.__orderdata_ranks(observation, prediction)
@@ -160,7 +171,7 @@ class ZScoreForTwoSampleRankSumTest(sciunit.Score):
 
         * for each value in the ordered data find its index in unique values array
         * if the corresponding count is more than one compute its midrank (sum ranks/its count)
-        * set ranks (in raw ranks array) for the corresponding number of values with the computed midrank
+        * set ranks (in raw ranks) for the corresponding number of values with the computed midrank
         
         """
         ordered_data = np.sort( observation["raw_data"] + prediction["raw_data"] )
@@ -178,24 +189,4 @@ class ZScoreForTwoSampleRankSumTest(sciunit.Score):
             # raw_ranks[i] does not need to be set for counts = 1
             i = i + counts[indx_in_uniques] # update loop (skipping repeated values)
         return [ ordered_data, raw_ranks ] 
-        #sample1 = np.array( observation["raw_data"] )
-        #sample1_ranks = np.zeros((1,len(sample1)))[0]
-        #for i in range(len(ordered_data)):
-        #    a_data = ordered_data[i]
-        #    its_rank = raw_ranks[i]
-        #    indx_in_sample1 = np.where( sample1 == a_data )[0]
-        #    if len(indx_in_sample1)>1:
-        #        for j in range( len(indx_in_sample1) ):
-        #            sample1_ranks[ indx_in_sample1[j] ] = its_rank
-        #return sample1_ranks
-
-
-
-
-
-
-
-
-
-
 # ============================================================================
