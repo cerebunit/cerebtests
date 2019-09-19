@@ -54,8 +54,8 @@ class ZScoreForTwoSampleRankSumTest(sciunit.Score):
 
     Additionally,
 
-    * :py:meth:`.get_observation_rank` (instance method)
-    * :py:meth:`__orderdata_ranks` (private method)
+    * :py:meth:`.get_observation_rank` (class method)
+    * :py:meth:`.orderdata_ranks` (static method)
 
     """
     #_allowed_types = (float,)
@@ -65,7 +65,7 @@ class ZScoreForTwoSampleRankSumTest(sciunit.Score):
                    + "There is no null-value, instead H0: n1=n2; median of sample-1 = median of sample-2. " )
 
     @classmethod
-    def compute(self, observation, prediction):
+    def compute(cls, observation, prediction):
         """
         +----------------------------+------------------------------------------------+
         | Argument                   | Value type                                     |
@@ -88,7 +88,7 @@ class ZScoreForTwoSampleRankSumTest(sciunit.Score):
         mu_W = n1*(1+N)/2
         sigma_W = np.sqrt( n1*n2*(1+N)/12 )
         #
-        obs_rank = self.get_observation_rank( observation, prediction )
+        obs_rank = cls.get_observation_rank( observation, prediction )
         W = np.sum( obs_rank )
         #
         self.score = (W - mu_W) / sigma_W
@@ -101,7 +101,8 @@ class ZScoreForTwoSampleRankSumTest(sciunit.Score):
     def __str__(self):
         return "ZScore is " + str(self.score)
 
-    def get_observation_rank(self, observation, prediction):
+    @classmethod
+    def get_observation_rank(cls, observation, prediction):
         """Returns ranks for the observation data.
 
         * sample 1, observation["raw_data"]
@@ -133,7 +134,7 @@ class ZScoreForTwoSampleRankSumTest(sciunit.Score):
         * the returned sample1 rank is numpy array 
 
         """
-        ordered_data, all_ranks = self.__orderdata_ranks(observation, prediction)
+        ordered_data, all_ranks = cls.__orderdata_ranks(observation, prediction)
         sample1 = np.array( observation["raw_data"] )
         sample1_ranks = np.zeros((1,len(sample1)))[0]
         for i in range(len(ordered_data)): # go through all the ordered data
@@ -146,8 +147,9 @@ class ZScoreForTwoSampleRankSumTest(sciunit.Score):
                     sample1_ranks[ indx_in_sample1[j] ] = its_rank # set appropriate rank
         return sample1_ranks
 
-    def __orderdata_ranks(self, observation, prediction):
-        """ Private function that orders the data and returns its appropriate rank.
+    @staticmethod
+    def orderdata_ranks(observation, prediction):
+        """ Static function that orders the data and returns its appropriate rank.
 
         * sample 1, observation["raw_data"]
         * sample 2, prediction["raw_data"]

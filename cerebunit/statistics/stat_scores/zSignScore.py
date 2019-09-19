@@ -51,7 +51,7 @@ class ZScoreForSignTest(sciunit.Score):
                    + "The null-value is the 'some' specified value whic is taken to be the predicted value generated from running the model. " )
 
     @classmethod
-    def compute(self, observation, prediction):
+    def compute(cls, observation, prediction):
         """
         +----------------------------+------------------------------------------------+
         | Argument                   | Value type                                     |
