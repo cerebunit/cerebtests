@@ -38,7 +38,6 @@ class ZScoreForTwoSampleRankSumTest(sciunit.Score):
     **NOTE:**
 
     * :math:`H_0` is true :math:`\Rightarrow` for samples 1 and 2 their population distributions are the same
-    *
     
     **Use Case:**
 
