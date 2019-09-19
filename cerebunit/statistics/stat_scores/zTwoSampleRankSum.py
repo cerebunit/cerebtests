@@ -134,7 +134,7 @@ class ZScoreForTwoSampleRankSumTest(sciunit.Score):
         * the returned sample1 rank is numpy array 
 
         """
-        ordered_data, all_ranks = cls.__orderdata_ranks(observation, prediction)
+        ordered_data, all_ranks = cls.orderdata_ranks(observation, prediction)
         sample1 = np.array( observation["raw_data"] )
         sample1_ranks = np.zeros((1,len(sample1)))[0]
         for i in range(len(ordered_data)): # go through all the ordered data
