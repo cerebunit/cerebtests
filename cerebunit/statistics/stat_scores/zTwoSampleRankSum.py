@@ -31,7 +31,7 @@ class ZScoreForTwoSampleRankSumTest(sciunit.Score):
     :math:`\mu_W`     assuming :math:`H_0` is true,
                       :math:`\mu_W` = :math:`\\frac{ n_1(1+N) }{ 2 }`
     :math:`\sigma_W`  assuming :math:`H_0` is true,
-                      :math:`\mu_W` = :math:`\\sqrt{ \\frac{ n_1 n_2 (1+N) }{12} }`
+                      :math:`\sigma_W` = :math:`\\sqrt{ \\frac{ n_1 n_2 (1+N) }{12} }`
     z-statistic, z    z = :math:`\\frac{ W - \mu_W }{ \sigma_W }`
     ================= ================================================================================
 
