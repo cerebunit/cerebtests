@@ -82,7 +82,7 @@ class ZScoreForWilcoxSignedRankTest(sciunit.Score):
         +============================+================================================+
         | first argument             | dictionary; observation/experimental data      |
         +----------------------------+------------------------------------------------+
-        | second argument            | float or dictionary; simulated data            |
+        | second argument            | float or array; simulated data                 |
         +----------------------------+------------------------------------------------+
 
         *Note:*
@@ -91,22 +91,20 @@ class ZScoreForWilcoxSignedRankTest(sciunit.Score):
         * simulation, i.e, model prediction is not a float it  **must** also have the key "raw_data"
 
         """
-        if hasattr(prediction, '__len__'):
+        if np.array( prediction ).shape is (): # single sample test
+            data = observation["raw_data"]
             eta0 = prediction
-            n2 = len(prediction)
-        else: # paired data
+        else: # paired difference test
+            data = observation["raw_data"] - prediction
             eta0 = 0
-            n2 = 1
-        n1 = len( observation["raw_data"] )
-        N = n1 + n2
+        # 
+        Tplus = self.get_Tplus( data, eta0 )
+        n_u = (data != eta0).sum()
         #
-        mu_W = n1*(1+N)/2
-        sigma_W = np.sqrt( n1*n2*(1+N)/12 )
+        muTplus = n_u * (n_u + 1) / 4
+        sdTplus = np.sqrt( n_u * (n_u + 1) * (2*n_u + 1) / 24 )
         #
-        obs_rank = cls.get_observation_rank( observation, prediction )
-        W = np.sum( obs_rank )
-        #
-        self.score = (W - mu_W) / sigma_W
+        self.score = (Tplus - muTplus) / sdTplus
         return self.score # z_statistic
 
     @property
@@ -116,71 +114,59 @@ class ZScoreForWilcoxSignedRankTest(sciunit.Score):
     def __str__(self):
         return "ZScore is " + str(self.score)
 
-    def get_observation_rank(self, observation, prediction):
-        """Returns ranks for the observation data.
+    def get_Tplus(self, data, null_value):
+        """Returns computed Wilcoxon signed-rank statistic, Tplus.
 
-        * sample 1, observation["raw_data"]
-        * sample 2, prediction["raw_data"]
+        * case1: data = observation["raw_data"], null_value = prediction
+        * case2: data = observation["raw_data"] + prediction, null_value = 0
 
         *Example for describing what 'ranking' means:*
 
-        :math:`sample1 = [65, 60, 62, 70]`
+        :math:`data = [65, 55, 60, 62, 70]`
 
-        :math:`sample2 = [60, 55, 65, 70]`
+        :math:`null\_value = 60`
 
         Then,
 
-        :math:`ordered\_data = [55, 60, 60, 62, 65, 65, 70, 70]`
+        :math:`ordered\_data = [55, 60, 62, 65, 70]`
 
-        :math:`raw\_ranks    = [ 1,  2,  3,  4,  5,  6,  7,  8]`
+        :math:`absolute\_difference = [5 0 2 5 10]`
 
-        and
+        :math:`absolute\_difference\_without\_zeros = [5 2 5 10]`
 
-        :math:`correct\_ranks= [ 1, 2.5, 2.5, 4, 5.5, 5.5, 7.5, 7.5]`
+        :math:`ordered\_data\_without\_zeros = [55, 62, 65, 70]`
 
-        Therefore, ranks for sample1 is
+        :math:`all\_ranks    =                 [1, 2, 3, 4]`
 
-        :math:`sample1\_ranks = [5.5, 2.5, 4, 7.5]`
+        Therefore, :math:`T^+`, Wilcoxon signed-rank statistic is
 
-        **NOTE:**
-
-        * corrected ranks have midranks for repeated values
-        * the returned sample1 rank is numpy array 
+        :math:`Tplus= 1+2+3+4 = 10`
 
         """
-        ordered_data, all_ranks = self.__orderdata_ranks(observation, prediction)
-        sample1 = np.array( observation["raw_data"] )
-        sample1_ranks = np.zeros((1,len(sample1)))[0]
-        for i in range(len(ordered_data)): # go through all the ordered data
-            a_data = ordered_data[i]
-            its_rank = all_ranks[i]
-            # for each picked data value get its index w.r.t sample1
-            indx_in_sample1 = np.where( sample1 == a_data )[0]
-            if len(indx_in_sample1)>1: # if the picked data value exists within sample1
-                for j in range( len(indx_in_sample1) ): # at each corresponding index in sample1
-                    sample1_ranks[ indx_in_sample1[j] ] = its_rank # set appropriate rank
-        #return sample1_ranks
-        absolute_diffs = np.zeros((1,len(observation)))[0]
-        for i in range(len(observation)):
-            absolute_diffs[i] = abs( observation[i] - eta0 )
+        ordered_data = np.sort( data )
+        # get rank
+        abs_diff = np.abs( ordered_data - null_value )
+        #
+        abs_diff_no0s = abs_diff[ abs_diff != 0 ]
+        non0indices = np.where( abs_diff != 0 )
+        ordered_data_no0s = np.take( ordered_data, non0indices )[0]
+        #
+        all_ranks = self.__ranks_in_absdifferences_of_ordered_data( abs_diff_no0s )
+        Tplus = 0
+        for i in non0indices: # go through all the ordered data
+            if ordered_data_no0s[i] > null_value:
+                Tplus = Tplus + all_ranks[i]
+        return Tplus
 
-    def __orderdata_ranks(self, observation, prediction):
+    def __ranks_in_absdifferences_of_ordered_data(self, absdiff_without_zero):
         """ Private function that orders the data and returns its appropriate rank.
 
-        * sample 1, observation["raw_data"]
-        * sample 2, prediction["raw_data"]
-
         **Step-1:**
-
-        * append the two lists (i.e, the two samples)
-        * order the values in ascending manner
-
-        **Step-2:**
 
         * get unique values in the ordered data
         * also get the number of frequencies for each unique value
 
-        **Step-3:**
+        **Step-2:**
 
         * construct raw ranks based on the ordered data
 
@@ -191,13 +177,12 @@ class ZScoreForWilcoxSignedRankTest(sciunit.Score):
         * set ranks (in raw ranks) for the corresponding number of values with the computed midrank
         
         """
-        ordered_data = np.sort( observation["raw_data"] + prediction["raw_data"] )
-        unique_values, counts = np.unique( ordered_data, return_counts=True )
-        raw_ranks = [ i+1 for i in range(len(ordered_data)) ]
+        unique_values, counts = np.unique( absdiff_without_zero, return_counts=True )
+        raw_ranks = [ i+1 for i in range(len(absdiff_without_zero)) ]
         #
         i = 0 # initiate from first index of ordered_data and raw_ranks
-        while i < len(ordered_data):
-            indx_in_uniques = int( np.where( unique_values == ordered_data[i] )[0] )
+        while i < len(absdiff_without_zero):
+            indx_in_uniques = int( np.where( unique_values == absdiff_without_zero[i] )[0] )
             if counts[indx_in_uniques]>1:
                 numer = 0.0
                 numer = [ numer + raw_ranks[i+j] for j in range( counts[indx_in_uniques] ) ][0]
@@ -205,5 +190,5 @@ class ZScoreForWilcoxSignedRankTest(sciunit.Score):
                     raw_ranks[i+j] = numer/counts[indx_in_uniques]
             # raw_ranks[i] does not need to be set for counts = 1
             i = i + counts[indx_in_uniques] # update loop (skipping repeated values)
-        return [ ordered_data, raw_ranks ] 
+        return raw_ranks
 # ============================================================================
