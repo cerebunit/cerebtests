@@ -77,7 +77,7 @@ class ZScoreForSignTest(sciunit.Score):
         else: # paired difference test
             data = observation["raw_data"] - prediction
             eta0 = 0
-        splus = ( data < eta0 ).sum()
+        splus = ( data > eta0 ).sum()
         n_u = (data != eta0 ).sum()
         self.score = (splus - (n_u/2)) / np.sqrt(n_u/4)
         return self.score # z_statistic
