@@ -23,7 +23,7 @@ class ZScoreForWilcoxSignedRankTest(sciunit.Score):
     ====================  ============================================================================
       Definitions          Interpretation                    
     ====================  ============================================================================
-    :math:`\eta_0`        some specified value
+    :math:`\eta_0`        some specified value:math:`^{\dagger}`
     :math:`x_i`           each data value
     :math:`|x_i-\eta_0|`  absolute difference between data value and null value
     :math:`T`             ranks of the computed absolute difference (excluding difference = 0 )
@@ -35,6 +35,11 @@ class ZScoreForWilcoxSignedRankTest(sciunit.Score):
                           :math:`\sigma_{T^+}` = :math:`\\sqrt{ \\frac{ n_U(1+n_U)(1+2n_U) }{24} }`
     z-statistic, z        z = :math:`\\frac{ T^+ - \mu_{T^+} }{ \sigma_{T^+} }`
     ====================  ============================================================================
+
+    :math:`^{\dagger} \eta_0`, null value is
+
+    * the model prediction for one sample testing
+    * 0 for testing with paired data (observation - prediction)
 
     **NOTE:**
 
