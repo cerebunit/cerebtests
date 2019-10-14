@@ -23,7 +23,7 @@ class ZScoreForWilcoxSignedRankTest(sciunit.Score):
     ====================  ============================================================================
       Definitions          Interpretation                    
     ====================  ============================================================================
-    :math:`\eta_0`        some specified value:math:`^{\dagger}`
+    :math:`\eta_0`        some specified value :math:`^{\dagger}`
     :math:`x_i`           each data value
     :math:`|x_i-\eta_0|`  absolute difference between data value and null value
     :math:`T`             ranks of the computed absolute difference (excluding difference = 0 )
@@ -91,17 +91,13 @@ class ZScoreForWilcoxSignedRankTest(sciunit.Score):
         * simulation, i.e, model prediction is not a float it  **must** also have the key "raw_data"
 
         """
-        if ( (type(prediction) is int) or (type(prediction) is float) or
-             (type(prediction).__name__ is "Quantity") ):
-            if type(prediction).__name__ is "Quanity":
-                eta0 = prediction.magnitude
-            else:
-                eta0 = prediction
+        if hasattr(prediction, '__len__'):
+            eta0 = prediction
+            n2 = len(prediction)
         else: # paired data
             eta0 = 0
-
+            n2 = 1
         n1 = len( observation["raw_data"] )
-        n2 = len( prediction["raw_data"] )
         N = n1 + n2
         #
         mu_W = n1*(1+N)/2

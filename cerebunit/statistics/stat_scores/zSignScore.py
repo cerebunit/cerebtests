@@ -23,7 +23,7 @@ class ZScoreForSignTest(sciunit.Score):
     ================= =============================================================================
       Definitions      Interpretation                    
     ================= =============================================================================
-     :math:`\eta_0`    some specified value:math:`^{\dagger}`
+     :math:`\eta_0`    some specified value :math:`^{\dagger}`
      :math:`S^{+}`     number of values in sample :math:`> \eta_0`
      :math:`S^{-}`     number of values in sample :math:`< \eta_0`
      :math:`n_u`       number of values in sample :math:`\\neq \eta_0`, i.e., :math:`S^{+} + S^{-}`
@@ -72,11 +72,11 @@ class ZScoreForSignTest(sciunit.Score):
 
         """
         data = np.array( observation["raw_data"] )
-        if ( (type(prediction) is float) or (type(prediction) is int) ):
-            pass # single sample test
-        else:
+        if hasattr(prediction, '__len__'):
             data = data - np.array( prediction ) # paired difference test
+            #data = data - prediction #use this if data = np.array() above is commented
             prediction = 0. # null value
+        #else single sample test and hence prediction is the null value
         splus = ( data < prediction ).sum()
         n_u = (data != prediction ).sum()
         self.score = (splus - (n_u/2)) / np.sqrt(n_u/4)
