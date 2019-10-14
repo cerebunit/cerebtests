@@ -63,7 +63,7 @@ class ZScoreForSignTest(sciunit.Score):
         +============================+================================================+
         | first argument             | dictionary; observation/experimental data      |
         +----------------------------+------------------------------------------------+
-        | second argument            | floating number                                |
+        | second argument            | floating number or array                       |
         +----------------------------+------------------------------------------------+
 
         *Note:*
@@ -71,14 +71,14 @@ class ZScoreForSignTest(sciunit.Score):
         * observation **must** have the key "raw_data" whose value is the list of numbers
 
         """
-        data = np.array( observation["raw_data"] )
-        if hasattr(prediction, '__len__'):
-            data = data - np.array( prediction ) # paired difference test
-            #data = data - prediction #use this if data = np.array() above is commented
-            prediction = 0. # null value
-        #else single sample test and hence prediction is the null value
-        splus = ( data < prediction ).sum()
-        n_u = (data != prediction ).sum()
+        if np.array( prediction ).shape is (): # single sample test
+            data = observation["raw_data"]
+            eta0 = prediction
+        else: # paired difference test
+            data = observation["raw_data"] - prediction
+            eta0 = 0
+        splus = ( data < eta0 ).sum()
+        n_u = (data != eta0 ).sum()
         self.score = (splus - (n_u/2)) / np.sqrt(n_u/4)
         return self.score # z_statistic
 
