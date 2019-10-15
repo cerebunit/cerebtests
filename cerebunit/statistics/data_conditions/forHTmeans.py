@@ -86,7 +86,7 @@ class NecessaryForHTMeans(object):
         *Note:*
 
         * :math:`\\beta` is an arbitrarily small value, here taken as equal to 0.001
-        * `scipy.stats.skew <https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.skew.html>`_ is based on **Zwillinger, D. and Kokoska, S. (2000). CRC Standard Probability and Statistics Tables and Formulae. Chapman & Hall: New York. 2000. Section 2.2.24.1.** `ISBN: ISBN 9780849300264 <https://www.crcpress.com/CRC-Standard-Probability-and-Statistics-Tables-and-Formulae-Student-Edition/Kokoska-Zwillinger/p/book/9780849300264>`_ that uses `Fisher-Pearson coefficient of skewness <https://en.wikipedia.org/wiki/Skewness>`_.
+        * `scipy.stats.skew <https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.skew.html>`_ is based on *Zwillinger, D. and Kokoska, S. (2000). CRC Standard Probability and Statistics Tables and Formulae. Chapman & Hall: New York. 2000. Section 2.2.24.1.* `ISBN: ISBN 9780849300264 <https://www.crcpress.com/CRC-Standard-Probability-and-Statistics-Tables-and-Formulae-Student-Edition/Kokoska-Zwillinger/p/book/9780849300264>`_ that uses `Fisher-Pearson coefficient of skewness <https://en.wikipedia.org/wiki/Skewness>`_.
         * by default `scipy.stats.skew` is computed for `bias = True`. Fisher-Pearson standardized moment coefficient is the computed value for the corrected bias, i.e, `bias = False`.
         * "data is skewed" => `True` and "data is not skewed" => `False`
 
