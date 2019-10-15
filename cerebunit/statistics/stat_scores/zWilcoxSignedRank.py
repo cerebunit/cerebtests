@@ -130,9 +130,9 @@ class ZScoreForWilcoxSignedRankTest(sciunit.Score):
 
         :math:`ordered\_data = [55, 60, 62, 65, 70]`
 
-        :math:`absolute\_difference = [5 0 2 5 10]`
+        :math:`absolute\_difference = [5, 0, 2, 5, 10]`
 
-        :math:`absolute\_difference\_without\_zeros = [5 2 5 10]`
+        :math:`absolute\_difference\_without\_zeros = [5, 2, 5, 10]`
 
         :math:`ordered\_data\_without\_zeros = [55, 62, 65, 70]`
 
