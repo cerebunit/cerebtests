@@ -34,7 +34,6 @@ class NecessaryForHTMeans(object):
 
     **Below shows a rough road map**
 
-    .. image:: /figs/forHTmeans.png
 
     """
     @staticmethod
