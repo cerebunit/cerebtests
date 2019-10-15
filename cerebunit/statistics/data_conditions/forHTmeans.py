@@ -154,4 +154,4 @@ class NecessaryForHTMeans(object):
             except:
                 return False
         else:
-            raise ValueError("question must be normal? or skew?")`
+            raise ValueError("question must be normal? or skew?")
