@@ -67,7 +67,7 @@ class HtestAboutMedians:
 
     **3. Assuming H0 is true, find p-value.**
 
-    If the data is skewed, the non-parametric z-score is computed for Sign test.
+    *If the data is skewed, the non-parametric z-score is computed for Sign test.*
 
     .. table:: Title here
 
@@ -85,23 +85,23 @@ class HtestAboutMedians:
 
     .. table:: Title here
 
-    =============================== =====================================================================
+    =============================== =======================================================================
      Statistic                       Interpretation                      
-    =============================== =====================================================================
+    =============================== =======================================================================
      :math:`\\overrightarrow{x}`     data :math:`^{\dagger}`
      :math:`|x_i-\eta_0|`            absolute difference between data values and null value
      :math:`T`                       ranks of the computed difference (excluding difference = 0 )
      :math:`T^+`                     sum of ranks :math:`\eta_0`; Wilcoxon signed-rank statistic
      :math:`n_U`                     number of values in data not equal to :math:`\\eta_0`
-    z_statistic, z                  z=:math:`\\frac{T^+ - [n_U(n_U+1)/4]}{\\sqrt{n_U(n_U+1)(2n_U+1)/24}}`
-    =============================== =====================================================================
+    z_statistic, z                  z = :math:`\\frac{T^+ - [n_U(n_U+1)/4]}{\\sqrt{n_U(n_U+1)(2n_U+1)/24}}`
+    =============================== =======================================================================
 
     Using z look up table for standard normal curve which will return its corresponding p.
 
-    :math:`^{\dagger}`
+    ** :math:`^{\dagger}`**
 
-    * :math:`\\overrightarrow{x} =` experimental data for one sample
-    * :math:`\\overrightarrow{x} =` (experimental - prediction) data for paired data
+    * :math:`\\overrightarrow{x} =` experimental data for one sample testing
+    * :math:`\\overrightarrow{x} =` (experimental - prediction) data for paired data testing
     * thus :math:`\\eta =` median of :math:`\\overrightarrow{x}`
 
     **4. Report and Answer the question, based on the p-value is the result (true H0) statistically significant?**
