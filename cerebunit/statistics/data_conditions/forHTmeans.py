@@ -5,11 +5,11 @@
 #
 # =============================================================================
 
-from scipy.stats import normaltest
+from scipy.stats import normaltest, skew
 
 class NecessaryForHTMeans(object):
     """
-    **Checks for situations for which Hypothesis Testing About Means is valid, i.e, is t-Test valid?**
+    **Checks for situations for which Hypothesis Testing About Means is valid, i.e, is t-Test (or standard z-score) valid?**
 
 
     **Situation-1**
@@ -25,9 +25,11 @@ class NecessaryForHTMeans(object):
     +-------------------------------------+--------------------------------+
     | Method name                         | Arguments                      |
     +=====================================+================================+
-    | :py:meth:`.ask`                     | sample_size, experimental_data |
+    | :py:meth:`.ask`                     | experimental_data              |
     +-------------------------------------+--------------------------------+
-    | :py:meth:`.check_normal_population` | data                           |
+    | :py:meth:`.check_normal_population` | experimental_data              |
+    +-------------------------------------+--------------------------------+
+    | :py:meth:`.check_skew_population`   | experimental_data              |
     +-------------------------------------+--------------------------------+
 
     """
@@ -53,6 +55,7 @@ class NecessaryForHTMeans(object):
 
         * :math:`\\alpha` is an arbitrarily small value, here taken as equal to 0.001
         * `scipy.stats.normaltest <https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.normaltest.html>`_ is based on `D'Agostino <https://doi.org/10.1093/biomet/58.2.341>`_ & `Pearson's <https://doi.org/10.1093/biomet/60.3.613>`_ omnibus test of normality.
+        * "data is normal" => `True` and "data is not normal" => `False`
 
         """
         alpha = 0.001 # an arbitrarily small alpha value
@@ -62,32 +65,90 @@ class NecessaryForHTMeans(object):
         else:
             return False
 
-    @classmethod
-    def ask(cls, sample_size, experimental_data):
-        """If the sample size is large the data condition is met otherwise check if the distribution of the raw data is normal.
+    @staticmethod
+    def check_skew_population(data):
+        """Tests if the data is symmetric (not skewed).
 
-        Algorithm that asks if the distribution of an experimental data is normal, given its sample size.
+        Algorithm to check if population is not skewed
 
         --------
 
-        |  **Given:** sample_size, experimental_data             
+        | **Given:** data                                     
+        | **Parameter:** :math:`\\beta = 0.001`              
+        | **Compute:** s :math:`\\leftarrow` skew(data) 
+        | **if** s > :math:`\\beta`                          
+        |        "data is skewed"                             
+        | **else**                                            
+        |        "data is not skewed"                         
+
+        --------
+
+        *Note:*
+
+        * :math:`\\beta` is an arbitrarily small value, here taken as equal to 0.001
+        * `scipy.stats.skew <https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.skew.html>`_ is based on **Zwillinger, D. and Kokoska, S. (2000). CRC Standard Probability and Statistics Tables and Formulae. Chapman & Hall: New York. 2000. Section 2.2.24.1.** `ISBN: ISBN 9780849300264 <https://www.crcpress.com/CRC-Standard-Probability-and-Statistics-Tables-and-Formulae-Student-Edition/Kokoska-Zwillinger/p/book/9780849300264>`_ that uses `Fisher-Pearson coefficient of skewness <https://en.wikipedia.org/wiki/Skewness>`_.
+        * by default `scipy.stats.skew` is computed for `bias = True`. Fisher-Pearson standardized moment coefficient is the computed value for the corrected bias, i.e, `bias = False`.
+        * "data is skewed" => `True` and "data is not skewed" => `False`
+
+        """
+        beta = 0.001 # an arbitrarily small beta value
+        if skew(data) < beta:
+            return True
+        else:
+            return False
+
+    @classmethod
+    def ask(cls, question, experimental_data):
+        """Depending on the question asked (`normal?` or `skew?`) this function checks if the distribution of the raw data is normal or skewed.
+
+        Algorithm that asks if the distribution of an experimental data is normal.
+
+       `question = normal?`
+
+        --------
+
+        |  **Given:** experimental_data
+        |  **get** sample_size :math:`\\leftarrow` number of experimental data elements
         |  **if** sample_size :math:`\\geq` 30                  
         |         "data is normal"                              
         |  **else**                                             
-        |         *invoke* :py:meth:`.check_normal_population`  
+        |         *invoke* :py:meth:`.check_normal_population`
+        |         **if** not normal
+        |         *invoke* :py:meth:`.check_skew_population`
+
+        --------
+
+       Algorithm that asks if the distribution is skewed (a data may not be bell-shaped but symmetric).
+
+       `question = skew?`
+
+        --------
+
+        |  **Given:** experimental_data
+        |  *invoke* :py:meth:`.check_skew_population`
 
         --------
 
         *Note:*
 
         * sample size of 30 is taken as the lower bound for considering central limit theorem.
+        * boolean return (`True` or `False`)
+        * `True` if it is normal
+        * `True` if it is skewed
 
         """
-        if sample_size >= 30:
-            return True
-        else:
+        if question=="normal?":
+            if experimental_data.shape[0] >= 30:
+                return True
+            else:
+                try:
+                    return cls.check_normal_population( experimental_data )
+                except:
+                    return False
+        elif question=="skew?":
             try:
-                return cls.check_normal_population( experimental_data )
+                return cls.check_skew_population( experimental_data )
             except:
                 return False
-
+        else:
+            raise ValueError("question must be normal? or skew?")`
