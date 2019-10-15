@@ -28,7 +28,7 @@ class ZScoreForWilcoxSignedRankTest(sciunit.Score):
     :math:`|x_i-\eta_0|`  absolute difference between data value and null value
     :math:`T`             ranks of the computed absolute difference (excluding difference = 0 )
     :math:`T^+`           sum of ranks above :math:`\eta_0`; Wilcoxon signed-rank statistic
-    :math:`n_U`           number of values in sample not equal to :math:`\\nu_0`; sample size
+    :math:`n_U`           number of values in sample not equal to :math:`\\eta_0`; sample size
     :math:`\mu_{T^+}`     assuming :math:`H_0: \\nu = \\nu_0` is true,
                           :math:`\mu_{T^+}` = :math:`\\frac{ n_U(1+n_U) }{ 4 }`
     :math:`\sigma_{T^+}`  assuming :math:`H_0` is true,

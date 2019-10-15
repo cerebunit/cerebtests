@@ -38,14 +38,23 @@ class HtestAboutMedians:
 
     .. table:: Title here
 
-    ================================================== ========================================
-     Statistic                                          Interpretation                      
-    ================================================== ========================================
-     sample statistic, :math:`\\eta`                    experiment/observed median          
-     null value/population parameter, :math:`\\eta_0`   model prediction (specified value)  
-     null hypothesis, :math:`H_0`                       :math:`\\eta = \\eta_0`      
-     alternate hypothesis, :math:`H_a`                  :math:`\\eta \\neq or < or > \\eta_0`
-    ================================================== ========================================
+    ================================================== ===============================================
+     Statistic                                         Interpretation                      
+    ================================================== ===============================================
+     sample statistic, :math:`\\eta`                   experiment/observed median :math:`^{\dagger}`
+     null value/population parameter, :math:`\\eta_0`  prediction (specified value) :math:`^{\dagger}`
+     null hypothesis, :math:`H_0`                      :math:`\\eta = \\eta_0`      
+     alternate hypothesis, :math:`H_a`                 :math:`\\eta \\neq or < or > \\eta_0`
+    ================================================== ===============================================
+
+    :math:`^{\dagger}`
+
+    ===============  ============================ ===================================
+    Statistic         single sample                paired data
+    ===============  ============================ ===================================
+    :math:`\\eta`     experiment/observed median   median of (experiment - observed)
+    :math:`\\eta_0`   model prediction             0
+    ===============  ============================ ===================================
 
     Two-sided hypothesis (default)
         :math:`H_0`: :math:`\\eta = \\eta_0` and :math:`H_a`: :math:`\\eta \\neq \\eta_0`
@@ -57,6 +66,8 @@ class HtestAboutMedians:
         :math:`H_0`: :math:`\\eta = \\eta_0` and :math:`H_a`: :math:`\\eta > \\eta_0`
 
     **3. Assuming H0 is true, find p-value.**
+
+    If the data is skewed, the non-parametric z-score is computed for Sign test.
 
     .. table:: Title here
 
@@ -70,7 +81,28 @@ class HtestAboutMedians:
      z_statistic, z                  z = :math:`\\frac{s_{+} - \\frac{n_u}{2}}{\\sqrt{\\frac{n_u}{4}}}`
     =============================== ====================================================================
 
-    Using z look up table for standard normal curce which will return its corresponding p.
+    If the data is not skewed, the non-parametric z-score is computed for Signed-rank test (Wilcoxon signed-rank test **not** Wilcoxon rank-sum test).
+
+    .. table:: Title here
+
+    =============================== =====================================================================
+     Statistic                       Interpretation                      
+    =============================== =====================================================================
+     :math:`\\overrightarrow{x}`     data :math:`^{\dagger}`
+     :math:`|x_i-\eta_0|`            absolute difference between data values and null value
+     :math:`T`                       ranks of the computed difference (excluding difference = 0 )
+     :math:`T^+`                     sum of ranks :math:`\eta_0`; Wilcoxon signed-rank statistic
+     :math:`n_U`                     number of values in data not equal to :math:`\\eta_0`
+    z_statistic, z                  z=:math:`\\frac{T^+ - [n_U(n_U+1)/4]}{\\sqrt{n_U(n_U+1)(2n_U+1)/24}}`
+    =============================== =====================================================================
+
+    Using z look up table for standard normal curve which will return its corresponding p.
+
+    :math:`^{\dagger}`
+
+    * :math:`\\overrightarrow{x} =` experimental data for one sample
+    * :math:`\\overrightarrow{x} =` (experimental - prediction) data for paired data
+    * thus :math:`\\eta =` median of :math:`\\overrightarrow{x}`
 
     **4. Report and Answer the question, based on the p-value is the result (true H0) statistically significant?**
 
@@ -91,7 +123,7 @@ class HtestAboutMedians:
     | first    | experiment/observation | dictionary that must have keys; |
     |          |                        |"median","sample_size","raw_data"|
     +----------+------------------------+---------------------------------+
-    | second   | model prediction       | float                           |
+    | second   | model prediction       | float or `Quantity array`       |
     +----------+------------------------+---------------------------------+
     | third    | test score/z-statistic | float                           |
     +----------+------------------------+---------------------------------+
@@ -105,15 +137,23 @@ class HtestAboutMedians:
     def __init__(self, observation, prediction, z_statistic, side="not_equal"):
         """This constructor method generated ``.statistics`` and ``.outcome`` (which is then assigned to ``.descirption`` within the validation test class where this hypothesis test class is implemented).
         """
-        self.sample_statistic = observation["median"] # quantities.Quantity
         self.sample_size = observation["sample_size"]
-        self.specified_value = prediction # quantities.Quantity
+        if np.array( prediction ).shape is (): # single sample
+            data = self.observation["raw_data"]
+            self.specified_value = prediction
+        else: # paired data => paired difference
+            data = self.observation["raw_data"] - prediction
+            self.specified_value = 0 * prediction.units
+        #self.sample_statistic = observation["median"] # quantities.Quantity
+        #self.specified_value = prediction # quantities.Quantity
+        self.sample_statistic = np.median( data )
         self.z_statistic = z_statistic
         self.side = side
         #
         self.outcome = self.test_outcome()
         #
-        self.get_below_equal_above(np.array(observation["raw_data"]))
+        #self.get_below_equal_above(np.array(observation["raw_data"]))
+        self.get_below_equal_above( data )
         self.statistics = self._register_statistics()
 
     @staticmethod
