@@ -98,8 +98,7 @@ class HtestAboutMedians:
 
     Using z look up table for standard normal curve which will return its corresponding p.
 
-      :math:`^{\dagger}`
-
+    * :math:`^{\dagger}`
     * :math:`\\overrightarrow{x} =` experimental data for one sample testing
     * :math:`\\overrightarrow{x} =` (experimental - prediction) data for paired data testing
     * thus :math:`\\eta =` median of :math:`\\overrightarrow{x}`
