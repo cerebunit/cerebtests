@@ -81,7 +81,7 @@ class HtestAboutMedians:
      z_statistic, z                  z = :math:`\\frac{s_{+} - \\frac{n_u}{2}}{\\sqrt{\\frac{n_u}{4}}}`
     =============================== ====================================================================
 
-    If the data is not skewed, the non-parametric z-score is computed for Signed-rank test (Wilcoxon signed-rank test **not** Wilcoxon rank-sum test).
+    *If the data is not skewed, the non-parametric z-score is computed for Signed-rank test (Wilcoxon signed-rank test **not** Wilcoxon rank-sum test).*
 
     .. table:: Title here
 
