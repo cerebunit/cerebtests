@@ -32,8 +32,6 @@ class NecessaryForHTMeans(object):
     | :py:meth:`.check_skew_population`   | experimental_data              |
     +-------------------------------------+--------------------------------+
 
-    **Below shows a rough road map**
-
     """
     @staticmethod
     def check_normal_population(data):
