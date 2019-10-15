@@ -2,3 +2,5 @@
 
 from .tScore import TScore
 from .zSignScore import ZScoreForSignTest
+from .zWilcoxSignedRank import ZScoreForWilcoxSignedRankTest
+from .zTwoSampleRankSum import ZScoreForTwoSampleRankSumTest

@@ -98,14 +98,19 @@ class SomaRestingVmTest(sciunit.Test):
                                                            units=observation["units"] )
         self.observation["raw_data"] = pq.Quantity( observation["raw_data"],
                                                     units=observation["units"] )
-        self.datacond = NecessaryForHTMeans.ask( observation["sample_size"],
-                                                 observation["raw_data"] )
-        if self.datacond==True:
+        #self.datacond = NecessaryForHTMeans.ask( observation["sample_size"],
+        #                                         observation["raw_data"] )
+        if NecessaryForHTMeans.ask("normal?", self.observation["raw_data"]) == True:        
+            from cerebunit.statistics.stat_scores import TScore
             self.score_type = TScore
             self.observation["standard_error"] = \
                   pq.Quantity( observation["SD"] / numpy.sqrt(observation["sample_size"]),
                                units=observation["units"] )
         else:
+            if NecessaryForHTMeans.ask("skew?", self.observation["raw_data"]) == True:
+                from cerebunit.statistics.stat_scores import ZScoreForSignTest as ZScore
+            else:
+                from cerebunit.statistics.stat_scores import ZScoreForWilcoxSignedRankTest as ZScore
             self.score_type = ZScore
             self.observation["median"] = numpy.median(self.observation["raw_data"])
         # parameters for properly running the test
