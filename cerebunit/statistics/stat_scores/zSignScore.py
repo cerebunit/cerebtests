@@ -76,12 +76,12 @@ class ZScoreForSignTest(sciunit.Score):
             eta0 = prediction
         else: # paired difference test
             data = observation["raw_data"] - prediction
-            eta0 = 0
+            eta0 = 0 #*prediction.units
         splus = ( data > eta0 ).sum()
         n_U = (data != eta0 ).sum()
-        self.score = (splus - (n_U/2)) / np.sqrt(n_U/4)
+        score = (splus - (n_U/2)) / np.sqrt(n_U/4)
         #return self.score # z_statistic
-        return {"name": "sign_test", "z_statistic": self.score}
+        return {"name": "sign_test", "z_statistic": score}
 
     @property
     def sort_key(self):

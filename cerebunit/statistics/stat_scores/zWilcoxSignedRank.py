@@ -96,17 +96,17 @@ class ZScoreForWilcoxSignedRankTest(sciunit.Score):
             eta0 = prediction
         else: # paired difference test
             data = observation["raw_data"] - prediction
-            eta0 = 0
+            eta0 = 0*prediction.units
         # 
-        Tplus = self.get_Tplus( data, eta0 )
+        Tplus = cls.get_Tplus( data, eta0 )
         n_U = (data != eta0).sum()
         #
         muTplus = n_U * (n_U + 1) / 4
         sdTplus = np.sqrt( n_U * (n_U + 1) * (2*n_U + 1) / 24 )
         #
-        self.score = (Tplus - muTplus) / sdTplus
+        score = (Tplus - muTplus) / sdTplus
         #return self.score # z_statistic
-        return {"name": "signed_rank_test", "z_statistic": self.score, "Tplus": Tplus, "n_U": n_U,
+        return {"name": "signed_rank_test", "z_statistic": score, "Tplus": Tplus, "n_U": n_U,
                 "muTplus": muTplus, "sdTplus": sdTplus}
 
     @property
@@ -116,7 +116,8 @@ class ZScoreForWilcoxSignedRankTest(sciunit.Score):
     def __str__(self):
         return "ZScore is " + str(self.score)
 
-    def get_Tplus(self, data, null_value):
+    @classmethod
+    def get_Tplus(cls, data, null_value):
         """Returns computed Wilcoxon signed-rank statistic, Tplus.
 
         * case1: data = observation["raw_data"], null_value = prediction
@@ -145,23 +146,29 @@ class ZScoreForWilcoxSignedRankTest(sciunit.Score):
         :math:`Tplus= 1+2+3+4 = 10`
 
         """
-        ordered_data = np.sort( data )
-        # get rank
-        abs_diff = np.abs( ordered_data - null_value )
+        diff = data - null_value
+        absdiff = np.abs( diff )
         #
-        abs_diff_no0s = abs_diff[ abs_diff != 0 ]
-        non0indices = np.where( abs_diff != 0 )
-        ordered_data_no0s = np.take( ordered_data, non0indices )[0]
+        ordered_absdiff = np.sort( absdiff )
+        original_indices = np.argsort( absdiff )
         #
-        all_ranks = self.__ranks_in_absdifferences_of_ordered_data( abs_diff_no0s )
+        # strip zero
+        ordered_absdiff_no0 = ordered_absdiff[ ordered_absdiff != 0 ]
+        pre_no0_indices = np.where( ordered_absdiff != 0 )
+        original_indices_no0 = np.take( original_indices, pre_no0_indices )[0]
+        #
+        ranks = cls.get_ranks( ordered_absdiff_no0 )
+        #
         Tplus = 0
-        for i in non0indices: # go through all the ordered data
-            if ordered_data_no0s[i] > null_value:
-                Tplus = Tplus + all_ranks[i]
+        for i in range( len(ranks) ): # go through all the ordered data
+            original_indx = original_indices_no0[i]
+            if diff[original_indx] > 0:
+                Tplus = Tplus + ranks[i]
         return Tplus
 
-    def __ranks_in_absdifferences_of_ordered_data(self, absdiff_without_zero):
-        """ Private function that orders the data and returns its appropriate rank.
+    @staticmethod
+    def get_ranks(absdiff_without_zero):
+        """ Static function that orders the data and returns its appropriate rank.
 
         **Step-1:**
 
@@ -187,9 +194,9 @@ class ZScoreForWilcoxSignedRankTest(sciunit.Score):
             indx_in_uniques = int( np.where( unique_values == absdiff_without_zero[i] )[0] )
             if counts[indx_in_uniques]>1:
                 numer = 0.0
-                numer = [ numer + raw_ranks[i+j] for j in range( counts[indx_in_uniques] ) ][0]
+                numer = [ numer + raw_ranks[i+j] for j in range( counts[indx_in_uniques] ) ]
                 for j in range( counts[indx_in_uniques] ):
-                    raw_ranks[i+j] = numer/counts[indx_in_uniques]
+                    raw_ranks[i+j] = np.sum(numer)/counts[indx_in_uniques]
             # raw_ranks[i] does not need to be set for counts = 1
             i = i + counts[indx_in_uniques] # update loop (skipping repeated values)
         return raw_ranks
