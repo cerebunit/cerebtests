@@ -105,7 +105,9 @@ class ZScoreForWilcoxSignedRankTest(sciunit.Score):
         sdTplus = np.sqrt( n_U * (n_U + 1) * (2*n_U + 1) / 24 )
         #
         self.score = (Tplus - muTplus) / sdTplus
-        return self.score # z_statistic
+        #return self.score # z_statistic
+        return {"name": "signed_rank_test", "z_statistic": self.score, "Tplus": Tplus, "n_U": n_U,
+                "muTplus": muTplus, "sdTplus": sdTplus}
 
     @property
     def sort_key(self):
