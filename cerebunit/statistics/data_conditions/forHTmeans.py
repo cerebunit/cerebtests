@@ -14,11 +14,11 @@ class NecessaryForHTMeans(object):
 
     **Situation-1**
 
-    For large sample sizes, :math:`n \\geq 30`, where 30 is the arbitrary demarcation for *large*. This situtation assumes that the population of the measurements (of interest) is not normal.
+    For large sample sizes and randomly collected individuals one may assume that the population of the measurements (of interest) is normal. Thus condition for hypothesis testing about means is valid.
 
     **Situation-2**
 
-    When there is not evidence of extreme outliers or skewed population shape. This is usually the case for population of the measurements that are approximately normal.
+    Hypothesis testing about means is also valid when there is not evidence of extreme outliers or skewed population shape. This is usually the case for population of the measurements that are approximately normal.
 
     **Implementation**
 
@@ -109,12 +109,7 @@ class NecessaryForHTMeans(object):
 
         |  **Given:** experimental_data
         |  **get** sample_size :math:`\\leftarrow` number of experimental data elements
-        |  **if** sample_size :math:`\\geq` 30                  
-        |         "data is normal"                              
-        |  **else**                                             
-        |         *invoke* :py:meth:`.check_normal_population`
-        |         **if** not normal
-        |         *invoke* :py:meth:`.check_skew_population`
+        |  *invoke* :py:meth:`.check_normal_population`
 
         --------
 
@@ -131,20 +126,16 @@ class NecessaryForHTMeans(object):
 
         *Note:*
 
-        * sample size of 30 is taken as the lower bound for considering central limit theorem.
         * boolean return (`True` or `False`)
         * `True` if it is normal
         * `True` if it is skewed
 
         """
         if question=="normal?":
-            if experimental_data.shape[0] >= 30:
-                return True
-            else:
-                try:
-                    return cls.check_normal_population( experimental_data )
-                except:
-                    return False
+            try:
+                return cls.check_normal_population( experimental_data )
+            except:
+                return False
         elif question=="skew?":
             try:
                 return cls.check_skew_population( experimental_data )
