@@ -161,8 +161,9 @@ class SomaRestingVmTest(sciunit.Test):
             score.statistics = hypoT.statistics
         else:
             x = ZScore.compute( observation, prediction )
-            hypoT = HtestAboutMedians( self.observation, prediction, x )
-            score = ZScore(x)
+            x.update( {"side": "not_equal"} )
+            hypoT = HtestAboutMedians( self.observation, prediction, test=x )
+            score = ZScore(x["z_statistic"])
             score.description = hypoT.outcome
             score.statistics = hypoT.statistics
         print("Done.")
