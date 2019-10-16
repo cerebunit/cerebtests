@@ -14,8 +14,8 @@ import quantities as pq
 
 from cerebunit.capabilities.cells.measurements import ProducesEphysMeasurement
 from cerebunit.statistics.data_conditions import NecessaryForHTMeans
-from cerebunit.statistics.stat_scores import TScore # if NecessaryForHTMeans passes
-from cerebunit.statistics.stat_scores import ZScoreForSignTest as ZScore
+#from cerebunit.statistics.stat_scores import TScore # if NecessaryForHTMeans passes
+#from cerebunit.statistics.stat_scores import ZScoreForSignTest as ZScore
 from cerebunit.statistics.hypothesis_testings import HtestAboutMeans, HtestAboutMedians
 
 # to execute the model you must be in ~/cerebmodels
@@ -100,7 +100,8 @@ class SomaRestingVmTest(sciunit.Test):
                                                     units=observation["units"] )
         #self.datacond = NecessaryForHTMeans.ask( observation["sample_size"],
         #                                         observation["raw_data"] )
-        if NecessaryForHTMeans.ask("normal?", self.observation["raw_data"]) == True:        
+        self.normaldata = NecessaryForHTMeans.ask("normal?", self.observation["raw_data"])
+        if self.normaldata == True:        
             from cerebunit.statistics.stat_scores import TScore
             self.score_type = TScore
             self.observation["standard_error"] = \
@@ -112,7 +113,7 @@ class SomaRestingVmTest(sciunit.Test):
             else:
                 from cerebunit.statistics.stat_scores import ZScoreForWilcoxSignedRankTest as ZScore
             self.score_type = ZScore
-            self.observation["median"] = numpy.median(self.observation["raw_data"])
+            #self.observation["median"] = numpy.median(self.observation["raw_data"])
         # parameters for properly running the test
         self.observation["celsius"] = observation["protocol_parameters"]["temperature"]
         self.observation["v_init"] = observation["protocol_parameters"]["initial_resting_Vm"]
@@ -152,7 +153,7 @@ class SomaRestingVmTest(sciunit.Test):
         """
         print("Computing score ...")
         #print(observation == self.observation) # True
-        if self.datacond==True:
+        if self.normaldata==True:
             x = TScore.compute( observation, prediction  )
             hypoT = HtestAboutMeans( self.observation, prediction, x )
             score = TScore(x)
