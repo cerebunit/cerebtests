@@ -118,16 +118,22 @@ class HtestAboutMedians:
     +----------+------------------------+---------------------------------+
     | second   | model prediction       | float or `Quantity array`       |
     +----------+------------------------+---------------------------------+
-    | third    | test score/z-statistic | float                           |
-    +----------+------------------------+---------------------------------+
-    | fourth   | sidedness of test      | string; "not_equal" (default)   |
-    |          |                        | or "less_than", "greater_than"  |
+    | third    | about test             | dictionary with keywords:       |
+    |(keyword) |                        | "name": string ("sign_test",    |
+    |          |                        |"signed_rank_test");             |
+    |          |                        | "z_statistic": float;           |
+    |          |                        | "side": string ("not_equal",    |
+    |          |                        |"less_than", "greater_than");    |
+    |          |                        | and any additional names that is|
+    |          |                        | specific to the test            |   
     +----------+------------------------+---------------------------------+
 
     This constructor method generated :py:attr:`.statistics` and :py:attr:`.outcome` (which is then assigned to :py:attr:`.descirption` within the validation test class where this hypothesis test class is implemented).
 
     """
-    def __init__(self, observation, prediction, z_statistic, side="not_equal"):
+    def __init__(self, observation, prediction, test={ "name": "sign_test",
+                                                       "z_statistic": 0.0,
+                                                       "side": "not_equal" }:
         """This constructor method generated ``.statistics`` and ``.outcome`` (which is then assigned to ``.descirption`` within the validation test class where this hypothesis test class is implemented).
         """
         self.sample_size = observation["sample_size"]
@@ -140,13 +146,17 @@ class HtestAboutMedians:
         #self.sample_statistic = observation["median"] # quantities.Quantity
         #self.specified_value = prediction # quantities.Quantity
         self.sample_statistic = np.median( data )
-        self.z_statistic = z_statistic
-        self.side = side
+        self.testname = test["name"]
+        self.z_statistic = test["z_statistic"]
+        self.side = test["side"]
         #
         self.outcome = self.test_outcome()
         #
         #self.get_below_equal_above(np.array(observation["raw_data"]))
-        self.get_below_equal_above( data )
+        if self.testname=="sign_test":
+            self.get_below_equal_above( data )
+        elif self.testname=="signed_rank_test":
+            self.get_stats_for_Wilcoxon_signed_rank( test )
         self.statistics = self._register_statistics()
 
     @staticmethod
@@ -196,9 +206,22 @@ class HtestAboutMedians:
         self.equal = (data == self.specified_value).sum()
         self.above = (data > self.specified_value).sum()
 
+    def get_stats_for_Wilcoxon_signed_rank(self, test):
+        self.Tplus = test["Tplus"]
+        self.n_U = test["n_U"]
+        self.muTplus = test["muTplus"]
+        self.sdTplus = test["sdTplus"]
+
     def _register_statistics(self):
         "Returns dictionary value for the ``.statistics``."
-        return { "eta0": self.specified_value, "eta": self.sample_statistic,
-                 "n": self.sample_size, "hypotest": "Sign Test for HT about medians",
-                 "below": self.below, "equal": self.equal, "above": self.above,
-                 "z": self.z_statistic, "p": self.pvalue, "side": self.side }
+        if self.testname=="sign_test":
+            return { "eta0": self.specified_value, "eta": self.sample_statistic,
+                     "n": self.sample_size, "hypotest": "Sign Test for HT about medians",
+                     "below": self.below, "equal": self.equal, "above": self.above,
+                     "z": self.z_statistic, "p": self.pvalue, "side": self.side }
+        elif self.testname=="signed_rank_test":
+            return { "eta0": self.specified_value, "eta": self.sample_statistic,
+                     "n": self.sample_size, "hypotest": "Signed-Rank Test for HT about medians",
+                     "n_U": self.n_U, "T^+": self.Tplus, "muTplus": self.muTplus,
+                     "sdTplus": self.sdTplus,
+                     "z": self.z_statistic, "p": self.pvalue, "side": self.side }
