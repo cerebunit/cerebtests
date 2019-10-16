@@ -99,10 +99,10 @@ class ZScoreForWilcoxSignedRankTest(sciunit.Score):
             eta0 = 0
         # 
         Tplus = self.get_Tplus( data, eta0 )
-        n_u = (data != eta0).sum()
+        n_U = (data != eta0).sum()
         #
-        muTplus = n_u * (n_u + 1) / 4
-        sdTplus = np.sqrt( n_u * (n_u + 1) * (2*n_u + 1) / 24 )
+        muTplus = n_U * (n_U + 1) / 4
+        sdTplus = np.sqrt( n_U * (n_U + 1) * (2*n_U + 1) / 24 )
         #
         self.score = (Tplus - muTplus) / sdTplus
         return self.score # z_statistic

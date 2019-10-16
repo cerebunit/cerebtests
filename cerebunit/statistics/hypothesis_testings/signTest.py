@@ -23,16 +23,16 @@ class HtestAboutMedians:
 
     **1. Verify necessary data conditions.**
 
-    +-------------------------------------+-------------------------------------+
-    | Statistic                           | Interpretation                      |
-    +=====================================+=====================================+
-    | sample size, n                      | experiment/observed n               |
-    +-------------------------------------+-------------------------------------+
-    | optionally: data                    | experiment/observed data array      |
-    +-------------------------------------+-------------------------------------+
+    +----------------------+---------------------------------------------------+
+    | Statistic            | Interpretation                                    |
+    +======================+===================================================+
+    | data                 | experiment/observed data array :math:`^{\dagger}` |
+    +----------------------+---------------------------------------------------+
 
-    * :math:`n \\ngeq 30`
-    * data is **not** from normal distribution.
+    - :math:`^{\dagger}`
+    * :math:`\\overrightarrow{x} =` experimental data for one sample testing
+    * :math:`\\overrightarrow{x} =` (experimental - prediction) data for paired data testing
+    * thus :math:`\\eta =` median of :math:`\\overrightarrow{x}`
 
     **2. Defining null and alternate hypotheses.**
 
@@ -47,7 +47,7 @@ class HtestAboutMedians:
      alternate hypothesis, :math:`H_a`                 :math:`\\eta \\neq or < or > \\eta_0`
     ================================================== ===============================================
 
-    :math:`^{\dagger}`
+    - :math:`^{\dagger}`
 
     ===============  ============================ ===================================
     Statistic         single sample                paired data
@@ -74,11 +74,10 @@ class HtestAboutMedians:
     =============================== ====================================================================
      Statistic                       Interpretation                      
     =============================== ====================================================================
-     sample size, n                  experiment/observed n               
      :math:`s_{+}`                   number of values in sample :math:`> \\eta_0`   
      :math:`s_{-}`                   number of values in sample :math:`< \\eta_0`   
-     :math:`n_u = s_{+} + s_{-}`     number of values in sample :math:`\\neq \\eta_0` 
-     z_statistic, z                  z = :math:`\\frac{s_{+} - \\frac{n_u}{2}}{\\sqrt{\\frac{n_u}{4}}}`
+     :math:`n_U = s_{+} + s_{-}`     number of values in sample :math:`\\neq \\eta_0` 
+     z_statistic, z                  z = :math:`\\frac{s_{+} - \\frac{n_U}{2}}{\\sqrt{\\frac{n_U}{4}}}`
     =============================== ====================================================================
 
     *If the data is not skewed, the non-parametric z-score is computed for Signed-rank test (Wilcoxon signed-rank test* **not** *Wilcoxon rank-sum test).*
@@ -97,11 +96,6 @@ class HtestAboutMedians:
     =============================== =======================================================================
 
     Using z look up table for standard normal curve which will return its corresponding p.
-
-    - :math:`^{\dagger}`
-    * :math:`\\overrightarrow{x} =` experimental data for one sample testing
-    * :math:`\\overrightarrow{x} =` (experimental - prediction) data for paired data testing
-    * thus :math:`\\eta =` median of :math:`\\overrightarrow{x}`
 
     **4. Report and Answer the question, based on the p-value is the result (true H0) statistically significant?**
 
