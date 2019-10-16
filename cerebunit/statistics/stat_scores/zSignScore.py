@@ -80,7 +80,8 @@ class ZScoreForSignTest(sciunit.Score):
         splus = ( data > eta0 ).sum()
         n_U = (data != eta0 ).sum()
         self.score = (splus - (n_U/2)) / np.sqrt(n_U/4)
-        return self.score # z_statistic
+        #return self.score # z_statistic
+        return {"name": "sign_test", "z_statistic": self.score}
 
     @property
     def sort_key(self):
