@@ -47,7 +47,7 @@ class HtestAboutMedians:
      alternate hypothesis, :math:`H_a`                 :math:`\\eta \\neq or < or > \\eta_0`
     ================================================== ===============================================
 
-    :math:`^{\dagger}`
+    - :math:`^{\dagger}`
 
     ===============  ============================ ===================================
     Statistic         single sample                paired data
@@ -133,7 +133,7 @@ class HtestAboutMedians:
     """
     def __init__(self, observation, prediction, test={ "name": "sign_test",
                                                        "z_statistic": 0.0,
-                                                       "side": "not_equal" }:
+                                                       "side": "not_equal" }):
         """This constructor method generated ``.statistics`` and ``.outcome`` (which is then assigned to ``.descirption`` within the validation test class where this hypothesis test class is implemented).
         """
         self.sample_size = observation["sample_size"]
