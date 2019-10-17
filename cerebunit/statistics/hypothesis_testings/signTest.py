@@ -38,14 +38,14 @@ class HtestAboutMedians:
 
     .. table:: Title here
 
-    ================================================== ===============================================
-     Statistic                                         Interpretation                      
-    ================================================== ===============================================
-     sample statistic, :math:`\\eta`                   experiment/observed median :math:`^{\dagger}`
-     null value/population parameter, :math:`\\eta_0`  prediction (specified value) :math:`^{\dagger}`
-     null hypothesis, :math:`H_0`                      :math:`\\eta = \\eta_0`      
-     alternate hypothesis, :math:`H_a`                 :math:`\\eta \\neq or < or > \\eta_0`
-    ================================================== ===============================================
+    ================================================== =================================================
+     Statistic                                          Interpretation                      
+    ================================================== =================================================
+     sample statistic, :math:`\\eta`                    experiment/observed median :math:`^{\dagger}`
+     null value/population parameter, :math:`\\eta_0`   prediction (specified value) :math:`^{\dagger}`
+     null hypothesis, :math:`H_0`                       :math:`\\eta = \\eta_0`      
+     alternate hypothesis, :math:`H_a`                  :math:`\\eta \\neq or < or > \\eta_0`
+    ================================================== =================================================
 
 
 
