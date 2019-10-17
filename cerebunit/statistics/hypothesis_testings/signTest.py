@@ -47,11 +47,7 @@ class HtestAboutMedians:
      alternate hypothesis, :math:`H_a`                  :math:`\\eta \\neq or < or > \\eta_0`
     ================================================== =================================================
 
-
-
-    Depending on whether testing is for a single sample or for paired data :math:`^{\dagger}`,
-
-
+    :math:`^{\dagger}`Depending on whether testing is for a single sample or for paired data,
 
     .. table:: Title here
 
