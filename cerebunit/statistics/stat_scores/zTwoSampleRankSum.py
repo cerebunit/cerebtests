@@ -91,8 +91,10 @@ class ZScoreForTwoSampleRankSumTest(sciunit.Score):
         obs_rank = cls.get_observation_rank( observation, prediction )
         W = np.sum( obs_rank )
         #
-        self.score = (W - mu_W) / sigma_W
-        return self.score # z_statistic
+        score = (W - mu_W) / sigma_W
+        #return self.score # z_statistic
+        return { "name": "rank_sum_test", "z_statistic": score,
+                 "W": W, "mu_W": mu_W, "sd_W": sigma_W }
 
     @property
     def sort_key(self):
@@ -142,7 +144,7 @@ class ZScoreForTwoSampleRankSumTest(sciunit.Score):
             its_rank = all_ranks[i]
             # for each picked data value get its index w.r.t sample1
             indx_in_sample1 = np.where( sample1 == a_data )[0]
-            if len(indx_in_sample1)>1: # if the picked data value exists within sample1
+            if len(indx_in_sample1)>=1: # if the picked data value exists within sample1
                 for j in range( len(indx_in_sample1) ): # at each corresponding index in sample1
                     sample1_ranks[ indx_in_sample1[j] ] = its_rank # set appropriate rank
         return sample1_ranks
@@ -184,9 +186,9 @@ class ZScoreForTwoSampleRankSumTest(sciunit.Score):
             indx_in_uniques = int( np.where( unique_values == ordered_data[i] )[0] )
             if counts[indx_in_uniques]>1:
                 numer = 0.0
-                numer = [ numer + raw_ranks[i+j] for j in range( counts[indx_in_uniques] ) ][0]
+                numer = [ numer + raw_ranks[i+j] for j in range( counts[indx_in_uniques] ) ]
                 for j in range( counts[indx_in_uniques] ):
-                    raw_ranks[i+j] = numer/counts[indx_in_uniques]
+                    raw_ranks[i+j] = np.sum(numer)/counts[indx_in_uniques]
             # raw_ranks[i] does not need to be set for counts = 1
             i = i + counts[indx_in_uniques] # update loop (skipping repeated values)
         return [ ordered_data, raw_ranks ] 
