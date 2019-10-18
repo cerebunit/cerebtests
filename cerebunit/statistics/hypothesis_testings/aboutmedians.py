@@ -1,5 +1,5 @@
 # ============================================================================
-# ~/cerebtests/cerebunit/statistics/hypothesis_testings/signTest.py
+# ~/cerebtests/cerebunit/statistics/hypothesis_testings/aboutmedians.py
 #
 # created 4 July 2019 Lungsi
 #

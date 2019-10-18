@@ -1,10 +1,10 @@
-# ~/cerebunit/statistics/stat_scores/zTwoSampleRankSumTest.py
+# ~/cerebunit/statistics/stat_scores/zTwoSampleRankSumScore_test_with_datasets.py
 import unittest
 import quantities as pq
 import numpy as np
 from scipy.stats import norm
 
-from zTwoSampleRankSum import ZScoreForTwoSampleRankSumTest as ZScore
+from zTwoSampleRankSumScore import ZScoreForTwoSampleRankSumTest as ZScore
 
 from pdb import set_trace as breakpoint
 

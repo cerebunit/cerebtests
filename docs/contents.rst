@@ -29,7 +29,7 @@ Hypothesis Testing
    :caption: Contents:
 
    statistics/hypothesis_testings/tTest.rst
-   statistics/hypothesis_testings/signTest.rst
+   statistics/hypothesis_testings/aboutmedians.rst
 
 Test Statistics (Test Score)
 ============================
@@ -39,8 +39,8 @@ Test Statistics (Test Score)
 
    statistics/stat_scores/tScore.rst
    statistics/stat_scores/zSignScore.rst
-   statistics/stat_scores/zTwoSampleRankSum.rst
-   statistics/stat_scores/zWilcoxSignedRank.rst
+   statistics/stat_scores/zTwoSampleRankSumScore.rst
+   statistics/stat_scores/zWilcoxSignedRankScore.rst
 
 Checks for Data Conditions (to determine appropriate testing)
 =============================================================

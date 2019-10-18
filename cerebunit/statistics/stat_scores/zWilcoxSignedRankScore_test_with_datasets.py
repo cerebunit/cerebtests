@@ -1,10 +1,10 @@
-# ~/cerebunit/statistics/stat_scores/zSignScoreTest.py
+# ~/cerebunit/statistics/stat_scores/zWilcoxSignedRank_test_with_datasets.py
 import unittest
 import quantities as pq
 import numpy as np
 from scipy.stats import norm
 
-from zWilcoxSignedRank import ZScoreForWilcoxSignedRankTest as ZScore
+from zWilcoxSignedRankScore import ZScoreForWilcoxSignedRankTest as ZScore
 
 from pdb import set_trace as breakpoint
 

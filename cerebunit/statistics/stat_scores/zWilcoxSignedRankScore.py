@@ -1,5 +1,5 @@
 # ============================================================================
-# ~/cerebtests/cerebunit/stat_scores/zWilcoxSignedRank.py
+# ~/cerebtests/cerebunit/stat_scores/zWilcoxSignedRankScore.py
 #
 # created 18 September 2019 Lungsi
 #

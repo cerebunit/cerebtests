@@ -1,5 +1,5 @@
 # ============================================================================
-# ~/cerebtests/cerebunit/stat_scores/zTwoSampleRankSum.py
+# ~/cerebtests/cerebunit/stat_scores/zTwoSampleRankSumScore.py
 #
 # created 16 September 2019 Lungsi
 #
