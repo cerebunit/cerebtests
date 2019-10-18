@@ -49,3 +49,4 @@ Checks for Data Conditions (to determine appropriate testing)
    :caption: Contents:
 
    statistics/data_conditions/forHTmeans.rst
+   statistics/data_conditions/forHTproportions.rst
