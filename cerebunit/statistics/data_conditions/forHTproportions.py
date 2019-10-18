@@ -83,8 +83,8 @@ class NecessaryForHTProportions(object):
         """
         #    raise ValueError("question must be normal? or skew?")
         np0_check = lambda n,p0,lb: True if n*p0 >= lb else False
-        n1minusp0_check = lambda n,p0,lb: True if ( n*(1-p0) ) >= lb False
-        if ( np0_check(lb, n, p0) and n1minusp0_check(lb, n, p0) is True ):
+        n1minusp0_check = lambda n,p0,lb: True if ( n*(1-p0) ) >= lb else False
+        if ( np0_check(n, p0, lb) and n1minusp0_check(n, p0, lb) is True ):
             return True
         else:
             return False
