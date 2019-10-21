@@ -33,12 +33,14 @@ class ZScoreForProportionZTest(sciunit.Score):
      z-statistic, z       z = :math:`\\frac{ \\hat{p} - p_0 }{ \\sqrt{\\frac{p_0(1-p_0)}{n}} }`
     ==================== =============================================================================
 
+
     **For two populations.**
+
 
     .. table:: Title here
 
     ===============================  ========================================================================================================
-      Definitions                     Interpretation                    
+      Definitions                     Interpretation
     ===============================  ========================================================================================================
      :math:`n_1`                      sample size for first population (experimental data)
      :math:`n_2`                      sample size for second population (prediction data)
@@ -47,7 +49,7 @@ class ZScoreForProportionZTest(sciunit.Score):
      :math:`p_0`                      0
      :math:`\\hat{p_1}`               sample 1 proportion:math:`\\hat{p_1} = \\frac{x_1}{n}`
      :math:`\\hat{p_2}`               sample 2 proportion:math:`\\hat{p_2} = \\frac{x_2}{n}`
-     :math:`\\hat{p_1}-\\hat{p_2}`    sample statistic (with characterisic of interest)
+     :math:`\\hat{p_1}-\\hat{p_2}`     sample statistic (with characterisic of interest)
      :math:`\\hat{p}`                 estimate of common population proportion; if :math:`H_0` is true
                                       :math:`p_1 = p_2 = p` and estimate :math:`\\hat{p}` is
                                       :math:`\\hat{p} = \\frac{n_1\\hat{p_1} + n_2\\hat{p_2}}{n_1 + n_2}`
@@ -56,6 +58,7 @@ class ZScoreForProportionZTest(sciunit.Score):
                                       :math:`se_{H_0} = \\sqrt{\\frac{\\hat{p}(1-\\hat{p})}{n_1} + \\frac{\\hat{p}(1-\\hat{p})}{n_2}}`
      z-statistic, z                   z = :math:`\\frac{ \\hat{p_1} - \\hat{p_2} - p_0 }{ se_{H_0} }`
     ===============================  ========================================================================================================
+
 
     **Use Case:**
 
