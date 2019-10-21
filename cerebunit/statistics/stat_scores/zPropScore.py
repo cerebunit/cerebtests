@@ -101,25 +101,25 @@ class ZScoreForProportionZTest(sciunit.Score):
             name = "proportions_z_test_2pop"
             n1 = observation["sample_size"]
             n2 = prediction["sample_size"]
-            p1hat = observation["phat"]
-            p2hat = prediction["phat"]
-            x1 = observation["numbers_with_trait"]
-            x2 = prediction["numbers_with_trait"]
-            phat = (x1+x2)/(n1+n2)
+            x1 = observation["success_numbers"]
+            x2 = prediction["success_numbers"]
             p0 = 0 #*prediction.units
-            numer = p1hat - p2hat - p0
+            p1hat = x1/n1
+            p2hat = x2/n2
+            sample_statistic = p1hat - p2hat
+            phat = (x1+x2)/(n1+n2) # combined proportion NOT sample statisic
             se_H0 = np.sqrt( phat*(1-phat)*( (1/n1) + (1/n2) ) )
         except: # single sample test
             name = "proportions_z_test_1pop"
             n = observation["sample_size"]
-            phat = observation["phat"]
+            x = observation["success_numbers"]
             p0 = prediction
-            numer = phat - p0
+            sample_statistic = x/n # phat
             se_H0 = np.sqrt( (p0*(1-p0))/ n )
         #
-        score = numer / se_H0
+        score = (sample_statistic - p0) / se_H0
         #return self.score # z_statistic
-        return {"name": name, "z_statistic": score}
+        return {"name": name, "sample_statistic": sample_statistic, "z_statistic": score}
 
     @property
     def sort_key(self):
