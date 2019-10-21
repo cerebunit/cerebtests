@@ -26,7 +26,7 @@ class ZScoreForProportionZTest(sciunit.Score):
       Definitions         Interpretation                    
     ==================== =============================================================================
      :math:`n`            sample size
-     :math:`p_0`          some specified value :math:`^{\dagger}`
+     :math:`p_0`          some specified value
      :math:`\\hat{p}`     sample proportion (with characteristic of interest), i.e, sample statistic
      :math:`se_{H_0}`     standard error of :math:`\\hat{p}` if :math:`p_0` is the true value of p
                           :math:`se_{H_0} = \\sqrt{\\frac{p_0(1-p_0)}{n}}`
@@ -50,8 +50,8 @@ class ZScoreForProportionZTest(sciunit.Score):
      :math:`\\hat{p_1}-\\hat{p_2}`    sample statistic (with characterisic of interest)
      :math:`\\hat{p}`                 estimate of common population proportion; if :math:`H_0` is true
                                       :math:`p_1 = p_2 = p` and estimate :math:`\\hat{p}` is
-                                      :math:`\\hat{p} = \\frac{n_1\\hat{p_1} + n_2\\hat{p_2}}{n_1 + n_2}
-                                      :math:`\\hat{p} = \\frac{x_1 + x_2}{n_1 + n_2}
+                                      :math:`\\hat{p} = \\frac{n_1\\hat{p_1} + n_2\\hat{p_2}}{n_1 + n_2}`
+                                      :math:`\\hat{p} = \\frac{x_1 + x_2}{n_1 + n_2}`
      :math:`se_{H_0}`                 standard error of :math:`\\hat{p_1}-\\hat{p_2}` if :math:`H_0` is true
                                       :math:`se_{H_0} = \\sqrt{\\frac{\\hat{p}(1-\\hat{p})}{n_1} + \\frac{\\hat{p}(1-\\hat{p})}{n_2}}`
      z-statistic, z                   z = :math:`\\frac{ \\hat{p_1} - \\hat{p_2} - p_0 }{ se_{H_0} }`
