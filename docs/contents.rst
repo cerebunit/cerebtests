@@ -30,6 +30,7 @@ Hypothesis Testing
 
    statistics/hypothesis_testings/tTest.rst
    statistics/hypothesis_testings/aboutmedians.rst
+   statistics/hypothesis_testings/aboutproportions.rst
 
 Test Statistics (Test Score)
 ============================
