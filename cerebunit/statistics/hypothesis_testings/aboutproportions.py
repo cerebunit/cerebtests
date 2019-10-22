@@ -65,15 +65,15 @@ class HtestAboutProportions:
     *For two sample test*
 
 
-    ================================================== =======================================================================
-     Statistic                                          Interpretation                      
-    ================================================== =======================================================================
-     sample statistic, :math:`\\hat{p}_1-\\hat{p}_2`     difference between the proportions (observation,1, and prediction, 2)
-                                                        with the characteristic trait (successes)
-     null value/population parameter, :math:`p_0`       0
-     null hypothesis, :math:`H_0`                       :math:`\\hat{p}_1-\\hat{p}_2 = 0`      
-     alternate hypothesis, :math:`H_a`                  :math:`\\hat{p}_1-\\hat{p}_2 \\neq or < or > 0`
-    ================================================== =======================================================================
+    ================================================== ===========================================================
+     Statistic                                           Interpretation                      
+    ================================================== ===========================================================
+     sample statistic, :math:`\\hat{p}_1-\\hat{p}_2`     difference between the proportions (observation,1, and
+                                                         prediction, 2) with the characteristic trait (successes)
+     null value/population parameter, :math:`p_0`        0
+     null hypothesis, :math:`H_0`                        :math:`\\hat{p}_1-\\hat{p}_2 = 0`      
+     alternate hypothesis, :math:`H_a`                   :math:`\\hat{p}_1-\\hat{p}_2 \\neq or < or > 0`
+    ================================================== ===========================================================
 
 
     **3. Assuming H0 is true, find p-value.**
