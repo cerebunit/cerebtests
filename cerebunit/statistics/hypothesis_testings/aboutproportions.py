@@ -111,10 +111,10 @@ class HtestAboutProportions:
      :math:`\\hat{p}_2`                    proportion of predictions with successes,
                                            :math:`\\hat{p}_2 = \\frac{x_2}{n_2}`
      :math:`\\hat{p}`                      combined proportion assuming that :math:`H_0: p_1 = p_2 = p` is true
-                                           :math:`\\hat{p} = \\frac{x_1+x_2}{n_1+n_2}
+                                           :math:`\\hat{p} = \\frac{x_1+x_2}{n_1+n_2}`
      :math:`\\hat{p}_1-\\hat{p}_2`         sample statistic,
      :math:`se_{\\hat{p}_1-\\hat{p}_2}`    standard error that :math:`H_0` is true,
-                                           :math:`se_{\\hat{p}_1-\\hat{p}_2}=`\\sqrt{\\frac{\\hat{p}(1-\\hat{p})}{n_1}+\\frac{\\hat{p}(1-\\hat{p})}{n_2} }
+                                           :math:`se_{\\hat{p}_1-\\hat{p}_2}=`\\sqrt{\\frac{\\hat{p}(1-\\hat{p})}{n_1}+\\frac{\\hat{p}(1-\\hat{p})}{n_2} }`
      z_statistic, z                        z = :math:`\\frac{\\hat{p}_1-\\hat{p}_2 - p_0}{se_{\\hat{p}_1-\\hat{p}_2}`}`
     ====================================  ==================================================================================================================
 
