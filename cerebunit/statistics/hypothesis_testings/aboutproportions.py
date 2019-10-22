@@ -65,14 +65,15 @@ class HtestAboutProportions:
     *For two sample test*
 
 
-    ================================================== ==================================================================================================================
+    ================================================== =======================================================================
      Statistic                                          Interpretation                      
-    ================================================== ==================================================================================================================
-     sample statistic, :math:`\\hat{p}_1-\\hat{p}_2`    difference between the proportions (observation,1, and prediction, 2) with the characteristic trait (successes)
+    ================================================== =======================================================================
+     sample statistic, :math:`\\hat{p}_1-\\hat{p}_2`    difference between the proportions (observation,1, and prediction, 2)
+                                                        with the characteristic trait (successes)
      null value/population parameter, :math:`p_0`       0
      null hypothesis, :math:`H_0`                       :math:`\\hat{p}_1-\\hat{p}_2 = 0`      
      alternate hypothesis, :math:`H_a`                  :math:`\\hat{p}_1-\\hat{p}_2 \\neq or < or > 0`
-    ================================================== ==================================================================================================================
+    ================================================== =======================================================================
 
 
     **3. Assuming H0 is true, find p-value.**
@@ -114,8 +115,8 @@ class HtestAboutProportions:
                                            :math:`\\hat{p} = \\frac{x_1+x_2}{n_1+n_2}`
      :math:`\\hat{p}_1-\\hat{p}_2`         sample statistic,
      :math:`se_{\\hat{p}_1-\\hat{p}_2}`    standard error that :math:`H_0` is true,
-                                           :math:`se_{\\hat{p}_1-\\hat{p}_2}=`\\sqrt{\\frac{\\hat{p}(1-\\hat{p})}{n_1}+\\frac{\\hat{p}(1-\\hat{p})}{n_2} }`
-     z_statistic, z                        z = :math:`\\frac{\\hat{p}_1-\\hat{p}_2 - p_0}{se_{\\hat{p}_1-\\hat{p}_2}`}`
+                                           :math:`se_{\\hat{p}_1-\\hat{p}_2}=\\sqrt{\\frac{\\hat{p}(1-\\hat{p})}{n_1}+\\frac{\\hat{p}(1-\\hat{p})}{n_2} }`
+     z_statistic, z                        z = :math:`\\frac{\\hat{p}_1-\\hat{p}_2 - p_0}{se_{\\hat{p}_1-\\hat{p}_2}}`
     ====================================  ==================================================================================================================
 
 
