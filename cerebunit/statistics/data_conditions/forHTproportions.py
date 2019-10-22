@@ -79,6 +79,7 @@ class NecessaryForHTProportions(object):
         * boolean return (`True` or `False`)
         * `True` if sample size requirement is satisfied
         * `False` if sample size requirement is **not** satisfied
+        * for two sample tests pass :math:`n_i` and :math:`p_i` in place of :math:`n` and :math:`p_0` respectively for :math:`i^{th}` sample.
 
         """
         #    raise ValueError("question must be normal? or skew?")
