@@ -1,7 +1,7 @@
 .. _NecessaryForHTProportions:
 
-Data condition for HT about means (``NecessaryForHTProportions``). Is z-Test valid?
-***********************************************************************************
+Data condition for HT about proportions (``NecessaryForHTProportions``). Is z-Test or :math:`\\ch^2`-testvalid?
+***************************************************************************************************************
 .. automodule:: cerebunit.statistics.data_conditions.forHTproportions
    :members:
 

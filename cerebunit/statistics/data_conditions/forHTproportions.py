@@ -38,7 +38,7 @@ class NecessaryForHTProportions(object):
     - Ott, R.L. (1998). An Introduction to Statistical Methods and Data Analysis. (p.370) :math:`^{\dagger}`
     - Utts, J.M, Heckard, R.F. (2010). Mind on Statistics. (p.465) :math:`^{\ddagger}`
 
-    **2. For :math:`\\chi^2`-test**
+    **2. For** :math:`\\chi^2`**-test**
 
     **Situation-1**
 
@@ -88,7 +88,7 @@ class NecessaryForHTProportions(object):
         |  **Compute** result1 :math:`\\leftarrow` :math:`np_0`
         |  **Compute** result2 :math:`\\leftarrow` :math:`n(1-p_0)`
         |  **if** result1 :math:`\\cap` result2 :math:`\\geq lb`
-        |         "sample size requirement is satified"
+        |         "sample size requirement is satisfied"
         |  **else**
         |         "sample size requirement is not satisfied"
 
@@ -139,7 +139,7 @@ class NecessaryForHTProportions(object):
         |  **Compute** :math:`lb_{80\\%} \\leftarrow ex[ex>1].size`
         |  **Compute** result2 :math:`\\leftarrow` 0.8 \\times n`
         |  **if** :math:`n_1 < 0 \\cap n_5 \\geq lb_{80\\%}`
-        |         "sample size requirement is satified"
+        |         "sample size requirement is satisfied"
         |  **else**
         |         "sample size requirement is not satisfied"
 
