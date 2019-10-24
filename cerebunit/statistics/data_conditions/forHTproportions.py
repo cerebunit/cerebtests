@@ -38,7 +38,7 @@ class NecessaryForHTProportions(object):
     - Ott, R.L. (1998). An Introduction to Statistical Methods and Data Analysis. (p.370) :math:`^{\dagger}`
     - Utts, J.M, Heckard, R.F. (2010). Mind on Statistics. (p.465) :math:`^{\ddagger}`
 
-    **2. For** :math:`\\chi^2`**-test**
+    **2. For** :math:`\\chi^2` **-test**
 
     **Situation-1**
 
