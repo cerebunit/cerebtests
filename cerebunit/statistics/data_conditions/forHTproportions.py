@@ -51,7 +51,7 @@ class NecessaryForHTProportions(object):
     - expected values in all the cell of the two-way contingency table should be greater than 1
     - number of cells with expected values greater than 5 should be **at least** :math:`80\\%` of the total number of cells
 
-    Note that, :math:`\\chi^2`-test may be performed even if the above large sample guidelines are violated but the results *may not* be valid.:math:`^{\dagger\dagger}`
+    Note that, :math:`\\chi^2`-test may be performed even if the above large sample guidelines are violated but the results *may not* be valid. :math:`^{\dagger\dagger}`
 
     - Utts, J.M, Heckard, R.F. (2010). Mind on Statistics. (p.588) :math:`^{\dagger\dagger}`
 
