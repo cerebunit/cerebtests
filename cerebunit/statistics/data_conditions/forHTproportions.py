@@ -9,7 +9,7 @@ import numpy as np
 
 class NecessaryForHTProportions(object):
     """
-    **Checks for situations (sample size requirements) for which Hypothesis Testing About Proportions is valid, i.e, is t-Test (or standard z-score) valid? and also for Hypothesis Testing About proportions by :math:`\\chi^2`-test.**
+    **Checks for situations (sample size requirements) for which Hypothesis Testing About Proportions is valid, i.e, is t-Test (or standard z-score) valid? and also for Hypothesis Testing About proportions by :math:`\\chi^2` -test.**
 
     **1. For z-test**
 
