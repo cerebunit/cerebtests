@@ -84,7 +84,7 @@ class NecessaryForHTProportions(object):
 
         --------
 
-        |  **Given:** :math:`n, p0, lb`
+        |  **Given:** :math:`n, p_0, lb`
         |  **Compute** result1 :math:`\\leftarrow` :math:`np_0`
         |  **Compute** result2 :math:`\\leftarrow` :math:`n(1-p_0)`
         |  **if** result1 :math:`\\cap` result2 :math:`\\geq lb`
