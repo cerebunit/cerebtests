@@ -43,6 +43,7 @@ Test Statistics (Test Score)
    statistics/stat_scores/zTwoSampleRankSumScore.rst
    statistics/stat_scores/zWilcoxSignedRankScore.rst
    statistics/stat_scores/zPropScore.rst
+   statistics/stat_scores/chi2Score.rst
 
 Checks for Data Conditions (to determine appropriate testing)
 =============================================================
