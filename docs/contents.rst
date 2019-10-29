@@ -45,6 +45,7 @@ Test Statistics (Test Score)
    statistics/stat_scores/zPropScore.rst
    statistics/stat_scores/chi2Score.rst
    statistics/stat_scores/fishExScore.rst
+   statistics/stat_scores/mcNemarScore.rst
 
 Checks for Data Conditions (to determine appropriate testing)
 =============================================================
