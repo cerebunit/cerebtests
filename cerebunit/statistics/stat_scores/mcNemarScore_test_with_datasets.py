@@ -3,13 +3,13 @@ import unittest
 import quantities as pq
 import numpy as np
 
-from mcNemarScore import McNemarScoreForMcNemarTest as McNemarScore
+from mcNemarScore import McNemarScore
 
 from scipy.stats import binom_test
 
 from pdb import set_trace as breakpoint
 
-class McNemarScoreForMcNemarTest_Test(unittest.TestCase):
+class McNemarScoreTest(unittest.TestCase):
 
     def setUp(self):
         self.satisfied_partner_couple_husband_not_wife = {

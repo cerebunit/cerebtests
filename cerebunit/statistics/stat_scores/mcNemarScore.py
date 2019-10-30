@@ -13,8 +13,8 @@ import numpy as np
 import sciunit
 
 
-# ==========================McNemarScoreForMcNemarTest==================================
-class McNemarScoreForMcNemarTest(sciunit.Score):
+# ===========================McNemarScore======================================
+class McNemarScore(sciunit.Score):
     """
     Compute test-statistic for McNemar's Test of proportions for change/difference in paired data (discordant pairs).
 
