@@ -4,3 +4,7 @@ from .tScore import TScore
 from .zSignScore import ZScoreForSignTest
 from .zWilcoxSignedRankScore import ZScoreForWilcoxSignedRankTest
 from .zTwoSampleRankSumScore import ZScoreForTwoSampleRankSumTest
+from .chi2Score import Chi2Score
+from .chi2GOFScore import Chi2GOFScore
+from .fisherExactScore import FisherExactScore
+from .mcNemarScore import McNemarScore
