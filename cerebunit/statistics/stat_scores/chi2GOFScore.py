@@ -22,17 +22,17 @@ class Chi2GOFScoreForProportionChi2GOFTest(sciunit.Score):
     One may think of this as a **one-way contingency table.**
 
 
-    +--------------+--------------------------------------------------------------+
-    | sample size  | :math:`k` categories of a categorial variable of interest    |
-    +              +--------------+--------------+-----------------+--------------+
+    +--------------+-------------------------------------------------------------+
+    | sample size  | :math:`k` categories of a categorial variable of interest   |
+    +              +--------------+--------------+----------------+--------------+
     | :math:`n`    | :math:`x_1`  | :math:`x_2`  | :math:`\\ldots` | :math:`x_k`  |
-    +==============+==============+==============+=================+==============+
+    +==============+==============+==============+================+==============+
     | observations | :math:`O_1`  | :math:`O_2`  | :math:`\\ldots` | :math:`O_k`  |
-    +--------------+--------------+--------------+-----------------+--------------+
+    +--------------+--------------+--------------+----------------+--------------+
     | probabilities| :math:`p_1`  | :math:`p_2`  | :math:`\\ldots` | :math:`p_k`  |
-    +--------------+--------------+--------------+-----------------+--------------+
+    +--------------+--------------+--------------+----------------+--------------+
     | expected     | :math:`np_1` | :math:`np_2` | :math:`\\ldots` | :math:`np_k` |
-    +--------------+--------------+--------------+-----------------+--------------+
+    +--------------+--------------+--------------+----------------+--------------+
 
 
     Notice that for probabilities of *k* categories :math:`\\sum_{\\forall i} p_i = 1`. The expected counts for each category can be derived from it (or already given) such that :math:`\\sum_{\\forall i} np_i = n`.
