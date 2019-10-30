@@ -125,7 +125,7 @@ class NecessaryForHTProportions(object):
         +-------------------+------------------------------------------------------+
         | :math:`n_5`       | number of expectation values > 5                     |
         +-------------------+------------------------------------------------------+
-        | :math:`lb_{80\\%}`| :math:`80\\%` of the cells                           |
+        | :math:`lb_{80\\%}` | :math:`80\\%` of the cells                            |
         +-------------------+------------------------------------------------------+
 
         Algorithm that asks if the distribution of an experimental data is normal.
