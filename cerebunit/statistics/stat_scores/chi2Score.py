@@ -14,8 +14,8 @@ from scipy.stats import chi2_contingency as chi2test
 import sciunit
 
 
-# ==========================ZScoreForProportionZTest==================================
-class Chi2ScoreForProportionChi2Test(sciunit.Score):
+# ==================================Chi2Score==================================
+class Chi2Score(sciunit.Score):
     """
     Compute chi2-statistic for chi squared Test of proportions.
 
