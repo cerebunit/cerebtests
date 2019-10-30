@@ -1,13 +1,13 @@
-# ~/cerebunit/statistics/stat_scores/fishExactScore_test_with_datasets.py
+# ~/cerebunit/statistics/stat_scores/fisherExactScore_test_with_datasets.py
 import unittest
 import quantities as pq
 import numpy as np
 
-from fishExactScore import FishExactScore as FExScore
+from fisherExactScore import FisherExactScore as FExScore
 
 from pdb import set_trace as breakpoint
 
-class FishExactScoreTest(unittest.TestCase):
+class FisherExactScoreTest(unittest.TestCase):
 
     def setUp(self):
         self.herb_vs_cold_herb_group = {

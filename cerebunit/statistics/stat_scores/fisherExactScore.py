@@ -1,5 +1,5 @@
 # ============================================================================
-# ~/cerebtests/cerebunit/stat_scores/fishExactScore.py
+# ~/cerebtests/cerebunit/stat_scores/fisherExactScore.py
 #
 # created 23 October 2019 Lungsi
 #
@@ -15,7 +15,7 @@ import sciunit
 
 
 # ==========================FishExactScore=============================
-class FishExactScore(sciunit.Score):
+class FisherExactScore(sciunit.Score):
     """
     Compute fisher-statistic for Fisher Exact Test of proportions for **2 x 2** tables. This test should be called when sample size conditions for z-test (for proportions) and chi2-test (for proportions) are violated.
 
