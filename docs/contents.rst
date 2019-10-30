@@ -44,7 +44,7 @@ Test Statistics (Test Score)
    statistics/stat_scores/zWilcoxSignedRankScore.rst
    statistics/stat_scores/zPropScore.rst
    statistics/stat_scores/chi2Score.rst
-   statistics/stat_scores/fishExScore.rst
+   statistics/stat_scores/fisherExScore.rst
    statistics/stat_scores/mcNemarScore.rst
    statistics/stat_scores/chi2GOFScore.rst
 
