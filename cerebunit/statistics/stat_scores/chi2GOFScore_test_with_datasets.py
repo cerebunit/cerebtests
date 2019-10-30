@@ -3,11 +3,11 @@ import unittest
 import quantities as pq
 import numpy as np
 
-from chi2GOFScore import Chi2GOFScoreForProportionChi2GOFTest as Chi2Score
+from chi2GOFScore import Chi2GOFScore as Chi2Score
 
 from pdb import set_trace as breakpoint
 
-class Chi2GOFScoreForProportionChi2GOFTest_Test(unittest.TestCase):
+class Chi2GOFScoreTest(unittest.TestCase):
 
     def setUp(self):
         # for 2 x 2 case

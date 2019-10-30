@@ -14,8 +14,8 @@ from scipy.stats import chisquare
 import sciunit
 
 
-# ==========================ZScoreForProportionZTest==================================
-class Chi2GOFScoreForProportionChi2GOFTest(sciunit.Score):
+# ==============================Chi2GOFScore==================================
+class Chi2GOFScore(sciunit.Score):
     """
     Compute chi2-statistic for chi-squared goodness-of-fit Test of proportions.
 
