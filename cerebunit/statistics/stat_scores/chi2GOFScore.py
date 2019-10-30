@@ -21,6 +21,7 @@ class Chi2GOFScoreForProportionChi2GOFTest(sciunit.Score):
 
     One may think of this as a **one-way contingency table.**
 
+
     +--------------+--------------------------------------------------------------+
     | sample size  | :math:`k` categories of a categorial variable of interest    |
     +              +--------------+--------------+-----------------+--------------+
@@ -32,6 +33,7 @@ class Chi2GOFScoreForProportionChi2GOFTest(sciunit.Score):
     +--------------+--------------+--------------+-----------------+--------------+
     | expected     | :math:`np_1` | :math:`np_2` | :math:`\\ldots` | :math:`np_k` |
     +--------------+--------------+--------------+-----------------+--------------+
+
 
     Notice that for probabilities of *k* categories :math:`\\sum_{\\forall i} p_i = 1`. The expected counts for each category can be derived from it (or already given) such that :math:`\\sum_{\\forall i} np_i = n`.
 
