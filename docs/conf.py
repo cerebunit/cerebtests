@@ -66,11 +66,17 @@ html_theme = 'bizstyle'
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['_static']
+#html_static_path = ['_static']
+html_static_path = ["_static", "statistics/guides"]
 #html_extra_path = [os.getcwd()+os.sep+"statistics"+os.sep+"guides"]
-html_extra_path = [os.getcwd()+"/statistics/guides/statistics_definitions.html",
-                   "statistics/guides/images/.png",
-                   "statistics/guides/scripts/.js"]
+#html_extra_path = [os.getcwd()+"/statistics/guides/statistics_definitions.html",
+#                   "statistics/guides/images/.png",
+#                   "statistics/guides/scripts/.js"]
+html_css_files = ["statistics/guides/scripts/style.css"]
+html_js_files = ["statistics/guides/scripts/mootools-core-1.3.1.js",
+                 "statistics/guides/scripts/Tangle.js",
+                 "statistics/guides/scripts/main.js"]
+html_extra_path = ["statistics/guides/statistics_definitions.html"]
 
 # -- Options for Notebooks ---------------------------------------------------
 
