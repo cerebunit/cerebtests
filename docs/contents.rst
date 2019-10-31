@@ -30,6 +30,8 @@ Statistics
 
    statistics/statistics_in_cerebunit.rst
 
+.. figure:: statistics/guides/statistics_definitions.html
+
 Hypothesis Testing
 ==================
 .. toctree::
