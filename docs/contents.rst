@@ -22,8 +22,8 @@ Available Capabilities
 Statistics
 **********
 
-`Statistical terminologies used in CerebUnit <https://cerebtests.readthedocs.io/en/latest/docs/statistics/guides/statistics_definitions.html>`_
-===============================================================================================================================================
+`Statistical terminologies used in CerebUnit <_static/docs/statistics/guides/statistics_definitions.html>`_
+===========================================================================================================
 
 Hypothesis Testing
 ==================
