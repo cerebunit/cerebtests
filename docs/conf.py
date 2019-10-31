@@ -68,7 +68,7 @@ html_theme = 'bizstyle'
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
 #html_extra_path = [os.getcwd()+os.sep+"statistics"+os.sep+"guides"]
-html_extra_path = ["statistics/guides/statistics_definitions.html",
+html_extra_path = [os.getcwd()+"/statistics/guides/statistics_definitions.html",
                    "statistics/guides/images/.png",
                    "statistics/guides/scripts/.js"]
 
