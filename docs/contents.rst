@@ -24,6 +24,11 @@ Statistics
 
 `Statistical terminologies used in CerebUnit <_static/docs/statistics/guides/statistics_definitions.html>`_
 ===========================================================================================================
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents:
+
+   statistics/statistics_in_cerebunit.rst
 
 Hypothesis Testing
 ==================
