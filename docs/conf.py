@@ -79,3 +79,10 @@ nbsphinx_execute = "never"
 nbsphinx_allow_errors = True
 
 #source_suffix = [".rst", ".ipynb"]
+
+from distutils.dir_util import copy_tree
+
+from_dir = os.getcwd()+"/statistics/guides"
+to_dir = os.getcwd()+"/_static"
+
+copy_tree(from_dir, to_dir)
