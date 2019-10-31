@@ -22,6 +22,14 @@ Available Capabilities
 Statistics
 **********
 
+Statistical terminologies used in CerebUnit
+===========================================
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents:
+
+   statistics/statistics_in_cerebunit.rst
+
 Hypothesis Testing
 ==================
 .. toctree::
