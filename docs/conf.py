@@ -68,7 +68,9 @@ html_theme = 'bizstyle'
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
 #html_static_path = ['_static', "statistics/guides"]
-#html_extra_path = ["statistics/guides"]
+html_extra_path = ["statistics/guides/",
+                   "statistics/guides/images/",
+                   "statistics/guides/scripts/"]
 
 # -- Options for Notebooks ---------------------------------------------------
 
