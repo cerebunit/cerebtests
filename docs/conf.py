@@ -72,11 +72,11 @@ html_static_path = ["_static", "statistics/guides"]
 #html_extra_path = [os.getcwd()+"/statistics/guides/statistics_definitions.html",
 #                   "statistics/guides/images/.png",
 #                   "statistics/guides/scripts/.js"]
-html_css_files = ["statistics/guides/scripts/style.css"]
-html_js_files = ["statistics/guides/scripts/mootools-core-1.3.1.js",
-                 "statistics/guides/scripts/Tangle.js",
-                 "statistics/guides/scripts/main.js"]
-html_extra_path = ["statistics/guides/statistics_definitions.html"]
+#html_css_files = ["statistics/guides/scripts/style.css"]
+#html_js_files = ["statistics/guides/scripts/mootools-core-1.3.1.js",
+#                 "statistics/guides/scripts/Tangle.js",
+#                 "statistics/guides/scripts/main.js"]
+#html_extra_path = ["statistics/guides/statistics_definitions.html"]
 
 # -- Options for Notebooks ---------------------------------------------------
 

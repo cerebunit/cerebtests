@@ -41,7 +41,7 @@ window.addEvent('domready', function() {
 function initializeBrochure() {
 
 	var brochure = $("brochure");
-	var arrow = (new Element("img", { src:"Images/BrochureArrow1.png", 
+	var arrow = (new Element("img", { src:"images/BrochureArrow1.png", 
 	                                  style:"position:absolute; display:none;" })).inject(brochure, "top");
 
 	var activeClaim = null;
@@ -67,7 +67,7 @@ function initializeBrochure() {
 				claim.addClass("brochureClaimActive");
 				
 				var lineCount = (claim.getSize().y / 20).round().limit(1,3);
-				arrow.setProperty("src", "Images/BrochureArrow" + lineCount + ".png");
+				arrow.setProperty("src", "images/BrochureArrow" + lineCount + ".png");
 				
 				var yOffset = -6 + (Browser.Engine.gecko ? 1 : 0);
 				arrow.setStyle("margin-top", claim.getPosition(brochure).y + yOffset);
