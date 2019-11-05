@@ -10,6 +10,8 @@ Available tests
    :maxdepth: 1
    :caption: Contents:
 
+   validation_tests/table.rst
+
 Available Capabilities
 **********************
 
