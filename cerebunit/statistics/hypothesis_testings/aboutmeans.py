@@ -9,6 +9,7 @@
 # from cerebunit.hypothesisTesting import XYZ
 # ============================================================================
 
+from scipy.stats import norm
 from scipy.stats import t as student_t
 import quantities as pq
 
@@ -72,9 +73,10 @@ class HtestAboutMeans:
       standard deviation, SD                experiment/observed SD              
       t-statistic, t                        test score, :math:`t = \\frac{\\mu - \\mu_0}{SE}`
       degree of freedom, df                 :math:`df = n - 1`
+      z-statistic, z (standard)             test score, :math:`z = \\frac{\\mu - \\mu_0}{SD}`
     ====================================== ========================================================
 
-    Using t and df look up table for t-distrubution which will return its corresponding p.
+    Using t and df look up table for t-distrubution which will return its corresponding p. If the denominator is ``SD`` then value of z is seen in a normal distribution to return its corresponding p.
 
     **4. Report and Answer the question, based on the p-value is the result (true H0) statistically significant?**
 
@@ -89,36 +91,40 @@ class HtestAboutMeans:
 
     **Arguments**
 
-    +----------+------------------------+---------------------------------+
-    | Argument | Representation         | Value type                      |
-    +==========+========================+=================================+
-    | first    | experiment/observation | dictionary that must have keys; |
-    |          |                        | "mean" and "sample_size"        |
-    +----------+------------------------+---------------------------------+
-    | second   | model prediction       | float                           |
-    +----------+------------------------+---------------------------------+
-    | third    | test score/t-statistic | float                           |
-    +----------+------------------------+---------------------------------+
-    | fourth   | sidedness of test      | string; "not_equal" (default)   |
-    |          |                        | or "less_than", "greater_than"  |
-    +----------+------------------------+---------------------------------+
+    +----------+-----------------------------+---------------------------------+
+    | Argument | Representation              | Value type                      |
+    +==========+=============================+=================================+
+    | first    | experiment/observation      | dictionary that must have keys; |
+    |          |                             | "mean" and "sample_size"        |
+    +----------+-----------------------------+---------------------------------+
+    | second   | model prediction            | float                           |
+    +----------+-----------------------------+---------------------------------+
+    | third    | test score/z or t-statistic | dictionary with key; "z" or "t" |
+    +----------+-----------------------------+---------------------------------+
+    | fourth   | sidedness of test           | string; "not_equal" (default)   |
+    |          |                             | or "less_than", "greater_than"  |
+    +----------+-----------------------------+---------------------------------+
 
     The constructor method generates :py:attr:`.statistics` and  :py:attr:`.outcome` (which is then assigned to :py:attr:`.description` within the validation test class where this hypothesis test class is implemented).
 
     """
-    def __init__(self, observation, prediction, t_statistic, side="not_equal"):
+    def __init__(self, observation, prediction, test_statistic, side="not_equal"):
         """This constructor method generates ``.statistics`` and ``.outcome`` (which is then assigned to ``.description`` within the validation test class where this hypothesis test class is implemented).
         """
         self.sample_statistic = observation["mean"] # quantities.Quantity
         self.sample_size = observation["sample_size"]
         self.popul_parameter = prediction # quantities.Quantity
-        self.t_statistic = t_statistic
+        self.test_statistic = list( test_statistic.values() )[0]
+        self.test_statistic_name = list( test_statistic.keyes() )[0]
+        if "t" in test_statistic:
+            self.deg_of_freedom = self.sample_size - 1
+            self.standard_error = observation["standard_error"]
+        elif: "z" in test_statistic:
+            self.standard_deviation = observation["SD"]
         self.side = side
-        self.deg_of_freedom = self.sample_size - 1
         #
         self.outcome = self.test_outcome()
         #
-        self.standard_error = observation["standard_error"]
         self.statistics = self._register_statistics()
 
     @staticmethod
@@ -138,7 +144,11 @@ class HtestAboutMeans:
 
     def _compute_pvalue(self):
         "Returns the p-value."
-        left_side = student_t.cdf(self.t_statistic, self.deg_of_freedom)
+        if self.test_statistic_name == "t":
+            left_side = student_t.cdf(self.test_statistic, self.deg_of_freedom)
+        elif self.test_statistic_name == "z":
+            left_side = norm.sf(self.test_statistic)
+        #
         if self.side is "less_than":
             return left_side
         elif self.side is "greater_than":
@@ -157,15 +167,22 @@ class HtestAboutMeans:
         parameters = ( symbol_null_value +" = "+str(self.popul_parameter)+", "
                 + symbol_sample_statistic+" = "+str(self.sample_statistic)+", "
                 + "n = "+str(self.sample_size) )
+        string_for_test_statistic = self.test_statistic_name +" = "+ str(self.test_statistic)
         outcome = ( self.null_hypothesis(symbol_null_value, symbol_sample_statistic)
              + self.alternate_hypothesis(self.side, symbol_null_value, symbol_sample_statistic)
-             + "\nTest statistic: t = "+ str(self.t_statistic)
+             + "\nTest statistic: "+ string_for_test_statistic
              + "\nAssuming H0 is true, p-value = "+ str(self.pvalue) )
         return parameters+outcome
 
     def _register_statistics(self):
         "Returns dictionary value for the ``.statistics``."
-        return { "u0": self.popul_parameter, "u": self.sample_statistic,
-                 "hypotest": "t-Test for HT about means",
-                 "n": self.sample_size, "df": self.deg_of_freedom,
-                 "t": self.t_statistic, "se": self.standard_error }
+        x = { "u0": self.popul_parameter, "u": self.sample_statistic,
+              "hypotest": "t-Test for HT about means",
+              "n": self.sample_size,
+              self.test_statistic_name: self.test_statistic }
+        if self.test_statistic_name=="t":
+            x.update( {"se": self.standard_error,
+                       "df": self.deg_of_freedom} )
+        elif self.test_statistic_name=="z":
+            x.update( {"sd": self.standard_deviation} )
+        return x

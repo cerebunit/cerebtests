@@ -22,8 +22,9 @@ import quantities as pq
 
 from cerebunit.capabilities.cells.measurements import ProducesEphysMeasurement
 from cerebunit.statistics.data_conditions import NecessaryForHTMeans
-from cerebunit.statistics.stat_scores import TScore # if NecessaryForHTMeans passes
-from cerebunit.statistics.stat_scores import ZScoreForSignTest as ZScore
+from sciunit.scores import ZScore as standZScore # if NecessaryForHTMeans passes
+from cerebunit.statistics.stat_scores import ZScoreForSignTest
+from cerebunit.statistics.stat_scores import ZScoreForWilcoxSignedRankTest
 from cerebunit.statistics.hypothesis_testings import HtestAboutMeans, HtestAboutMedians
 
 # to execute the model you must be in ~/cerebmodels
@@ -35,25 +36,22 @@ class SomaSpikeHeightTest(sciunit.Test):
 
     The test class has three levels of mechanisms.
 
-    Level-1: :py:meth`.validate_observation`
-    ----------------------------------------
+    **Level-1** :py:meth:`.validate_observation`
 
-    Given that the experimental/observed data has the following: __mean__, __SD__, __sample_size__, __units__, and __raw_data__, :py:meth`.validate_observation` checks for them. The method then checks the data condition by asking ``NecessaryForHTMeans``. Depending on the data condition the appropriate ``score_type`` is assigned and corresponding necessary parameter; for t-Test, the parameter ``observation["standard_error"]`` and for sign-Test, the parameter ``observation["median"]``.
+    Given that the experimental/observed data has the following: *mean*, *SD* (or *SE*), *sample_size*, *units*, and *raw_data*, :py:meth:`.validate_observation` checks for them. The method then checks the data condition by asking ``NecessaryForHTMeans``. Depending on the data condition the appropriate ``score_type`` is assigned and corresponding necessary parameter; for t-Test, the parameter ``observation["standard_error"]`` and for sign-Test, the parameter ``observation["median"]``.
 
-    Level-2: :py:meth`.generate_prediction`
-    ---------------------------------------
+    **Level-2** :py:meth:`.generate_prediction`
 
     The model is executed to get the model prediction. The prediction is a the resting Vm from the soma of a PurkinjeCell returned as a ``quantities.Quantity`` object.
 
-    Level-3: :py:meths`.compute_score`
-    ----------------------------------
+    **Level-3** :py:meth`.compute_score`
 
-    The prediction made by the model is then used as the __null value__ for the compatible ``score_type`` based on the ``datacond`` determined by :py:meth`.validate_observation`. The level ends by returning the compatible test-statistic (t or z-statistic) as a ``score``.
+    The prediction made by the model is then used as the __null value__ for the compatible ``score_type`` based on the data conditions (*normal* or *skewed*) determined by :py:meth:`.validate_observation`. The level ends by returning the compatible test-statistic (t or z-statistic) as a ``score``.
 
-    How to use:
-    ~~~~~~~~~~~
+    **How to use:**
 
     ::
+
        from cerebunit.validation_tests.cells.Purkinje import SomaSpikeHeightTest
        data = json.load(open("/home/main-dev/cerebdata/expdata/cells/PurkinjeCell/Llinas_Sugimori_1980_soma_spikeheight.json"))
        test = SomaSpikeHeightTest( data )
@@ -91,16 +89,19 @@ class SomaSpikeHeightTest(sciunit.Test):
                                                            units=observation["units"] )
         self.observation["raw_data"] = pq.Quantity( observation["raw_data"],
                                                     units=observation["units"] )
-        self.datacond = NecessaryForHTMeans.ask( observation["sample_size"],
-                                                 observation["raw_data"] )
-        if self.datacond==True:
-            self.score_type = TScore
-            self.observation["standard_error"] = \
-                  pq.Quantity( observation["SD"] / numpy.sqrt(observation["sample_size"]),
-                               units=observation["units"] )
+        self.normaldata = NecessaryForHTMeans.ask( "normal?", self.observation["raw_data"] )
+        if self.normaldata==True:
+            print("dataset is normal")
+            ZScore = standZScore
         else:
-            self.score_type = ZScore
-            self.observation["median"] = numpy.median(self.observation["raw_data"])
+            print("dataset is Not normal")
+            if NecessaryForHTMeans.ask("skew?", self.observation["raw_data"]) == True:
+                print("dataset is skewed")
+                ZScore = ZScoreForSignTest
+            else:
+                print("dataset is Not skewed")
+                ZScore = ZScoreForWilcoxSignedRankTest
+        self.score_type = ZScore
         # parameters for properly running the test
         self.observation["celsius"] = observation["protocol_parameters"]["temperature"]
         self.observation["v_init"] = observation["protocol_parameters"]["initial_resting_Vm"]
@@ -138,19 +139,17 @@ class SomaSpikeHeightTest(sciunit.Test):
         prediction correspond with experiment, else 1.
         """
         print("Computing score ...")
-        #print(observation == self.observation) # True
-        if self.datacond==True:
-            x = TScore.compute( observation, prediction  )
+        x = self.score_type.compute( observation, prediction  )
+        if self.normaldata==True:
             hypoT = HtestAboutMeans( self.observation, prediction, x )
-            score = TScore(x)
-            score.description = hypoT.outcome
-            score.statistics = hypoT.statistics
+            test_statistic = x
         else:
-            x = ZScore.compute( observation, prediction )
-            hypoT = HtestAboutMedians( self.observation, prediction, x )
-            score = ZScore(x)
-            score.description = hypoT.outcome
-            score.statistics = hypoT.statistics
+            x.update( {"side": "not_equal"} )
+            hypoT = HtestAboutMedians( self.observation, prediction, test=x )
+            test_statistic = x["z_statistic"]
+        score = self.score_type( test_statistic )
+        score.description = hypoT.outcome
+        score.statistics = hypoT.statistics
         print("Done.")
         print(score.description)
         return score
