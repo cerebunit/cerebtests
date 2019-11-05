@@ -26,35 +26,47 @@ from sciunit.scores import NoneScore#, ErrorScore
 class SomaRestingVmTest(sciunit.Test):
     """This test compares the measured resting Vm observed in real animal (in-vitro or in-vivo, depending on the data) generated from neuron against those by the model.
 
+
     Validate Resting membrane voltage from soma of Purkinje cell
-    ------------------------------------------------------------
+    ============================================================
+
 
     The test class has three levels of mechanisms.
 
+
     Level-1: :py:meth`.validate_observation`
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ----------------------------------------
+
 
     Given that the experimental/observed data has the following: __mean__, __SD__, __sample_size__, __units__, and __raw_data__, :py:meth`.validate_observation` checks for them. The method then checks the data condition by asking ``NecessaryForHTMeans``. Depending on the data condition the appropriate ``score_type`` is assigned and corresponding necessary parameter; for t-Test, the parameter ``observation["standard_error"]`` and for sign-Test, the parameter ``observation["median"]``.
 
+
     Level-2: :py:meth`.generate_prediction`
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ---------------------------------------
+
 
     The model is executed to get the model prediction. The prediction is a the resting Vm from the soma of a PurkinjeCell returned as a ``quantities.Quantity`` object.
 
+
     Level-3: :py:meths`.compute_score`
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ----------------------------------
+
 
     The prediction made by the model is then used as the __null value__ for the compatible ``score_type`` based on the ``datacond`` determined by :py:meth`.validate_observation`. The level ends by returning the compatible test-statistic (t or z-statistic) as a ``score``.
 
+
     Roadmap view
-    ^^^^^^^^^^^^
+    ------------
+
 
     .. image:: ../../../docs/statistics/data_conditions/figs/forHTmeans.png
         :width: 300
         :alt: Conditions for HT about means or medians depending on perspective
 
+
     How to use:
-    ^^^^^^^^^^^
+    -----------
+
 
     ::
        from cerebunit.validation_tests.cells.Purkinje import SomaRestingVmTest
@@ -64,8 +76,10 @@ class SomaRestingVmTest(sciunit.Test):
 
     Then to get the test score ``s.score`` and test report call ``print(s.description)``. If one is interested in getting the computed statistics call ``s.statistics``.
 
+
     Further notes on the test.
     --------------------------
+
 
     * The experimental observation data (as __json__ file) must have the element __protocol_parameters__, which in turn has the nests the elements __temperature__ and __initial_resting_Vm__.
     * One should consider whether the model is compared against __in vitro__ or __in vivo__ experimental data (in addition to the species under study). For example,
