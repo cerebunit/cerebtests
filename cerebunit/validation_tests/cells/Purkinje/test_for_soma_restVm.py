@@ -79,14 +79,20 @@ class SomaRestingVmTest(sciunit.Test):
         """
         print("Validate Observation ...")
         if ( "mean" not in observation or
-             ("SD" not in observation or "SE" not in observation)or
+             ("SD" not in observation and "SE" not in observation)or
              "sample_size" not in observation or
              "units" not in observation or
              "raw_data" not in observation or
              "protocol_parameters" not in observation or # these last two are required for
              "temperature" not in observation["protocol_parameters"] or # for running the
              "initial_resting_Vm" not in observation["protocol_parameters"] ): # test correctly
-            raise sciunit.ObservationError
+            #raise sciunit.ObservationError("error")
+            raise ValueError(
+                    "Observation must be of the form "+ 
+                    "{'mean': float, 'SD' or 'SE': float, 'sample_size': float, "+
+                     "'units': string, 'raw_data': list, "+
+                     "'protocol_parameters': {'temperature': float, "+
+                                             "'initial_resting_Vm': float} }" )
         self.observation = observation
         self.observation["mean"] = pq.Quantity( observation["mean"],
                                                 units=observation["units"] )
@@ -103,6 +109,7 @@ class SomaRestingVmTest(sciunit.Test):
         #self.datacond = NecessaryForHTMeans.ask( observation["sample_size"],
         #                                         observation["raw_data"] )
         self.normaldata = NecessaryForHTMeans.ask("normal?", self.observation["raw_data"])
+        self.normaldata = True
         if self.normaldata == True:
             print("dataset is normal") 
             #from cerebunit.statistics.stat_scores import TScore
