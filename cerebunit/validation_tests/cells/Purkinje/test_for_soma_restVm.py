@@ -28,15 +28,15 @@ class SomaRestingVmTest(sciunit.Test):
 
     The test class has three levels of mechanisms.
 
-    **Level-1: :py:meth:`.validate_observation`**
+    **Level-1**  :py:meth:`.validate_observation`
 
-    Given that the experimental/observed data has the following: __mean__, __SD__, __sample_size__, __units__, and __raw_data__, :py:meth`.validate_observation` checks for them. The method then checks the data condition by asking ``NecessaryForHTMeans``. Depending on the data condition the appropriate ``score_type`` is assigned and corresponding necessary parameter; for t-Test, the parameter ``observation["standard_error"]`` and for sign-Test, the parameter ``observation["median"]``.
+    Given that the experimental/observed data has the following: *mean*, *SD* (or *SE*), *sample_size*, *units*, and *raw_data*, :py:meth:`.validate_observation` checks for them. The method then checks the data condition by asking ``NecessaryForHTMeans``. Depending on the data condition the appropriate ``score_type`` is assigned and corresponding necessary parameter; for t-Test, the parameter ``observation["standard_error"]`` and for sign-Test, the parameter ``observation["median"]``.
 
-    **Level-2: :py:meth:`.generate_prediction`**
+    **Level-2**  :py:meth:`.generate_prediction`
 
     The model is executed to get the model prediction. The prediction is a the resting Vm from the soma of a PurkinjeCell returned as a ``quantities.Quantity`` object.
 
-    **Level-3: :py:meth:`.compute_score`**
+    **Level-3**  :py:meth:`.compute_score`
 
     The prediction made by the model is then used as the *null value* for the compatible ``score_type`` based on the data condition (*normality* and *skewness*) determined by :py:meth:`.validate_observation`. The level ends by returning the compatible test-statistic (t or z-statistic) as a ``score``.
 
