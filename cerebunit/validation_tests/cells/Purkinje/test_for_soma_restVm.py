@@ -26,8 +26,8 @@ from sciunit.scores import NoneScore#, ErrorScore
 class SomaRestingVmTest(sciunit.Test):
     """This test compares the measured resting Vm observed in real animal (in-vitro or in-vivo, depending on the data) generated from neuron against those by the model.
 
-    About the test.
-    ===============
+    Validate Resting membrane voltage from soma of Purkinje cell
+    ============================================================
 
     The test class has three levels of mechanisms.
 
