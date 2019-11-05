@@ -15,7 +15,7 @@ import quantities as pq
 from cerebunit.capabilities.cells.measurements import ProducesEphysMeasurement
 from cerebunit.statistics.data_conditions import NecessaryForHTMeans
 from cerebunit.statistics.stat_scores import TScore # if NecessaryForHTMeans passes
-from sciunit.scores import ZScore as standZScore
+from cerebunit.statistics.stat_scores import ZScoreStandard
 from cerebunit.statistics.stat_scores import ZScoreForSignTest
 from cerebunit.statistics.stat_scores import ZScoreForWilcoxSignedRankTest
 from cerebunit.statistics.hypothesis_testings import HtestAboutMeans, HtestAboutMedians
@@ -97,39 +97,30 @@ class SomaRestingVmTest(sciunit.Test):
         self.observation["mean"] = pq.Quantity( observation["mean"],
                                                 units=observation["units"] )
         if "SD" in self.observation:
-            self.observation["SD"] = pq.Quantity( observation["SD"],
-                                                  units=observation["units"] )
+            self.observation["standard_deviation"] = pq.Quantity( observation["SD"],
+                                                                  units=observation["units"] )
             self.test_statistic_name = "z"
         elif "SE" in self.observation:
-            self.observation["SE"] = pq.Quantity( observation["SE"],
-                                                  units=observation["units"] )
+            self.observation["standard_error"] = pq.Quantity( observation["SE"],
+                                                              units=observation["units"] )
             self.test_statistic_name = "t"
         self.observation["raw_data"] = pq.Quantity( observation["raw_data"],
                                                     units=observation["units"] )
-        #self.datacond = NecessaryForHTMeans.ask( observation["sample_size"],
-        #                                         observation["raw_data"] )
         self.normaldata = NecessaryForHTMeans.ask("normal?", self.observation["raw_data"])
         self.normaldata = True
         if self.normaldata == True:
             print("dataset is normal") 
-            #from cerebunit.statistics.stat_scores import TScore
-            self.score_type = TScore
-            self.observation["standard_error"] = \
-                  pq.Quantity( observation["SD"] / numpy.sqrt(observation["sample_size"]),
-                               units=observation["units"] )
             if self.test_statistic_name == "t":
                 self.score_type = TScore
             elif self.test_statistic_name == "z":
-                self.score_type = standZScore
+                self.score_type = ZScoreStandard
         else:
             print("dataset is Not normal")
             if NecessaryForHTMeans.ask("skew?", self.observation["raw_data"]) == True:
                 print("dataset is skewed")
-                #from cerebunit.statistics.stat_scores import ZScoreForSignTest as ZScore
                 ZScore = ZScoreForSignTest
             else:
                 print("dataset is Not skewed")
-                #from cerebunit.statistics.stat_scores import ZScoreForWilcoxSignedRankTest as ZScore
                 ZScore = ZScoreForWilcoxSignedRankTest
             self.score_type = ZScore
             #self.observation["median"] = numpy.median(self.observation["raw_data"])

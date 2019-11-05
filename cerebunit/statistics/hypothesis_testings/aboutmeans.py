@@ -115,7 +115,7 @@ class HtestAboutMeans:
         self.sample_size = observation["sample_size"]
         self.popul_parameter = prediction # quantities.Quantity
         self.test_statistic = list( test_statistic.values() )[0]
-        self.test_statistic_name = list( test_statistic.keyes() )[0]
+        self.test_statistic_name = list( test_statistic.keys() )[0]
         if "t" in test_statistic:
             self.deg_of_freedom = self.sample_size - 1
             self.standard_error = observation["standard_error"]
@@ -177,7 +177,7 @@ class HtestAboutMeans:
     def _register_statistics(self):
         "Returns dictionary value for the ``.statistics``."
         x = { "u0": self.popul_parameter, "u": self.sample_statistic,
-              "hypotest": "t-Test for HT about means",
+              "hypotest": self.test_statistic_name+"-Test for HT about means",
               "n": self.sample_size,
               self.test_statistic_name: self.test_statistic }
         if self.test_statistic_name=="t":
