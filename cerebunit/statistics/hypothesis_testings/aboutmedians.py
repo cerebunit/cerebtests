@@ -140,10 +140,10 @@ class HtestAboutMedians:
         """
         self.sample_size = observation["sample_size"]
         if np.array( prediction ).shape is (): # single sample
-            data = self.observation["raw_data"]
+            data = observation["raw_data"]
             self.specified_value = prediction
         else: # paired data => paired difference
-            data = self.observation["raw_data"] - prediction
+            data = observation["raw_data"] - prediction
             self.specified_value = 0 * prediction.units
         #self.sample_statistic = observation["median"] # quantities.Quantity
         #self.specified_value = prediction # quantities.Quantity

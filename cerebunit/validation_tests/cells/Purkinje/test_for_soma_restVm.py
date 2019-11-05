@@ -14,8 +14,9 @@ import quantities as pq
 
 from cerebunit.capabilities.cells.measurements import ProducesEphysMeasurement
 from cerebunit.statistics.data_conditions import NecessaryForHTMeans
-#from cerebunit.statistics.stat_scores import TScore # if NecessaryForHTMeans passes
-#from cerebunit.statistics.stat_scores import ZScoreForSignTest as ZScore
+from cerebunit.statistics.stat_scores import TScore # if NecessaryForHTMeans passes
+from cerebunit.statistics.stat_scores import ZScoreForSignTest
+from cerebunit.statistics.stat_scores import ZScoreForWilcoxSignedRankTest
 from cerebunit.statistics.hypothesis_testings import HtestAboutMeans, HtestAboutMedians
 
 # to execute the model you must be in ~/cerebmodels
@@ -44,6 +45,13 @@ class SomaRestingVmTest(sciunit.Test):
     ----------------------------------
 
     The prediction made by the model is then used as the __null value__ for the compatible ``score_type`` based on the ``datacond`` determined by :py:meth`.validate_observation`. The level ends by returning the compatible test-statistic (t or z-statistic) as a ``score``.
+
+    Roadmap view
+    ------------
+
+    .. image:: ../../../docs/statistics/data_conditions/figs/forHTmeans.png
+        :width: 300
+        :alt: Conditions for HT about means or medians depending on perspective
 
     How to use:
     ~~~~~~~~~~~
@@ -101,17 +109,23 @@ class SomaRestingVmTest(sciunit.Test):
         #self.datacond = NecessaryForHTMeans.ask( observation["sample_size"],
         #                                         observation["raw_data"] )
         self.normaldata = NecessaryForHTMeans.ask("normal?", self.observation["raw_data"])
-        if self.normaldata == True:        
-            from cerebunit.statistics.stat_scores import TScore
+        if self.normaldata == True:
+            print("dataset is normal") 
+            #from cerebunit.statistics.stat_scores import TScore
             self.score_type = TScore
             self.observation["standard_error"] = \
                   pq.Quantity( observation["SD"] / numpy.sqrt(observation["sample_size"]),
                                units=observation["units"] )
         else:
+            print("dataset is Not normal")
             if NecessaryForHTMeans.ask("skew?", self.observation["raw_data"]) == True:
-                from cerebunit.statistics.stat_scores import ZScoreForSignTest as ZScore
+                print("dataset is skewed")
+                #from cerebunit.statistics.stat_scores import ZScoreForSignTest as ZScore
+                ZScore = ZScoreForSignTest
             else:
-                from cerebunit.statistics.stat_scores import ZScoreForWilcoxSignedRankTest as ZScore
+                print("dataset is Not skewed")
+                #from cerebunit.statistics.stat_scores import ZScoreForWilcoxSignedRankTest as ZScore
+                ZScore = ZScoreForWilcoxSignedRankTest
             self.score_type = ZScore
             #self.observation["median"] = numpy.median(self.observation["raw_data"])
         # parameters for properly running the test
@@ -153,20 +167,21 @@ class SomaRestingVmTest(sciunit.Test):
         """
         print("Computing score ...")
         #print(observation == self.observation) # True
+        x = self.score_type.compute( observation, prediction  )
         if self.normaldata==True:
-            x = TScore.compute( observation, prediction  )
+            #x = self.score_type.compute( observation, prediction  )
             hypoT = HtestAboutMeans( self.observation, prediction, x )
-            score = TScore(x)
-            score.description = hypoT.outcome
-            score.statistics = hypoT.statistics
+            test_statistic = x
+            #score = self.score_type(x)
         else:
-            x = ZScore.compute( observation, prediction )
+            #x = self.score_type.compute( observation, prediction )
             x.update( {"side": "not_equal"} )
             hypoT = HtestAboutMedians( self.observation, prediction, test=x )
-            score = ZScore(x["z_statistic"])
-            score.description = hypoT.outcome
-            score.statistics = hypoT.statistics
+            #score = self.score_type(x["z_statistic"])
+            test_statistic = x["z_statistic"]
+        score = self.score_type( test_statistic )
+        score.description = hypoT.outcome
+        score.statistics = hypoT.statistics
         print("Done.")
         print(score.description)
         return score
-
