@@ -119,7 +119,7 @@ class HtestAboutMeans:
         if "t" in test_statistic:
             self.deg_of_freedom = self.sample_size - 1
             self.standard_error = observation["standard_error"]
-        elif: "z" in test_statistic:
+        elif "z" in test_statistic:
             self.standard_deviation = observation["SD"]
         self.side = side
         #

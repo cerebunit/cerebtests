@@ -94,7 +94,7 @@ class SomaRestingVmTest(sciunit.Test):
             self.observation["SD"] = pq.Quantity( observation["SD"],
                                                   units=observation["units"] )
             self.test_statistic_name = "z"
-        elif: "SE" in self.observation:
+        elif "SE" in self.observation:
             self.observation["SE"] = pq.Quantity( observation["SE"],
                                                   units=observation["units"] )
             self.test_statistic_name = "t"
@@ -112,7 +112,7 @@ class SomaRestingVmTest(sciunit.Test):
                                units=observation["units"] )
             if self.test_statistic_name == "t":
                 self.score_type = TScore
-            elif: self.test_statistic_name == "z":
+            elif self.test_statistic_name == "z":
                 self.score_type = standZScore
         else:
             print("dataset is Not normal")
