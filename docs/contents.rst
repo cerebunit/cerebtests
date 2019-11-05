@@ -34,7 +34,7 @@ Hypothesis Testing
    :maxdepth: 2
    :caption: Contents:
 
-   statistics/hypothesis_testings/tTest.rst
+   statistics/hypothesis_testings/aboutmeans.rst
    statistics/hypothesis_testings/aboutmedians.rst
    statistics/hypothesis_testings/aboutproportions.rst
 

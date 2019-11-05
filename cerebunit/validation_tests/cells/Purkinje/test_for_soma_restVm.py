@@ -15,6 +15,7 @@ import quantities as pq
 from cerebunit.capabilities.cells.measurements import ProducesEphysMeasurement
 from cerebunit.statistics.data_conditions import NecessaryForHTMeans
 from cerebunit.statistics.stat_scores import TScore # if NecessaryForHTMeans passes
+from sciunit.scores import ZScore as standZScore
 from cerebunit.statistics.stat_scores import ZScoreForSignTest
 from cerebunit.statistics.stat_scores import ZScoreForWilcoxSignedRankTest
 from cerebunit.statistics.hypothesis_testings import HtestAboutMeans, HtestAboutMedians
@@ -78,7 +79,7 @@ class SomaRestingVmTest(sciunit.Test):
         """
         print("Validate Observation ...")
         if ( "mean" not in observation or
-             "SD" not in observation or
+             ("SD" not in observation or "SE" not in observation)or
              "sample_size" not in observation or
              "units" not in observation or
              "raw_data" not in observation or
@@ -89,8 +90,14 @@ class SomaRestingVmTest(sciunit.Test):
         self.observation = observation
         self.observation["mean"] = pq.Quantity( observation["mean"],
                                                 units=observation["units"] )
-        self.observation["SD"] = pq.Quantity( observation["SD"],
-                                                           units=observation["units"] )
+        if "SD" in self.observation:
+            self.observation["SD"] = pq.Quantity( observation["SD"],
+                                                  units=observation["units"] )
+            self.test_statistic_name = "z"
+        elif: "SE" in self.observation:
+            self.observation["SE"] = pq.Quantity( observation["SE"],
+                                                  units=observation["units"] )
+            self.test_statistic_name = "t"
         self.observation["raw_data"] = pq.Quantity( observation["raw_data"],
                                                     units=observation["units"] )
         #self.datacond = NecessaryForHTMeans.ask( observation["sample_size"],
@@ -103,6 +110,10 @@ class SomaRestingVmTest(sciunit.Test):
             self.observation["standard_error"] = \
                   pq.Quantity( observation["SD"] / numpy.sqrt(observation["sample_size"]),
                                units=observation["units"] )
+            if self.test_statistic_name == "t":
+                self.score_type = TScore
+            elif: self.test_statistic_name == "z":
+                self.score_type = standZScore
         else:
             print("dataset is Not normal")
             if NecessaryForHTMeans.ask("skew?", self.observation["raw_data"]) == True:
@@ -157,7 +168,8 @@ class SomaRestingVmTest(sciunit.Test):
         x = self.score_type.compute( observation, prediction  )
         if self.normaldata==True:
             #x = self.score_type.compute( observation, prediction  )
-            hypoT = HtestAboutMeans( self.observation, prediction, x )
+            hypoT = HtestAboutMeans( self.observation, prediction,
+                                     {self.test_statistic_name: x}, side="not_equal" )
             test_statistic = x
             #score = self.score_type(x)
         else:
