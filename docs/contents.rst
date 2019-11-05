@@ -45,6 +45,7 @@ Test Statistics (Test Score)
    :caption: Contents:
 
    statistics/stat_scores/tScore.rst
+   statistics/stat_scores/zScore.rst
    statistics/stat_scores/zSignScore.rst
    statistics/stat_scores/zTwoSampleRankSumScore.rst
    statistics/stat_scores/zWilcoxSignedRankScore.rst
