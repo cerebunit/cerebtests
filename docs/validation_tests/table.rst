@@ -4,12 +4,12 @@ Table of validation tests
 +---------------------+-----------------------+-------------------------------------+
 | Model scale         |    Sub-type           | Validation test                     |
 +=====================+=======================+=====================================+
-| cells               | Purkinje cell         | :ref:`SomaRestingVmTest`            |
-|                     |                       | ``:ref:anothertest``                |
+| cells               | Purkinje cell         |- :ref:`SomaRestingVmTest`           |
+|                     |                       |- ``:ref:anothertest``               |
 +                     +-----------------------+-------------------------------------+
-|                     | Granule cell          | ``:ref:sometest``                   |
-|                     |                       | ``:ref:sometest``                   |
+|                     | Granule cell          |- ``:ref:sometest``                  |
+|                     |                       |- ``:ref:sometest``                  |
 +                     +-----------------------+-------------------------------------+
-|                     | Golgi cell            | ``:ref:sometest``                   |
-|                     |                       | ``:ref:sometest``                   |
+|                     | Golgi cell            |- ``:ref:sometest``                  |
+|                     |                       |- ``:ref:sometest``                  |
 +---------------------+-----------------------+-------------------------------------+

@@ -1,6 +1,6 @@
 .. _SomaRestingVmTest:
 
-.. image:: ../../statistics/data_conditions/figs/forHTmeans.png
+.. image:: ../../../statistics/data_conditions/figs/forHTmeans.png
     :width: 300
     :alt: Conditions for HT about means or medians depending on perspective
 
