@@ -1,7 +1,7 @@
-# ~/cerebtests/cerebunit/validation_tests/cells/Purkinje/test_for_soma_spikeheight_with_antidromic_stimulation.py
+# ~/cerebtests/cerebunit/validation_tests/cells/Purkinje/test_for_soma_spikeheight_antidromic.py
 #
 # =============================================================================
-# test_for_soma_spikeheight_with_antidromic_stimulation.py 
+# test_for_soma_spikeheight_antidromic.py 
 #
 # created 9 July 2019
 # modified
@@ -31,7 +31,7 @@ from cerebunit.statistics.hypothesis_testings import HtestAboutMeans, HtestAbout
 from executive import ExecutiveControl
 from sciunit.scores import NoneScore#, ErrorScore
 
-class SomaSpikeHeightTest(sciunit.Test):
+class SomaSpikeHeightAntidromicTest(sciunit.Test):
     """This test compares the measured resting Vm observed in real animal (in-vitro or in-vivo, depending on the data) generated from neuron against those by the model.
 
     The test class has three levels of mechanisms.
