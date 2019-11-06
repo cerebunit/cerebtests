@@ -1,7 +1,7 @@
-# ~/cerebtests/cerebunit/validation_tests/cells/Purkinje/test_for_soma_spikeheight.py
+# ~/cerebtests/cerebunit/validation_tests/cells/Purkinje/test_for_soma_spikeheight_with_antidromic_stimulation.py
 #
 # =============================================================================
-# test_for_soma_spikeheight.py 
+# test_for_soma_spikeheight_with_antidromic_stimulation.py 
 #
 # created 9 July 2019
 # modified
