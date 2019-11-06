@@ -16,13 +16,13 @@
 Capabilities w.r.t measurements attainable from a cerebellar cell in general
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-+-------------------------------------+-----------------------------------------+
-|      Class name (capabilities)      |        method name (capacities)         |
-+=====================================+=========================================+
-|:py:class:`.ProducesEphysMeasurement`|- :py:meth:`.produce_soma_restingVm`     |
-|                                     |- :py:meth:`.produce_soma_spikeheight`   |
-|                                     |- :py:meth:`.produce_soma_inputR`        |
-+-------------------------------------+-----------------------------------------+
++-------------------------------------+-------------------------------------------------------------------+
+|      Class name (capabilities)      |        method name (capacities)                                   |
++=====================================+===================================================================+
+|:py:class:`.ProducesEphysMeasurement`|- :py:meth:`.produce_soma_restingVm`                               |
+|                                     |- :py:meth:`.produce_soma_spikeheight_with_antidromic_stimulation` |
+|                                     |- :py:meth:`.produce_soma_inputR`                                  |
++-------------------------------------+-------------------------------------------------------------------+
 
 """
 
@@ -40,7 +40,7 @@ class ProducesEphysMeasurement(sciunit.Capability):
         "capacity (of getting soma resting membrane voltage) to fulfill the capability."
         raise NotImplementedError("Must implement produce_soma_restingVm")
 
-    def produce_soma_spikeheight(self):
+    def produce_soma_spikeheight_with_antidromic_stimulation(self):
         "capacity (of getting soma spike height) to fulfill the capability."
         raise NotImplementedError("Must implement produce_soma_spikeheight")
 
