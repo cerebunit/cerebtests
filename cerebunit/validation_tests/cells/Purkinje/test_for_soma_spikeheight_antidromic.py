@@ -22,7 +22,8 @@ import quantities as pq
 
 from cerebunit.capabilities.cells.measurements import ProducesEphysMeasurement
 from cerebunit.statistics.data_conditions import NecessaryForHTMeans
-from sciunit.scores import ZScore as standZScore # if NecessaryForHTMeans passes
+from cerebunit.statistics.stat_scores import TScore # if NecessaryForHTMeans passes
+from cerebunit.statistics.stat_scores import ZScoreStandard
 from cerebunit.statistics.stat_scores import ZScoreForSignTest
 from cerebunit.statistics.stat_scores import ZScoreForWilcoxSignedRankTest
 from cerebunit.statistics.hypothesis_testings import HtestAboutMeans, HtestAboutMedians
@@ -74,25 +75,39 @@ class SomaSpikeHeightAntidromicTest(sciunit.Test):
         """
         print("Validate Observation ...")
         if ( "mean" not in observation or
-             "SD" not in observation or
+             ("SD" not in observation and "SE" not in observation) or
              "sample_size" not in observation or
              "units" not in observation or
              "raw_data" not in observation or
              "protocol_parameters" not in observation or # these last two are required for
              "temperature" not in observation["protocol_parameters"] or # for running the
              "initial_resting_Vm" not in observation["protocol_parameters"] ): # test correctly ):
-            raise sciunit.ObservationError
+            raise ValueError(
+                    "Observation must be of the form "+
+                    "{'mean': float, 'SD' or 'SE': float, 'sample_size': float, "+
+                     "'units': string, 'raw_data': list, "+
+                     "'protocol_parameters': {'temperature': float, "+
+                                             "'initial_resting_Vm': float} }" )
         self.observation = observation
         self.observation["mean"] = pq.Quantity( observation["mean"],
                                                 units=observation["units"] )
-        self.observation["SD"] = pq.Quantity( observation["SD"],
-                                                           units=observation["units"] )
+        if "SD" in self.observation:
+            self.observation["standard_deviation"] = pq.Quantity( observation["SD"],
+                                                                  units=observation["units"] )
+            self.test_statistic_name = "z"
+        elif "SE" in self.observation:
+            self.observation["standard_error"] = pq.Quantity( observation["SE"],
+                                                              units=observation["units"] )
+            selt.test_statistic_name = "t"
         self.observation["raw_data"] = pq.Quantity( observation["raw_data"],
                                                     units=observation["units"] )
         self.normaldata = NecessaryForHTMeans.ask( "normal?", self.observation["raw_data"] )
         if self.normaldata==True:
             print("dataset is normal")
-            ZScore = standZScore
+            if self.test_statistic_name == "t":
+                self.score_type = TScore
+            elif self.test_statistic_name == "z":
+                self.score_type = ZScoreStandard
         else:
             print("dataset is Not normal")
             if NecessaryForHTMeans.ask("skew?", self.observation["raw_data"]) == True:
@@ -101,7 +116,7 @@ class SomaSpikeHeightAntidromicTest(sciunit.Test):
             else:
                 print("dataset is Not skewed")
                 ZScore = ZScoreForWilcoxSignedRankTest
-        self.score_type = ZScore
+            self.score_type = ZScore
         # parameters for properly running the test
         self.observation["celsius"] = observation["protocol_parameters"]["temperature"]
         self.observation["v_init"] = observation["protocol_parameters"]["initial_resting_Vm"]
@@ -141,7 +156,8 @@ class SomaSpikeHeightAntidromicTest(sciunit.Test):
         print("Computing score ...")
         x = self.score_type.compute( observation, prediction  )
         if self.normaldata==True:
-            hypoT = HtestAboutMeans( self.observation, prediction, x )
+            hypoT = HtestAboutMeans( self.observation, prediction,
+                                     {self.test_statistic_name: x}, side="not_equal" )
             test_statistic = x
         else:
             x.update( {"side": "not_equal"} )
@@ -153,4 +169,3 @@ class SomaSpikeHeightAntidromicTest(sciunit.Test):
         print("Done.")
         print(score.description)
         return score
-

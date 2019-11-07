@@ -107,7 +107,6 @@ class SomaRestingVmTest(sciunit.Test):
         self.observation["raw_data"] = pq.Quantity( observation["raw_data"],
                                                     units=observation["units"] )
         self.normaldata = NecessaryForHTMeans.ask("normal?", self.observation["raw_data"])
-        self.normaldata = True
         if self.normaldata == True:
             print("dataset is normal") 
             if self.test_statistic_name == "t":
