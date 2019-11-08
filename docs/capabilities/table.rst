@@ -12,3 +12,11 @@ Table of capabilities and capacities
 |                    |                                   |- ``produce_soma_inputR``                 |
 +--------------------+-----------------------------------+------------------------------------------+
 
+
+Idea of capability and capacity (in CerebUnit)
+----------------------------------------------
+
+.. image:: figs/capability_capacity.png
+   :width: 300
+   :alt: concept of capability and capacity in CerebUnit
+   
