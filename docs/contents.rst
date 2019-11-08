@@ -4,6 +4,8 @@ How to run a validation test
    :maxdepth: 1
    :caption: Contents:
 
+   notebooks/run_a_validation.ipynb
+
 Available tests
 ***************
 .. toctree::

@@ -33,7 +33,7 @@ release = '0.1.0-SNAPSHOT'
 # ones.
 extensions = [
     "recommonmark",
-    #"npshinx",
+    "npshinx",
     "sphinx.ext.autodoc",
     "sphinx.ext.doctest",
     "sphinx.ext.intersphinx",

@@ -133,13 +133,13 @@ class SomaSpikeHeightAntidromicTest(sciunit.Test):
         print("Testing ...")
         runtimeparam = {"dt": 0.025, "celsius": self.observation["celsius"],
                         "tstop": 500.0, "v_init": self.observation["v_init"]}
-        stimparam = {"type": ["current", "IClamp"],                                                                      "stimlist": [ {"amp": 0.00, "dur": 300.0, "delay": 200.0} ],                                        "tstop": runtimeparam["tstop"] }
+        stimparam = {"type": ["current", "IClamp"],                                                                      "stimlist": [ {"amp": 0.5, "dur": 300.0, "delay": 200.0} ],                                        "tstop": runtimeparam["tstop"] }
         ec = ExecutiveControl() 
         #ec.chosenmodel = model
         #ec.chosenmodel.restingVm = \
         model = ec.launch_model( parameters = runtimeparam, stimparameters = stimparam,
                                  stimloc = model.cell.soma, onmodel = model,
-                                 capabilities = {"model": "produce_soma_spikeheight",
+                                 capabilities = {"model": "produce_soma_spikeheight_antidromic",
                                                  "vtest": ProducesEphysMeasurement},
                                  mode = "capability" )
         return pq.Quantity( numpy.mean(model.prediction), # prediction
