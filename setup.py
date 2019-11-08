@@ -6,13 +6,13 @@ except ImportError:
 
 setup(
         name="cerebunit",
-        version="0.3.0",
+        version="0.4.0",
         author="Lungsi",
         author_email="lungsi.sharma@unic.cnrs-gif.fr",
         #packages=find_packages(),
         packages=["cerebunit",
                   #"cerebunit.file_manager",
-                  #"cerebunit.test_manager",
+                  "cerebunit.resultsManager",
                   "cerebunit.statistics",
                   "cerebunit.statistics.data_conditions",
                   "cerebunit.statistics.stat_scores",
