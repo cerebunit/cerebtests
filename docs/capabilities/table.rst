@@ -17,6 +17,6 @@ Idea of capability and capacity (in CerebUnit)
 ----------------------------------------------
 
 .. image:: figs/capability_capacity.png
-   :width: 600
+   :width: 100%
    :alt: concept of capability and capacity in CerebUnit
    
