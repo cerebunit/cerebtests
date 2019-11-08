@@ -12,7 +12,7 @@ setup(
         #packages=find_packages(),
         packages=["cerebunit",
                   #"cerebunit.file_manager",
-                  "cerebunit.resultsManager",
+                  #"cerebunit.resultsManager",
                   "cerebunit.statistics",
                   "cerebunit.statistics.data_conditions",
                   "cerebunit.statistics.stat_scores",
