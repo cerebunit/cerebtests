@@ -2,6 +2,8 @@
 import h5py   # to create HDF5 file
 import numpy  # to create string (Fixed-length ASCII) dataset
 import ast    # to convert string to dictionary for reading
+import os
+import matplotlib.pyplot as plt
 
 class ResultsManager(object):
 
@@ -12,6 +14,10 @@ class ResultsManager(object):
     def create_file( vtest ):
         filename = type(vtest).__name__
         return h5py.File( filename, "w" )
+
+    @staticmethod
+    def delete_file( filename )
+        os.remove( filename )
 
     @staticmethod
     def save_test_statistic( hdf5file = None, desired_model = None,
@@ -31,5 +37,11 @@ class ResultsManager(object):
             filename = vtest
         return h5py.File( filename, "r" )
 
-    #@staticmethod
-    #def visualize_scores
+    @staticmethod
+    def visualize_scores( hdf5file ):
+        xlabels = list( hdf5file.keys() )
+        xaxis = range( len(xlabels) )
+        yaxis = [ hdf5file[ xlabels[i] ][0] for i in xaxis ]
+        plt.scatter(xaxis, yaxis)
+        plt.xticks(xaxis, xlabels)
+        plt.grid(True) 
