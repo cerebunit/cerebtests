@@ -34,7 +34,7 @@ setup(
                     "MODELING", "SCIENTIFIC METHOD"],
         license="BSD Clause-3",
         description="Installable package 'cerebtest' for cerebunit",
-        long_description="",
+        long_description="Package for running validation test on cerebellum models. Three components of CerebUnit: CerebModels, CerebData and CerebTests (installable).",
         install_requires=[
             "sciunit",
             "quantities",
@@ -47,7 +47,7 @@ setup(
             # Define audience
             "Intended Audience :: Developers",
             # License
-            "License :: OSI Approved :: BSD Clause-3 License",
+            "License :: OSI Approved :: BSD License",
             # Specify supported python versions
             "Programming Language :: Python :: 3.5",
             "Programming Language :: Python :: 3.6",
