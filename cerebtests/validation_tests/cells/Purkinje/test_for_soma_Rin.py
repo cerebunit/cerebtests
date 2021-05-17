@@ -13,10 +13,10 @@ import numpy
 import quantities as pq
 
 from cerebtests.capabilities.cells.measurements import ProducesEphysMeasurement
-from cerebtests.statistics.data_conditions import NecessaryForHTMeans
-from cerebtests.statistics.stat_scores import TScore # if NecessaryForHTMeans passes
-from cerebtests.statistics.stat_scores import ZScoreForSignTest as ZScore
-from cerebtests.statistics.hypothesis_testings import HtestAboutMeans, HtestAboutMedians
+from cerebstats.data_conditions import NecessaryForHTMeans
+from cerebstats.stat_scores import TScore # if NecessaryForHTMeans passes
+from cerebstats.stat_scores import ZScoreForSignTest as ZScore
+from cerebstats.hypothesis_testings import HtestAboutMeans, HtestAboutMedians
 
 # to execute the model you must be in ~/cerebmodels
 from executive import ExecutiveControl

@@ -18,8 +18,8 @@ import quantities as pq
 import scipy
 
 from cerebtests.capabilities.measurements_ephys import ProducesEphysMeasurement
-from cerebtests.statScore import TScore
-from cerebtests.hypothesisTesting import HtestAboutMeans
+from cerebstats.statScore import TScore
+from cerebstats.hypothesisTesting import HtestAboutMeans
 
 # to execute the model you must be in ~/cerebmodels
 from executive import ExecutiveControl

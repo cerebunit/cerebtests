@@ -36,6 +36,7 @@ setup(
             "quantities",
             "scipy",
             "numpy",
+            "cerebstats",
             ],
         classifiers = [
             # "3 - Alpha", "4 - Beta" or "5 - Production/Stable" as current state of package

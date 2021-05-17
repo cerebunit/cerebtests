@@ -22,8 +22,8 @@ import quantities as pq
 from scipy.stats import t as student_t
 
 from cerebtests.capabilities.cells.measurements import ProducesEphysMeasurement
-from cerebtests.statistics.statScores import TScore
-from cerebtests.statistics.hypothesisTesting import HtestAboutMeans
+from cerebstats.statScores import TScore
+from cerebstats.hypothesisTesting import HtestAboutMeans
 
 # to execute the model you must be in ~/cerebmodels
 from executive import ExecutiveControl
