@@ -1,4 +1,4 @@
-<!-- ![Alt CerebUnit](cerebunit.png?raw=true "Title") -->
+<!-- ![Alt CerebUnit](cerebtests.png?raw=true "Title") -->
 <div><img src="https://raw.githubusercontent.com/cerebunit/cerebtests/master/resources/images/cerebunit.png" alt="CerebUnit" height="23%" width="15%" align="right"></div>
 
 # cerebtests
