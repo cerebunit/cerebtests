@@ -1,35 +1,35 @@
-# ~/cerebtests/setup.py
+# ~/cerebunit/setup.py
 try:
     from setuptools import setup, find_packages
 except ImportError:
     from distutils.core import setup
 
 setup(
-        name="cerebtests",
+        name="cerebunit",
         version="0.0.1",
         author="Lungsi",
         author_email="lungsi.sharma@unic.cnrs-gif.fr",
         #packages=find_packages(),
-        packages=["cerebtests",
-                  #"cerebtests.file_manager",
-                  #"cerebtests.test_manager",
+        packages=["cerebunit",
+                  #"cerebunit.file_manager",
+                  #"cerebunit.test_manager",
                   # capabilities 
-                  "cerebtests.capabilities",
-                  "cerebtests.capabilities.cells",
+                  "cerebunit.capabilities",
+                  "cerebunit.capabilities.cells",
                   # validation_tests
-                  "cerebtests.validation_tests",
-                  "cerebtests.validation_tests.cells",
-                  #"cerebtests.validation_tests.cells.general",
-                  "cerebtests.validation_tests.cells.Purkinje",
-                  "cerebtests.validation_tests.cells.Granule",
-                  #"cerebtests.validation_tests.cells.GolgiCell"
+                  "cerebunit.validation_tests",
+                  "cerebunit.validation_tests.cells",
+                  #"cerebunit.validation_tests.cells.general",
+                  "cerebunit.validation_tests.cells.Purkinje",
+                  "cerebunit.validation_tests.cells.Granule",
+                  #"cerebunit.validation_tests.cells.GolgiCell"
                   ],
         url="https://github.com/cerebunit/cerebtests",
         download_url = "https://github.com/cerebunit/cerebtests/archive/v0.0.1.tar.gz",
         keywords = ["VALIDATION", "CEREBELLUM", "NEUROSCIENCE",
                     "MODELING", "SCIENTIFIC METHOD"],
         license="BSD Clause-3",
-        description="Installable package 'cerebtests' for cerebunit",
+        description="Installable package 'cerebunit' for cerebunit",
         long_description="Package for running validation test on cerebellum models. Three components of CerebUnit: CerebModels, CerebData, CerebStats (install) and CerebTests (install).",
         install_requires=[
             "sciunit",
