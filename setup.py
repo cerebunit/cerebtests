@@ -25,12 +25,12 @@ setup(
                   #"cerebtests.validation_tests.cells.GolgiCell"
                   ],
         url="https://github.com/cerebunit/cerebtests",
-        download_url = "https://github.com/cerebunit/cerebtests/archive/v0.3.0.tar.gz",
+        download_url = "https://github.com/cerebunit/cerebtests/archive/v0.0.1.tar.gz",
         keywords = ["VALIDATION", "CEREBELLUM", "NEUROSCIENCE",
                     "MODELING", "SCIENTIFIC METHOD"],
         license="BSD Clause-3",
         description="Installable package 'cerebtests' for cerebunit",
-        long_description="Package for running validation test on cerebellum models. Three components of CerebUnit: CerebModels, CerebData and CerebTests (installable).",
+        long_description="Package for running validation test on cerebellum models. Three components of CerebUnit: CerebModels, CerebData, CerebStats (install) and CerebTests (install).",
         install_requires=[
             "sciunit",
             "quantities",
