@@ -142,7 +142,7 @@ class SomaRinTest(sciunit.Test):
         model = ec.launch_model( parameters = runtimeparam, stimparameters = stimparam,
                                  stimloc = "soma", onmodel = model,
                                  capabilities = {"model": "produce_soma_inputR",
-                                                 "vtest": ProducesEphysMeasurement},
+                                                 "vtest": ProducesSomaInputR},
                                  mode = "capability" )
         return pq.Quantity( numpy.mean(model.prediction), # prediction
                             units = self.observation["units"] )

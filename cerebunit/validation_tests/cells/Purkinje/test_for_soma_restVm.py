@@ -149,7 +149,7 @@ class SomaRestingVmTest(sciunit.Test):
         model = ec.launch_model( parameters = runtimeparam, stimparameters = stimparam,
                                  stimloc = "soma", onmodel = model,
                                  capabilities = {"model": "produce_soma_restingVm",
-                                                 "vtest": ProducesEphysMeasurement},
+                                                 "vtest": ProducesSomaRestingVm},
                                  mode = "capability" )
         return pq.Quantity( numpy.mean(model.prediction), # prediction
                             units = self.observation["units"] )
