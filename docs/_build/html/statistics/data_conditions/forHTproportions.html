@@ -1,0 +1,268 @@
+
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Data condition for HT about proportions (NecessaryForHTProportions). Is z-Test or \(\\chi^2\)-testvalid? &#8212; CerebUnit 0.0.1 documentation</title>
+    <link rel="stylesheet" href="../../_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "ignoreClass": "document", "processEscapes": true, "processClass": "math|output_area"}})</script>
+    <script type="text/javascript" src="../../_static/bizstyle.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Data condition for HT about means (NecessaryForHTMeans). Is t-Test valid?" href="forHTmeans.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="forHTmeans.html" title="Data condition for HT about means (NecessaryForHTMeans). Is t-Test valid?"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">CerebUnit 0.0.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../contents.html" accesskey="U">How to run a validation test</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="forHTmeans.html"
+                        title="previous chapter">Data condition for HT about means (<code class="docutils literal notranslate"><span class="pre">NecessaryForHTMeans</span></code>). Is t-Test valid?</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/statistics/data_conditions/forHTproportions.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="data-condition-for-ht-about-proportions-necessaryforhtproportions-is-z-test-or-chi-2-testvalid">
+<span id="necessaryforhtproportions"></span><h1>Data condition for HT about proportions (<code class="docutils literal notranslate"><span class="pre">NecessaryForHTProportions</span></code>). Is z-Test or <span class="math notranslate nohighlight">\(\\chi^2\)</span>-testvalid?<a class="headerlink" href="#data-condition-for-ht-about-proportions-necessaryforhtproportions-is-z-test-or-chi-2-testvalid" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="module-cerebunit.statistics.data_conditions.forHTproportions"></span><dl class="class">
+<dt id="cerebunit.statistics.data_conditions.forHTproportions.NecessaryForHTProportions">
+<em class="property">class </em><code class="descclassname">cerebunit.statistics.data_conditions.forHTproportions.</code><code class="descname">NecessaryForHTProportions</code><a class="headerlink" href="#cerebunit.statistics.data_conditions.forHTproportions.NecessaryForHTProportions" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Checks for situations (sample size requirements) for which Hypothesis Testing About Proportions is valid, i.e, is t-Test (or standard z-score) valid? and also for Hypothesis Testing About proportions by</strong> <span class="math notranslate nohighlight">\(\chi^2\)</span> <strong>-test.</strong></p>
+<p><strong>1. For z-test</strong></p>
+<p><strong>Situation-1</strong></p>
+<p>With respect to distributions condition for hypothesis testing about proportions is valid if</p>
+<ul class="simple">
+<li><p>random sample (from population)</p></li>
+<li><p>data from <a class="reference external" href="https://en.wikipedia.org/wiki/Binomial_distribution">binomial experiment</a> <strong>with independent trials</strong>.</p></li>
+</ul>
+<p>Below are some rule-of-thumbs guide to check if an experiment if binomial:</p>
+<ul class="simple">
+<li><p>it is repeated a fixed number of times</p></li>
+<li><p>trials are independent</p></li>
+<li><p>trial outcomes are either success or failure</p></li>
+<li><p>probability of success is the same for all trials.</p></li>
+</ul>
+<p><strong>Situation-2</strong></p>
+<p>Hypothesis testing about proportions is also valid when <strong>both</strong> the quantities <span class="math notranslate nohighlight">\(np\)</span> <strong>and</strong> <span class="math notranslate nohighlight">\(n(1 - p_0)\)</span> are <em>at least</em> <span class="math notranslate nohighlight">\(5^{\dagger}\)</span>. Note that, <span class="math notranslate nohighlight">\(n\)</span> is the sample size and <span class="math notranslate nohighlight">\(p_0\)</span> is the null value. Some consider <span class="math notranslate nohighlight">\(10^{\ddagger}\)</span> (instead of 5) as the lower bound.</p>
+<ul class="simple">
+<li><p>Ott, R.L. (1998). An Introduction to Statistical Methods and Data Analysis. (p.370) <span class="math notranslate nohighlight">\(^{\dagger}\)</span></p></li>
+<li><p>Utts, J.M, Heckard, R.F. (2010). Mind on Statistics. (p.465) <span class="math notranslate nohighlight">\(^{\ddagger}\)</span></p></li>
+</ul>
+<p><strong>2. For</strong> <span class="math notranslate nohighlight">\(\chi^2\)</span> <strong>-test</strong></p>
+<p><strong>Situation-1</strong></p>
+<p>Dito as above.</p>
+<p><strong>Situation-2</strong></p>
+<p>The guidelines for <em>large sample</em> are</p>
+<ul class="simple">
+<li><p>expected values in all the cell of the two-way contingency table should be greater than 1</p></li>
+<li><p>number of cells with expected values greater than 5 should be <strong>at least</strong> <span class="math notranslate nohighlight">\(80\%\)</span> of the total number of cells</p></li>
+</ul>
+<p>Note that, <span class="math notranslate nohighlight">\(\chi^2\)</span>-test may be performed even if the above large sample guidelines are violated but the results <em>may not</em> be valid. <span class="math notranslate nohighlight">\(^{\dagger\dagger}\)</span></p>
+<ul class="simple">
+<li><p>Utts, J.M, Heckard, R.F. (2010). Mind on Statistics. (p.588) <span class="math notranslate nohighlight">\(^{\dagger\dagger}\)</span></p></li>
+</ul>
+<p><strong>Implementation</strong></p>
+<table class="docutils align-center">
+<colgroup>
+<col style="width: 54%" />
+<col style="width: 46%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Method name</p></th>
+<th class="head"><p>Arguments</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#cerebunit.statistics.data_conditions.forHTproportions.NecessaryForHTProportions.ask_for_ztest" title="cerebunit.statistics.data_conditions.forHTproportions.NecessaryForHTProportions.ask_for_ztest"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ask_for_ztest()</span></code></a></p></td>
+<td><p>n, p0, lb (optional)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cerebunit.statistics.data_conditions.forHTproportions.NecessaryForHTProportions.ask_for_chi2test" title="cerebunit.statistics.data_conditions.forHTproportions.NecessaryForHTProportions.ask_for_chi2test"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ask_for_chi2test()</span></code></a></p></td>
+<td><p>expected valued two-way table</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="staticmethod">
+<dt id="cerebunit.statistics.data_conditions.forHTproportions.NecessaryForHTProportions.ask_for_chi2test">
+<em class="property">static </em><code class="descname">ask_for_chi2test</code><span class="sig-paren">(</span><em>expected_values</em><span class="sig-paren">)</span><a class="headerlink" href="#cerebunit.statistics.data_conditions.forHTproportions.NecessaryForHTProportions.ask_for_chi2test" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function checks if the sample size requirement for running hypothesis testing for proportions using <span class="math notranslate nohighlight">\(\chi^2\)</span>-test.</p>
+<p>The argument is the expected values table of the 2 x K two-way contingency table.</p>
+<table class="docutils align-center">
+<colgroup>
+<col style="width: 26%" />
+<col style="width: 74%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Definition</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(n\)</span></p></td>
+<td><p>total number of cells in a two-way contingency table</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(n_1\)</span></p></td>
+<td><p>number of expectation values &lt; 1</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(n_5\)</span></p></td>
+<td><p>number of expectation values &gt; 5</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(lb_{80\%}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(80\%\)</span> of the cells</p></td>
+</tr>
+</tbody>
+</table>
+<p>Algorithm that asks if the distribution of an experimental data is normal.</p>
+<div class="line-block">
+<div class="line"><strong>Given:</strong> ex; expected values table</div>
+<div class="line"><strong>Get</strong> <span class="math notranslate nohighlight">\(n \leftarrow ex.size\)</span></div>
+<div class="line"><strong>Get</strong> <span class="math notranslate nohighlight">\(n_1 \leftarrow ex[ex&lt;1].size\)</span></div>
+<div class="line"><strong>Get</strong> <span class="math notranslate nohighlight">\(n_5 \leftarrow ex[ex&gt;1].size\)</span></div>
+<div class="line"><strong>Compute</strong> <span class="math notranslate nohighlight">\(lb_{80\%} \leftarrow ex[ex&gt;1].size\)</span></div>
+<div class="line"><strong>Compute</strong> result2 <span class="math notranslate nohighlight">\(\leftarrow\)</span> 0.8 times n`</div>
+<div class="line"><strong>if</strong> <span class="math notranslate nohighlight">\(n_1 &lt; 0 \cap n_5 \geq lb_{80\%}\)</span></div>
+<div class="line-block">
+<div class="line">“sample size requirement is satisfied”</div>
+</div>
+<div class="line"><strong>else</strong></div>
+<div class="line-block">
+<div class="line">“sample size requirement is not satisfied”</div>
+</div>
+</div>
+<p><em>Note:</em></p>
+<ul class="simple">
+<li><p>boolean return (<cite>True</cite> or <cite>False</cite>)</p></li>
+<li><p><cite>True</cite> if sample size requirement is satisfied</p></li>
+<li><p><cite>False</cite> if sample size requirement is <strong>not</strong> satisfied</p></li>
+</ul>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="cerebunit.statistics.data_conditions.forHTproportions.NecessaryForHTProportions.ask_for_ztest">
+<em class="property">static </em><code class="descname">ask_for_ztest</code><span class="sig-paren">(</span><em>n</em>, <em>p0</em>, <em>lb=5</em><span class="sig-paren">)</span><a class="headerlink" href="#cerebunit.statistics.data_conditions.forHTproportions.NecessaryForHTProportions.ask_for_ztest" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function checks if the sample size requirement for running hypothesis testing for proportions using z-test.</p>
+<table class="docutils align-center">
+<colgroup>
+<col style="width: 28%" />
+<col style="width: 72%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Arguments</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>first, n</p></td>
+<td><p>sample size</p></td>
+</tr>
+<tr class="row-odd"><td><p>second, p0</p></td>
+<td><p>null value</p></td>
+</tr>
+<tr class="row-even"><td><p>third, lb</p></td>
+<td><p>lower bound (5 (default))</p></td>
+</tr>
+</tbody>
+</table>
+<p>Algorithm that asks if the distribution of an experimental data is normal.</p>
+<div class="line-block">
+<div class="line"><strong>Given:</strong> <span class="math notranslate nohighlight">\(n, p_0, lb\)</span></div>
+<div class="line"><strong>Compute</strong> result1 <span class="math notranslate nohighlight">\(\leftarrow\)</span> <span class="math notranslate nohighlight">\(np_0\)</span></div>
+<div class="line"><strong>Compute</strong> result2 <span class="math notranslate nohighlight">\(\leftarrow\)</span> <span class="math notranslate nohighlight">\(n(1-p_0)\)</span></div>
+<div class="line"><strong>if</strong> result1 <span class="math notranslate nohighlight">\(\cap\)</span> result2 <span class="math notranslate nohighlight">\(\geq lb\)</span></div>
+<div class="line-block">
+<div class="line">“sample size requirement is satisfied”</div>
+</div>
+<div class="line"><strong>else</strong></div>
+<div class="line-block">
+<div class="line">“sample size requirement is not satisfied”</div>
+</div>
+</div>
+<p><em>Note:</em></p>
+<ul class="simple">
+<li><p>boolean return (<cite>True</cite> or <cite>False</cite>)</p></li>
+<li><p><cite>True</cite> if sample size requirement is satisfied</p></li>
+<li><p><cite>False</cite> if sample size requirement is <strong>not</strong> satisfied</p></li>
+<li><p>for two sample tests pass <span class="math notranslate nohighlight">\(n_i\)</span> and <span class="math notranslate nohighlight">\(p_i\)</span> in place of <span class="math notranslate nohighlight">\(n\)</span> and <span class="math notranslate nohighlight">\(p_0\)</span> respectively for <span class="math notranslate nohighlight">\(i^{th}\)</span> sample.</p></li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="forHTmeans.html" title="Data condition for HT about means (NecessaryForHTMeans). Is t-Test valid?"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">CerebUnit 0.0.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../contents.html" >How to run a validation test</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, Lungsi.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.1.
+    </div>
+  </body>
+</html>

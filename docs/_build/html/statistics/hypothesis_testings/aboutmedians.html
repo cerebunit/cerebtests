@@ -1,0 +1,346 @@
+
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Hypothesis testing about medians (HtestAboutMedians) &#8212; CerebUnit 0.0.1 documentation</title>
+    <link rel="stylesheet" href="../../_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "ignoreClass": "document", "processEscapes": true, "processClass": "math|output_area"}})</script>
+    <script type="text/javascript" src="../../_static/bizstyle.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Hypothesis testing about proportions (HtestAboutProportions)" href="aboutproportions.html" />
+    <link rel="prev" title="Hypothesis testing about means (HtestAboutMeans)" href="aboutmeans.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="aboutproportions.html" title="Hypothesis testing about proportions (HtestAboutProportions)"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="aboutmeans.html" title="Hypothesis testing about means (HtestAboutMeans)"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">CerebUnit 0.0.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../contents.html" accesskey="U">How to run a validation test</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="aboutmeans.html"
+                        title="previous chapter">Hypothesis testing about means (<code class="docutils literal notranslate"><span class="pre">HtestAboutMeans</span></code>)</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="aboutproportions.html"
+                        title="next chapter">Hypothesis testing about proportions (<code class="docutils literal notranslate"><span class="pre">HtestAboutProportions</span></code>)</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/statistics/hypothesis_testings/aboutmedians.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-cerebunit.statistics.hypothesis_testings.aboutmedians">
+<span id="hypothesis-testing-about-medians-htestaboutmedians"></span><span id="htestaboutmedians"></span><h1>Hypothesis testing about medians (<code class="docutils literal notranslate"><span class="pre">HtestAboutMedians</span></code>)<a class="headerlink" href="#module-cerebunit.statistics.hypothesis_testings.aboutmedians" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="cerebunit.statistics.hypothesis_testings.aboutmedians.HtestAboutMedians">
+<em class="property">class </em><code class="descclassname">cerebunit.statistics.hypothesis_testings.aboutmedians.</code><code class="descname">HtestAboutMedians</code><span class="sig-paren">(</span><em>observation</em>, <em>prediction</em>, <em>test={'name': 'sign_test'</em>, <em>'side': 'not_equal'</em>, <em>'z_statistic': 0.0}</em><span class="sig-paren">)</span><a class="headerlink" href="#cerebunit.statistics.hypothesis_testings.aboutmedians.HtestAboutMedians" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Hypothesis Testing (significance testing) about medians.</strong></p>
+<p>This is a nonparameteric test that does not assume specific type of distribution and hence <strong>robust</strong> (valid over broad range of circumstances) and <strong>resistant</strong> (to influence of outliers) test.</p>
+<p><strong>1. Verify necessary data conditions.</strong></p>
+<table class="docutils align-center">
+<colgroup>
+<col style="width: 30%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Statistic</p></th>
+<th class="head"><p>Interpretation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>data</p></td>
+<td><p>experiment/observed data array <span class="math notranslate nohighlight">\(^{\dagger}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(^{\dagger}\)</span></p></li>
+</ul>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\overrightarrow{x} =\)</span> experimental data for one sample testing</p></li>
+<li><p><span class="math notranslate nohighlight">\(\overrightarrow{x} =\)</span> (experimental - prediction) data for paired data testing</p></li>
+<li><p>thus <span class="math notranslate nohighlight">\(\eta =\)</span> median of <span class="math notranslate nohighlight">\(\overrightarrow{x}\)</span></p></li>
+</ul>
+<p><strong>2. Defining null and alternate hypotheses.</strong></p>
+<table class="docutils align-center">
+<colgroup>
+<col style="width: 51%" />
+<col style="width: 49%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Statistic</p></th>
+<th class="head"><p>Interpretation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>sample statistic, <span class="math notranslate nohighlight">\(\eta\)</span></p></td>
+<td><p>experiment/observed median <span class="math notranslate nohighlight">\(^{\dagger}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>null value/population parameter, <span class="math notranslate nohighlight">\(\eta_0\)</span></p></td>
+<td><p>prediction (specified value) <span class="math notranslate nohighlight">\(^{\dagger}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>null hypothesis, <span class="math notranslate nohighlight">\(H_0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\eta = \eta_0\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>alternate hypothesis, <span class="math notranslate nohighlight">\(H_a\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\eta \neq or &lt; or &gt; \eta_0\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>Depending on whether testing is for a single sample or for paired data <span class="math notranslate nohighlight">\(^{\dagger}\)</span>,</p>
+<table class="docutils align-center">
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 36%" />
+<col style="width: 45%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Statistic</p></th>
+<th class="head"><p>single sample</p></th>
+<th class="head"><p>paired data</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\eta\)</span></p></td>
+<td><p>experiment/observed median</p></td>
+<td><p>median of (experiment - observed)</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\eta_0\)</span></p></td>
+<td><p>model prediction</p></td>
+<td><p>0</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>Two-sided hypothesis (default)</dt><dd><p><span class="math notranslate nohighlight">\(H_0\)</span>: <span class="math notranslate nohighlight">\(\eta = \eta_0\)</span> and <span class="math notranslate nohighlight">\(H_a\)</span>: <span class="math notranslate nohighlight">\(\eta \neq \eta_0\)</span></p>
+</dd>
+<dt>One-side hypothesis (left-sided)</dt><dd><p><span class="math notranslate nohighlight">\(H_0\)</span>: <span class="math notranslate nohighlight">\(\eta = \eta_0\)</span> and <span class="math notranslate nohighlight">\(H_a\)</span>: <span class="math notranslate nohighlight">\(\eta &lt; \eta_0\)</span></p>
+</dd>
+<dt>One-side hypothesis (right-sided)</dt><dd><p><span class="math notranslate nohighlight">\(H_0\)</span>: <span class="math notranslate nohighlight">\(\eta = \eta_0\)</span> and <span class="math notranslate nohighlight">\(H_a\)</span>: <span class="math notranslate nohighlight">\(\eta &gt; \eta_0\)</span></p>
+</dd>
+</dl>
+<p><strong>3. Assuming H0 is true, find p-value.</strong></p>
+<p><em>If the data is skewed, the non-parametric z-score is computed for Sign test.</em></p>
+<table class="docutils align-center">
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 69%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Statistic</p></th>
+<th class="head"><p>Interpretation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(s_{+}\)</span></p></td>
+<td><p>number of values in sample <span class="math notranslate nohighlight">\(&gt; \eta_0\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(s_{-}\)</span></p></td>
+<td><p>number of values in sample <span class="math notranslate nohighlight">\(&lt; \eta_0\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(n_U = s_{+} + s_{-}\)</span></p></td>
+<td><p>number of values in sample <span class="math notranslate nohighlight">\(\neq \eta_0\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>z_statistic, z</p></td>
+<td><p>z = <span class="math notranslate nohighlight">\(\frac{s_{+} - \frac{n_U}{2}}{\sqrt{\frac{n_U}{4}}}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p><em>If the data is not skewed, the non-parametric z-score is computed for Signed-rank test (Wilcoxon signed-rank test</em> <strong>not</strong> <em>Wilcoxon rank-sum test).</em></p>
+<table class="docutils align-center">
+<colgroup>
+<col style="width: 30%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Statistic</p></th>
+<th class="head"><p>Interpretation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\overrightarrow{x}\)</span></p></td>
+<td><p>data <span class="math notranslate nohighlight">\(^{\dagger}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(|x_i-\eta_0|\)</span></p></td>
+<td><p>absolute difference between data values and null value</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(T\)</span></p></td>
+<td><p>ranks of the computed difference (excluding difference = 0 )</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(T^+\)</span></p></td>
+<td><p>sum of ranks <span class="math notranslate nohighlight">\(\eta_0\)</span>; Wilcoxon signed-rank statistic</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(n_U\)</span></p></td>
+<td><p>number of values in data not equal to <span class="math notranslate nohighlight">\(\eta_0\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>z_statistic, z</p></td>
+<td><p>z = <span class="math notranslate nohighlight">\(\frac{T^+ - [n_U(n_U+1)/4]}{\sqrt{n_U(n_U+1)(2n_U+1)/24}}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>Using z look up table for standard normal curve which will return its corresponding p.</p>
+<p><strong>4. Report and Answer the question, based on the p-value is the result (true H0) statistically significant?</strong></p>
+<p>Answer is not provided by the class but it is up to the person viewing the reported result. The reports are obtained calling the attributes <code class="docutils literal notranslate"><span class="pre">.statistics</span></code> and <code class="docutils literal notranslate"><span class="pre">.description</span></code>. This is illustrated below.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ht</span> <span class="o">=</span> <span class="n">HtestAboutMedians</span><span class="p">(</span> <span class="n">observation</span><span class="p">,</span> <span class="n">prediction</span><span class="p">,</span> <span class="n">score</span><span class="p">,</span>
+                        <span class="n">side</span><span class="o">=</span><span class="s2">&quot;less_than&quot;</span> <span class="p">)</span> <span class="c1"># side is optional</span>
+<span class="n">score</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="n">ht</span><span class="o">.</span><span class="n">outcome</span>
+<span class="n">score</span><span class="o">.</span><span class="n">statistics</span> <span class="o">=</span> <span class="n">ht</span><span class="o">.</span><span class="n">statistics</span>
+</pre></div>
+</div>
+<p><strong>Arguments</strong></p>
+<table class="docutils align-center">
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 36%" />
+<col style="width: 49%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Argument</p></th>
+<th class="head"><p>Representation</p></th>
+<th class="head"><p>Value type</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>first</p></td>
+<td><p>experiment/observation</p></td>
+<td><blockquote>
+<div><p>dictionary that must have keys;</p>
+</div></blockquote>
+<p>“median”,”sample_size”,”raw_data”</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p>second</p></td>
+<td><p>model prediction</p></td>
+<td><p>float or <cite>Quantity array</cite></p></td>
+</tr>
+<tr class="row-even"><td><blockquote>
+<div><p>third</p>
+</div></blockquote>
+<p>(keyword)</p>
+</td>
+<td><p>about test</p></td>
+<td><blockquote>
+<div><p>dictionary with keywords:
+“name”: string (“sign_test”,</p>
+</div></blockquote>
+<dl class="simple">
+<dt>“signed_rank_test”);</dt><dd><p>“z_statistic”: float;
+“side”: string (“not_equal”,</p>
+</dd>
+<dt>“less_than”, “greater_than”);</dt><dd><p>and any additional names that is
+specific to the test</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+<p>This constructor method generated <code class="xref py py-attr docutils literal notranslate"><span class="pre">statistics</span></code> and <code class="xref py py-attr docutils literal notranslate"><span class="pre">outcome</span></code> (which is then assigned to <code class="xref py py-attr docutils literal notranslate"><span class="pre">descirption</span></code> within the validation test class where this hypothesis test class is implemented).</p>
+<dl class="staticmethod">
+<dt id="cerebunit.statistics.hypothesis_testings.aboutmedians.HtestAboutMedians.alternate_hypothesis">
+<em class="property">static </em><code class="descname">alternate_hypothesis</code><span class="sig-paren">(</span><em>side</em>, <em>symbol_null_value</em>, <em>symbol_sample_statistic</em><span class="sig-paren">)</span><a class="headerlink" href="#cerebunit.statistics.hypothesis_testings.aboutmedians.HtestAboutMedians.alternate_hypothesis" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the statement for the alternate hypothesis, Ha.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="cerebunit.statistics.hypothesis_testings.aboutmedians.HtestAboutMedians.get_below_equal_above">
+<code class="descname">get_below_equal_above</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#cerebunit.statistics.hypothesis_testings.aboutmedians.HtestAboutMedians.get_below_equal_above" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set values for the attributes <code class="docutils literal notranslate"><span class="pre">.below</span></code>, <code class="docutils literal notranslate"><span class="pre">.equal</span></code>, and <code class="docutils literal notranslate"><span class="pre">.above</span></code> the null value, <span class="math notranslate nohighlight">\(\eta_0\)</span> = <code class="docutils literal notranslate"><span class="pre">.specified_value</span></code>.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="cerebunit.statistics.hypothesis_testings.aboutmedians.HtestAboutMedians.null_hypothesis">
+<em class="property">static </em><code class="descname">null_hypothesis</code><span class="sig-paren">(</span><em>symbol_null_value</em>, <em>symbol_sample_statistic</em><span class="sig-paren">)</span><a class="headerlink" href="#cerebunit.statistics.hypothesis_testings.aboutmedians.HtestAboutMedians.null_hypothesis" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the statement for the null hypothesis, H0.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="cerebunit.statistics.hypothesis_testings.aboutmedians.HtestAboutMedians.test_outcome">
+<code class="descname">test_outcome</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cerebunit.statistics.hypothesis_testings.aboutmedians.HtestAboutMedians.test_outcome" title="Permalink to this definition">¶</a></dt>
+<dd><p>Puts together the returned values of <a class="reference internal" href="#cerebunit.statistics.hypothesis_testings.aboutmedians.HtestAboutMedians.null_hypothesis" title="cerebunit.statistics.hypothesis_testings.aboutmedians.HtestAboutMedians.null_hypothesis"><code class="xref py py-meth docutils literal notranslate"><span class="pre">null_hypothesis()</span></code></a>, <a class="reference internal" href="#cerebunit.statistics.hypothesis_testings.aboutmedians.HtestAboutMedians.alternate_hypothesis" title="cerebunit.statistics.hypothesis_testings.aboutmedians.HtestAboutMedians.alternate_hypothesis"><code class="xref py py-meth docutils literal notranslate"><span class="pre">alternate_hypothesis()</span></code></a>, and <code class="xref py py-meth docutils literal notranslate"><span class="pre">_compute_pvalue()</span></code>. Then returns the string value for <code class="docutils literal notranslate"><span class="pre">.outcome</span></code>.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="aboutproportions.html" title="Hypothesis testing about proportions (HtestAboutProportions)"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="aboutmeans.html" title="Hypothesis testing about means (HtestAboutMeans)"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">CerebUnit 0.0.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../contents.html" >How to run a validation test</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, Lungsi.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.1.
+    </div>
+  </body>
+</html>

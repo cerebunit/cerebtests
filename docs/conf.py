@@ -18,12 +18,12 @@ sys.path.append( os.path.dirname( os.getcwd() ) )
 
 # -- Project information -----------------------------------------------------
 
-project = 'CerebTests (CerebUnit)'
-copyright = '2019, Lungsi'
+project = 'CerebUnit'
+copyright = '2021, Lungsi'
 author = 'Lungsi'
 
 # The full version, including alpha/beta/rc tags
-release = '0.1.0-SNAPSHOT'
+release = '0.0.1'
 
 
 # -- General configuration ---------------------------------------------------
@@ -52,7 +52,7 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 # to avoid breaking the building process due to external dependencies not met
 autodoc_mock_imports = [
     "neuron", "sciunit", "executive", "ExecutiveControl",
-    "scipy", "numpy", "quantities"
+    "scipy", "numpy", "quantities", "cerebstats"
 ]
 
 
@@ -67,7 +67,7 @@ html_theme = 'bizstyle'
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 #html_static_path = ['_static']
-html_static_path = ["_static", "statistics/guides"]
+#html_static_path = ["_static", "statistics/guides"]
 #html_extra_path = [os.getcwd()+os.sep+"statistics"+os.sep+"guides"]
 #html_extra_path = [os.getcwd()+"/statistics/guides/statistics_definitions.html",
 #                   "statistics/guides/images/.png",

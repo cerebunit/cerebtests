@@ -1,0 +1,264 @@
+
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Compute z-statistic for Two Sample Rank-Sum test (ZScoreForTwoSampleRankSumTest) &#8212; CerebUnit 0.0.1 documentation</title>
+    <link rel="stylesheet" href="../../_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "ignoreClass": "document", "processEscapes": true, "processClass": "math|output_area"}})</script>
+    <script type="text/javascript" src="../../_static/bizstyle.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Compute z-statistic for Wilcox Signed-Rank test (ZScoreForWilcoxSignedRankTest)" href="zWilcoxSignedRankScore.html" />
+    <link rel="prev" title="Compute z-statistic for Sign test (ZScoreForSignTest)" href="zSignScore.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="zWilcoxSignedRankScore.html" title="Compute z-statistic for Wilcox Signed-Rank test (ZScoreForWilcoxSignedRankTest)"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="zSignScore.html" title="Compute z-statistic for Sign test (ZScoreForSignTest)"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">CerebUnit 0.0.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../contents.html" accesskey="U">How to run a validation test</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="zSignScore.html"
+                        title="previous chapter">Compute z-statistic for Sign test (<code class="docutils literal notranslate"><span class="pre">ZScoreForSignTest</span></code>)</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="zWilcoxSignedRankScore.html"
+                        title="next chapter">Compute z-statistic for Wilcox Signed-Rank test (<code class="docutils literal notranslate"><span class="pre">ZScoreForWilcoxSignedRankTest</span></code>)</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/statistics/stat_scores/zTwoSampleRankSumScore.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-cerebunit.statistics.stat_scores.zTwoSampleRankSumScore">
+<span id="compute-z-statistic-for-two-sample-rank-sum-test-zscorefortwosampleranksumtest"></span><span id="zscorefortwosampleranksumtest"></span><h1>Compute z-statistic for Two Sample Rank-Sum test (<code class="docutils literal notranslate"><span class="pre">ZScoreForTwoSampleRankSumTest</span></code>)<a class="headerlink" href="#module-cerebunit.statistics.stat_scores.zTwoSampleRankSumScore" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="cerebunit.statistics.stat_scores.zTwoSampleRankSumScore.ZScoreForTwoSampleRankSumTest">
+<em class="property">class </em><code class="descclassname">cerebunit.statistics.stat_scores.zTwoSampleRankSumScore.</code><code class="descname">ZScoreForTwoSampleRankSumTest</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#cerebunit.statistics.stat_scores.zTwoSampleRankSumScore.ZScoreForTwoSampleRankSumTest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute z-statistic for Two Sample Rank-Sum Test (aka, Wilcoxon rank-sum or Mann-Whitney test). Note that this is <strong>not</strong> Wilcoxon Signed Rank test.</p>
+<table class="docutils align-center">
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 82%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Definitions</p></th>
+<th class="head"><p>Interpretation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\eta_0\)</span></p></td>
+<td><p>some specified value</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(n_1\)</span></p></td>
+<td><p>sample size for sample 1</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(n_2\)</span></p></td>
+<td><p>sample size for sample 2</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(N\)</span></p></td>
+<td><p>total sample size, <span class="math notranslate nohighlight">\(n_1 + n_2\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(W\)</span></p></td>
+<td><p>sum of ranks for observations in sample 1 (post dataset ranking)</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\mu_W\)</span></p></td>
+<td><p>assuming <span class="math notranslate nohighlight">\(H_0\)</span> is true,
+<span class="math notranslate nohighlight">\(\mu_W\)</span> = <span class="math notranslate nohighlight">\(\frac{ n_1(1+N) }{ 2 }\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\sigma_W\)</span></p></td>
+<td><p>assuming <span class="math notranslate nohighlight">\(H_0\)</span> is true,
+<span class="math notranslate nohighlight">\(\sigma_W\)</span> = <span class="math notranslate nohighlight">\(\sqrt{ \frac{ n_1 n_2 (1+N) }{12} }\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>z-statistic, z</p></td>
+<td><p>z = <span class="math notranslate nohighlight">\(\frac{ W - \mu_W }{ \sigma_W }\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>NOTE:</strong></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(H_0\)</span> is true <span class="math notranslate nohighlight">\(\Rightarrow\)</span> for samples 1 and 2 their population distributions are the same</p></li>
+</ul>
+<p><strong>Use Case:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">ZScoreForTwoSampleRankSumTest</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span> <span class="n">observation</span><span class="p">,</span> <span class="n">prediction</span> <span class="p">)</span>
+<span class="n">score</span> <span class="o">=</span> <span class="n">ZScoreForTwoSampleRankSumTest</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><em>Note</em>: As part of the <a class="reference external" href="http://scidash.github.io/sciunit.html">SciUnit</a> framework this custom <a class="reference internal" href="tScore.html#cerebunit.statistics.stat_scores.tScore.TScore" title="cerebunit.statistics.stat_scores.tScore.TScore"><code class="xref py py-class docutils literal notranslate"><span class="pre">TScore</span></code></a> should have the following methods,</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#cerebunit.statistics.stat_scores.zTwoSampleRankSumScore.ZScoreForTwoSampleRankSumTest.compute" title="cerebunit.statistics.stat_scores.zTwoSampleRankSumScore.ZScoreForTwoSampleRankSumTest.compute"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compute()</span></code></a> (class method)</p></li>
+<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">sort_key()</span></code> (property)</p></li>
+<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">__str__()</span></code></p></li>
+</ul>
+<p>Additionally,</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#cerebunit.statistics.stat_scores.zTwoSampleRankSumScore.ZScoreForTwoSampleRankSumTest.get_observation_rank" title="cerebunit.statistics.stat_scores.zTwoSampleRankSumScore.ZScoreForTwoSampleRankSumTest.get_observation_rank"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_observation_rank()</span></code></a> (class method)</p></li>
+<li><p><a class="reference internal" href="#cerebunit.statistics.stat_scores.zTwoSampleRankSumScore.ZScoreForTwoSampleRankSumTest.orderdata_ranks" title="cerebunit.statistics.stat_scores.zTwoSampleRankSumScore.ZScoreForTwoSampleRankSumTest.orderdata_ranks"><code class="xref py py-meth docutils literal notranslate"><span class="pre">orderdata_ranks()</span></code></a> (static method)</p></li>
+</ul>
+<dl class="classmethod">
+<dt id="cerebunit.statistics.stat_scores.zTwoSampleRankSumScore.ZScoreForTwoSampleRankSumTest.compute">
+<em class="property">classmethod </em><code class="descname">compute</code><span class="sig-paren">(</span><em>observation</em>, <em>prediction</em><span class="sig-paren">)</span><a class="headerlink" href="#cerebunit.statistics.stat_scores.zTwoSampleRankSumScore.ZScoreForTwoSampleRankSumTest.compute" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils align-center">
+<colgroup>
+<col style="width: 37%" />
+<col style="width: 63%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Argument</p></th>
+<th class="head"><p>Value type</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>first argument</p></td>
+<td><p>dictionary; observation/experimental data</p></td>
+</tr>
+<tr class="row-odd"><td><p>second argument</p></td>
+<td><p>dictionary; simulated data</p></td>
+</tr>
+</tbody>
+</table>
+<p><em>Note:</em></p>
+<ul class="simple">
+<li><p>observation <strong>must</strong> have the key “raw_data” whose value is the list of numbers</p></li>
+<li><p>simulation, i.e, model prediction <strong>must</strong> also have the key “raw_data”</p></li>
+</ul>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="cerebunit.statistics.stat_scores.zTwoSampleRankSumScore.ZScoreForTwoSampleRankSumTest.get_observation_rank">
+<em class="property">classmethod </em><code class="descname">get_observation_rank</code><span class="sig-paren">(</span><em>observation</em>, <em>prediction</em><span class="sig-paren">)</span><a class="headerlink" href="#cerebunit.statistics.stat_scores.zTwoSampleRankSumScore.ZScoreForTwoSampleRankSumTest.get_observation_rank" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns ranks for the observation data.</p>
+<ul class="simple">
+<li><p>sample 1, observation[“raw_data”]</p></li>
+<li><p>sample 2, prediction[“raw_data”]</p></li>
+</ul>
+<p><em>Example for describing what ‘ranking’ means:</em></p>
+<p><span class="math notranslate nohighlight">\(sample1 = [65, 60, 62, 70]\)</span></p>
+<p><span class="math notranslate nohighlight">\(sample2 = [60, 55, 65, 70]\)</span></p>
+<p>Then,</p>
+<p><span class="math notranslate nohighlight">\(ordered\_data = [55, 60, 60, 62, 65, 65, 70, 70]\)</span></p>
+<p><span class="math notranslate nohighlight">\(raw\_ranks    = [ 1,  2,  3,  4,  5,  6,  7,  8]\)</span></p>
+<p>and</p>
+<p><span class="math notranslate nohighlight">\(correct\_ranks= [ 1, 2.5, 2.5, 4, 5.5, 5.5, 7.5, 7.5]\)</span></p>
+<p>Therefore, ranks for sample1 is</p>
+<p><span class="math notranslate nohighlight">\(sample1\_ranks = [5.5, 2.5, 4, 7.5]\)</span></p>
+<p><strong>NOTE:</strong></p>
+<ul class="simple">
+<li><p>corrected ranks have midranks for repeated values</p></li>
+<li><p>the returned sample1 rank is numpy array</p></li>
+</ul>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="cerebunit.statistics.stat_scores.zTwoSampleRankSumScore.ZScoreForTwoSampleRankSumTest.orderdata_ranks">
+<em class="property">static </em><code class="descname">orderdata_ranks</code><span class="sig-paren">(</span><em>observation</em>, <em>prediction</em><span class="sig-paren">)</span><a class="headerlink" href="#cerebunit.statistics.stat_scores.zTwoSampleRankSumScore.ZScoreForTwoSampleRankSumTest.orderdata_ranks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Static function that orders the data and returns its appropriate rank.</p>
+<ul class="simple">
+<li><p>sample 1, observation[“raw_data”]</p></li>
+<li><p>sample 2, prediction[“raw_data”]</p></li>
+</ul>
+<p><strong>Step-1:</strong></p>
+<ul class="simple">
+<li><p>append the two lists (i.e, the two samples)</p></li>
+<li><p>order the values in ascending manner</p></li>
+</ul>
+<p><strong>Step-2:</strong></p>
+<ul class="simple">
+<li><p>get unique values in the ordered data</p></li>
+<li><p>also get the number of frequencies for each unique value</p></li>
+</ul>
+<p><strong>Step-3:</strong></p>
+<ul class="simple">
+<li><p>construct raw ranks based on the ordered data</p></li>
+</ul>
+<p><strong>Step-4:</strong></p>
+<ul class="simple">
+<li><p>for each value in the ordered data find its index in unique values array</p></li>
+<li><p>if the corresponding count is more than one compute its midrank (sum ranks/its count)</p></li>
+<li><p>set ranks (in raw ranks) for the corresponding number of values with the computed midrank</p></li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="zWilcoxSignedRankScore.html" title="Compute z-statistic for Wilcox Signed-Rank test (ZScoreForWilcoxSignedRankTest)"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="zSignScore.html" title="Compute z-statistic for Sign test (ZScoreForSignTest)"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">CerebUnit 0.0.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../contents.html" >How to run a validation test</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, Lungsi.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.1.
+    </div>
+  </body>
+</html>

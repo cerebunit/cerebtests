@@ -1,0 +1,169 @@
+
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Compute t-statistic (TScore) &#8212; CerebUnit 0.0.1 documentation</title>
+    <link rel="stylesheet" href="../../_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "ignoreClass": "document", "processEscapes": true, "processClass": "math|output_area"}})</script>
+    <script type="text/javascript" src="../../_static/bizstyle.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Compute z-statistic (ZScoreStandard)" href="zScore.html" />
+    <link rel="prev" title="Hypothesis testing about proportions (HtestAboutProportions)" href="../hypothesis_testings/aboutproportions.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="zScore.html" title="Compute z-statistic (ZScoreStandard)"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../hypothesis_testings/aboutproportions.html" title="Hypothesis testing about proportions (HtestAboutProportions)"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">CerebUnit 0.0.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../contents.html" accesskey="U">How to run a validation test</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../hypothesis_testings/aboutproportions.html"
+                        title="previous chapter">Hypothesis testing about proportions (<code class="docutils literal notranslate"><span class="pre">HtestAboutProportions</span></code>)</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="zScore.html"
+                        title="next chapter">Compute z-statistic (<code class="docutils literal notranslate"><span class="pre">ZScoreStandard</span></code>)</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/statistics/stat_scores/tScore.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-cerebunit.statistics.stat_scores.tScore">
+<span id="compute-t-statistic-tscore"></span><span id="tscore"></span><h1>Compute t-statistic (<code class="docutils literal notranslate"><span class="pre">TScore</span></code>)<a class="headerlink" href="#module-cerebunit.statistics.stat_scores.tScore" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="cerebunit.statistics.stat_scores.tScore.TScore">
+<em class="property">class </em><code class="descclassname">cerebunit.statistics.stat_scores.tScore.</code><code class="descname">TScore</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#cerebunit.statistics.stat_scores.tScore.TScore" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute t-statistic as the standardized statistic as</p>
+<table class="docutils align-center">
+<colgroup>
+<col style="width: 44%" />
+<col style="width: 56%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Definitions</p></th>
+<th class="head"><p>Interpretation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>sample_mean, <span class="math notranslate nohighlight">\(\bar{x}\)</span></p></td>
+<td><p>observation[“mean”]</p></td>
+</tr>
+<tr class="row-odd"><td><p>null_value, <span class="math notranslate nohighlight">\(\mu_0\)</span></p></td>
+<td><p>model prediction</p></td>
+</tr>
+<tr class="row-even"><td><p>standard_error, se</p></td>
+<td><p>observation[“standard_error”]</p></td>
+</tr>
+<tr class="row-odd"><td><p>t-statistic, t</p></td>
+<td><p>t = <span class="math notranslate nohighlight">\(\frac{\bar{x} - \mu_0}{se}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>Note: se = <span class="math notranslate nohighlight">\(\frac{s}{\sqrt{n}}\)</span>, where n is the sample size and s is the standard deviation.</p>
+<p><strong>Use Case</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">TScore</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span> <span class="n">observation</span><span class="p">,</span> <span class="n">prediction</span> <span class="p">)</span>
+<span class="n">score</span> <span class="o">=</span> <span class="n">TScore</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><em>Note</em>: As part of the <a class="reference external" href="http://scidash.github.io/sciunit.html">SciUnit</a> framework this custom <a class="reference internal" href="#cerebunit.statistics.stat_scores.tScore.TScore" title="cerebunit.statistics.stat_scores.tScore.TScore"><code class="xref py py-class docutils literal notranslate"><span class="pre">TScore</span></code></a> should have the following methods,</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#cerebunit.statistics.stat_scores.tScore.TScore.compute" title="cerebunit.statistics.stat_scores.tScore.TScore.compute"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compute()</span></code></a> (class method)</p></li>
+<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">sort_key()</span></code> (property)</p></li>
+<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">__str__()</span></code></p></li>
+</ul>
+<dl class="classmethod">
+<dt id="cerebunit.statistics.stat_scores.tScore.TScore.compute">
+<em class="property">classmethod </em><code class="descname">compute</code><span class="sig-paren">(</span><em>observation</em>, <em>prediction</em><span class="sig-paren">)</span><a class="headerlink" href="#cerebunit.statistics.stat_scores.tScore.TScore.compute" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Note:</em></p>
+<ul class="simple">
+<li><p>observation (sample) is in dictionary form with keys mean and</p></li>
+<li><p>standard_error whose value has magnitude and python quantity</p></li>
+<li><p>the populations parameter is the predicted value</p></li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="zScore.html" title="Compute z-statistic (ZScoreStandard)"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../hypothesis_testings/aboutproportions.html" title="Hypothesis testing about proportions (HtestAboutProportions)"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">CerebUnit 0.0.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../contents.html" >How to run a validation test</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, Lungsi.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.1.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,247 @@
+
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Compute chi^2-statistic for chi^2 goodness-of-fit test on proportions of categories of a categorical variable (Chi2GOFScore) &#8212; CerebUnit 0.0.1 documentation</title>
+    <link rel="stylesheet" href="../../_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "ignoreClass": "document", "processEscapes": true, "processClass": "math|output_area"}})</script>
+    <script type="text/javascript" src="../../_static/bizstyle.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Data condition for HT about means (NecessaryForHTMeans). Is t-Test valid?" href="../data_conditions/forHTmeans.html" />
+    <link rel="prev" title="Compute test-statistic for McNemar-test on proportions as the categorical variable of discordant pairs (McNemarScore)" href="mcNemarScore.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../data_conditions/forHTmeans.html" title="Data condition for HT about means (NecessaryForHTMeans). Is t-Test valid?"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="mcNemarScore.html" title="Compute test-statistic for McNemar-test on proportions as the categorical variable of discordant pairs (McNemarScore)"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">CerebUnit 0.0.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../contents.html" accesskey="U">How to run a validation test</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="mcNemarScore.html"
+                        title="previous chapter">Compute test-statistic for McNemar-test on proportions as the categorical variable of discordant pairs (<code class="docutils literal notranslate"><span class="pre">McNemarScore</span></code>)</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../data_conditions/forHTmeans.html"
+                        title="next chapter">Data condition for HT about means (<code class="docutils literal notranslate"><span class="pre">NecessaryForHTMeans</span></code>). Is t-Test valid?</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/statistics/stat_scores/chi2GOFScore.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-cerebunit.statistics.stat_scores.chi2GOFScore">
+<span id="compute-chi-2-statistic-for-chi-2-goodness-of-fit-test-on-proportions-of-categories-of-a-categorical-variable-chi2gofscore"></span><span id="chi2gofscore"></span><h1>Compute chi^2-statistic for chi^2 goodness-of-fit test on proportions of categories of a categorical variable (<code class="docutils literal notranslate"><span class="pre">Chi2GOFScore</span></code>)<a class="headerlink" href="#module-cerebunit.statistics.stat_scores.chi2GOFScore" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="cerebunit.statistics.stat_scores.chi2GOFScore.Chi2GOFScore">
+<em class="property">class </em><code class="descclassname">cerebunit.statistics.stat_scores.chi2GOFScore.</code><code class="descname">Chi2GOFScore</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#cerebunit.statistics.stat_scores.chi2GOFScore.Chi2GOFScore" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute chi2-statistic for chi-squared goodness-of-fit Test of proportions.</p>
+<p>One may think of this as a <strong>one-way contingency table.</strong></p>
+<table class="docutils align-center">
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 19%" />
+<col style="width: 19%" />
+<col style="width: 22%" />
+<col style="width: 19%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head" rowspan="2"><p>sample size</p>
+<p><span class="math notranslate nohighlight">\(n\)</span></p>
+</th>
+<th class="head" colspan="4"><p><span class="math notranslate nohighlight">\(k\)</span> categories of a categorial variable of interest</p></th>
+</tr>
+<tr class="row-even"><th class="head"><p><span class="math notranslate nohighlight">\(x_1\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(x_2\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(\ldots\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(x_k\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-odd"><td><p>observations</p></td>
+<td><p><span class="math notranslate nohighlight">\(O_1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(O_2\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\ldots\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(O_k\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>probabilities</p></td>
+<td><p><span class="math notranslate nohighlight">\(p_1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(p_2\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\ldots\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(p_k\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>expected</p></td>
+<td><p><span class="math notranslate nohighlight">\(np_1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(np_2\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\ldots\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(np_k\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>Notice that for probabilities of <em>k</em> categories <span class="math notranslate nohighlight">\(\sum_{\forall i} p_i = 1\)</span>. The expected counts for each category can be derived from it (or already given) such that <span class="math notranslate nohighlight">\(\sum_{\forall i} np_i = n\)</span>.</p>
+<table class="docutils align-center">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Definitions</p></th>
+<th class="head"><p>Interpretation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(n\)</span></p></td>
+<td><p>sample size; total number of experiments done</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(k\)</span></p></td>
+<td><p>number of categorical variables</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(O_i\)</span></p></td>
+<td><p>observed count (frequency) for <span class="math notranslate nohighlight">\(i^{th}\)</span> variable</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(p_i\)</span></p></td>
+<td><p>probability for <span class="math notranslate nohighlight">\(i^{th}\)</span> category such that
+<span class="math notranslate nohighlight">\(\sum_{\forall i} p_i = 1\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(E_i\)</span></p></td>
+<td><p>expected count for  <span class="math notranslate nohighlight">\(i^{th}\)</span> category such that
+<span class="math notranslate nohighlight">\(E_i = n p_i\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>test-statistic</p></td>
+<td><p><span class="math notranslate nohighlight">\(\chi^2 = \sum_{\forall i} \frac{(O_i - E_i)^2}{E_i}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(df\)</span></p></td>
+<td><p>degrees of freedom, <span class="math notranslate nohighlight">\(df = k-1\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p><em>Note</em> the modification made when compared with a two-way <span class="math notranslate nohighlight">\(\chi^2\)</span> test is</p>
+<ul class="simple">
+<li><p>the calculation of expected counts <span class="math notranslate nohighlight">\(E_i = n p_i\)</span></p></li>
+<li><p>the degree of freedom <span class="math notranslate nohighlight">\(df = k-1\)</span></p></li>
+</ul>
+<p>This class uses <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.chisquare.html">scipy.stats.chisquare</a>.</p>
+<p><strong>Use Case:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">Chi2GOFScoreForProportionChi2GOFTest</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span> <span class="n">observation</span><span class="p">,</span> <span class="n">prediction</span> <span class="p">)</span>
+<span class="n">score</span> <span class="o">=</span> <span class="n">Chi2GOFScoreForProportionChi2GOFTest</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><em>Note</em>: As part of the <a class="reference external" href="http://scidash.github.io/sciunit.html">SciUnit</a> framework this custom <a class="reference internal" href="tScore.html#cerebunit.statistics.stat_scores.tScore.TScore" title="cerebunit.statistics.stat_scores.tScore.TScore"><code class="xref py py-class docutils literal notranslate"><span class="pre">TScore</span></code></a> should have the following methods,</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#cerebunit.statistics.stat_scores.chi2GOFScore.Chi2GOFScore.compute" title="cerebunit.statistics.stat_scores.chi2GOFScore.Chi2GOFScore.compute"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compute()</span></code></a> (class method)</p></li>
+<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">sort_key()</span></code> (property)</p></li>
+<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">__str__()</span></code></p></li>
+</ul>
+<dl class="classmethod">
+<dt id="cerebunit.statistics.stat_scores.chi2GOFScore.Chi2GOFScore.compute">
+<em class="property">classmethod </em><code class="descname">compute</code><span class="sig-paren">(</span><em>observation</em>, <em>prediction</em><span class="sig-paren">)</span><a class="headerlink" href="#cerebunit.statistics.stat_scores.chi2GOFScore.Chi2GOFScore.compute" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils align-center">
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 77%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Argument</p></th>
+<th class="head"><p>Value type</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>first argument</p></td>
+<td><p>dictionary; observation/experimental data must have keys “sample_size”
+with a number as its value and “observed_freq” whose value is an array</p></td>
+</tr>
+<tr class="row-odd"><td><p>second argument</p></td>
+<td><p>dictionary; model prediction must have either “probabilities” or
+“expected” whose value is an array (same length as “observed_freq”)</p></td>
+</tr>
+</tbody>
+</table>
+<p><em>Note:</em></p>
+<ul class="simple">
+<li><p>chi squared tests (for goodness-of-fit or contingency table) by nature are two-sided so there is not option for one-sidedness.</p></li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../data_conditions/forHTmeans.html" title="Data condition for HT about means (NecessaryForHTMeans). Is t-Test valid?"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="mcNemarScore.html" title="Compute test-statistic for McNemar-test on proportions as the categorical variable of discordant pairs (McNemarScore)"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">CerebUnit 0.0.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../contents.html" >How to run a validation test</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, Lungsi.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.1.
+    </div>
+  </body>
+</html>

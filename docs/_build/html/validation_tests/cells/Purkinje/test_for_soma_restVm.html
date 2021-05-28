@@ -1,0 +1,170 @@
+
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>SomaRestingVmTest &#8212; CerebUnit 0.0.1 documentation</title>
+    <link rel="stylesheet" href="../../../_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "ignoreClass": "document", "processEscapes": true, "processClass": "math|output_area"}})</script>
+    <script type="text/javascript" src="../../../_static/bizstyle.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">CerebUnit 0.0.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">SomaRestingVmTest</a><ul>
+<li><a class="reference internal" href="#validate-resting-membrane-voltage-from-soma-of-purkinje-cell">Validate Resting membrane voltage from soma of Purkinje cell</a></li>
+</ul>
+</li>
+</ul>
+
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../../_sources/validation_tests/cells/Purkinje/test_for_soma_restVm.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="somarestingvmtest">
+<span id="id1"></span><h1>SomaRestingVmTest<a class="headerlink" href="#somarestingvmtest" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="validate-resting-membrane-voltage-from-soma-of-purkinje-cell">
+<h2>Validate Resting membrane voltage from soma of Purkinje cell<a class="headerlink" href="#validate-resting-membrane-voltage-from-soma-of-purkinje-cell" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="../../../_images/forHTmeans1.png"><img alt="Conditions for HT about means or medians depending on perspective" src="../../../_images/forHTmeans1.png" style="width: 300px;" /></a>
+<span class="target" id="module-cerebunit.validation_tests.cells.Purkinje.test_for_soma_restVm"></span><dl class="class">
+<dt id="cerebunit.validation_tests.cells.Purkinje.test_for_soma_restVm.SomaRestingVmTest">
+<em class="property">class </em><code class="descclassname">cerebunit.validation_tests.cells.Purkinje.test_for_soma_restVm.</code><code class="descname">SomaRestingVmTest</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#cerebunit.validation_tests.cells.Purkinje.test_for_soma_restVm.SomaRestingVmTest" title="Permalink to this definition">¶</a></dt>
+<dd><p>This test compares the measured resting Vm observed in real animal (in-vitro or in-vivo, depending on the data) generated from neuron against those by the model.</p>
+<p>The test class has three levels of mechanisms.</p>
+<p><strong>Level-1</strong>  <a class="reference internal" href="#cerebunit.validation_tests.cells.Purkinje.test_for_soma_restVm.SomaRestingVmTest.validate_observation" title="cerebunit.validation_tests.cells.Purkinje.test_for_soma_restVm.SomaRestingVmTest.validate_observation"><code class="xref py py-meth docutils literal notranslate"><span class="pre">validate_observation()</span></code></a></p>
+<p>Given that the experimental/observed data has the following: <em>mean</em>, <em>SD</em> (or <em>SE</em>), <em>sample_size</em>, <em>units</em>, and <em>raw_data</em>, <a class="reference internal" href="#cerebunit.validation_tests.cells.Purkinje.test_for_soma_restVm.SomaRestingVmTest.validate_observation" title="cerebunit.validation_tests.cells.Purkinje.test_for_soma_restVm.SomaRestingVmTest.validate_observation"><code class="xref py py-meth docutils literal notranslate"><span class="pre">validate_observation()</span></code></a> checks for them. The method then checks the data condition by asking <code class="docutils literal notranslate"><span class="pre">NecessaryForHTMeans</span></code>. Depending on the data condition the appropriate <code class="docutils literal notranslate"><span class="pre">score_type</span></code> is assigned and corresponding necessary parameter; for t-Test, the parameter <code class="docutils literal notranslate"><span class="pre">observation[&quot;standard_error&quot;]</span></code> and for sign-Test, the parameter <code class="docutils literal notranslate"><span class="pre">observation[&quot;median&quot;]</span></code>.</p>
+<p><strong>Level-2</strong>  <a class="reference internal" href="#cerebunit.validation_tests.cells.Purkinje.test_for_soma_restVm.SomaRestingVmTest.generate_prediction" title="cerebunit.validation_tests.cells.Purkinje.test_for_soma_restVm.SomaRestingVmTest.generate_prediction"><code class="xref py py-meth docutils literal notranslate"><span class="pre">generate_prediction()</span></code></a></p>
+<p>The model is executed to get the model prediction. The prediction is a the resting Vm from the soma of a PurkinjeCell returned as a <code class="docutils literal notranslate"><span class="pre">quantities.Quantity</span></code> object.</p>
+<p><strong>Level-3</strong>  <a class="reference internal" href="#cerebunit.validation_tests.cells.Purkinje.test_for_soma_restVm.SomaRestingVmTest.compute_score" title="cerebunit.validation_tests.cells.Purkinje.test_for_soma_restVm.SomaRestingVmTest.compute_score"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_score()</span></code></a></p>
+<p>The prediction made by the model is then used as the <em>null value</em> for the compatible <code class="docutils literal notranslate"><span class="pre">score_type</span></code> based on the data condition (<em>normality</em> and <em>skewness</em>) determined by <a class="reference internal" href="#cerebunit.validation_tests.cells.Purkinje.test_for_soma_restVm.SomaRestingVmTest.validate_observation" title="cerebunit.validation_tests.cells.Purkinje.test_for_soma_restVm.SomaRestingVmTest.validate_observation"><code class="xref py py-meth docutils literal notranslate"><span class="pre">validate_observation()</span></code></a>. The level ends by returning the compatible test-statistic (t or z-statistic) as a <code class="docutils literal notranslate"><span class="pre">score</span></code>.</p>
+<p><strong>How to use:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cerebunit.validation_tests.cells.Purkinje</span> <span class="k">import</span> <span class="n">SomaRestingVmTest</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s2">&quot;/home/main-dev/cerebdata/expdata/cells/PurkinjeCell/Llinas_Sugimori_1980_soma_restVm.json&quot;</span><span class="p">))</span>
+<span class="n">test</span> <span class="o">=</span> <span class="n">SomaRestingVmTest</span><span class="p">(</span> <span class="n">data</span> <span class="p">)</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="n">judge</span><span class="p">(</span><span class="n">chosenmodel</span><span class="p">,</span> <span class="n">deep_error</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Then to get the test score <code class="docutils literal notranslate"><span class="pre">s.score</span></code> and test report call <code class="docutils literal notranslate"><span class="pre">print(s.description)</span></code>. If one is interested in getting the computed statistics call <code class="docutils literal notranslate"><span class="pre">s.statistics</span></code>.</p>
+<p><strong>Further notes on the test.</strong></p>
+<ul>
+<li><p>The experimental observation data (as <em>json</em> file) must have the element <em>protocol_parameters</em>, which in turn has the nests the elements <em>temperature</em> and <em>initial_resting_Vm</em>.</p></li>
+<li><p>One should consider whether the model is compared against <em>in vitro</em> or <em>in vivo</em> experimental data (in addition to the species under study). For example,</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Consider the Llinas and Sugimori (1980, 10.1113/jphysiol.1980.sp013357) experimental data (<em>Llinas_Sugimori_1980_soma_restVm.json</em>)</p></li>
+<li><p>The reported experimental data only includes those with initial resting levels for <span class="math notranslate nohighlight">\(\geq -50 mV\)</span> discarding those for <span class="math notranslate nohighlight">\(&lt; -50 mV\)</span>.</p></li>
+<li><p>The observed resting potential are claimed by the authors to be more negative than those observed in vivo.</p></li>
+<li><p>The authors infer that this could be due to in vitro which is done on slices. The slicing removes background synaptic input generated by parallel fibre synapses.</p></li>
+<li><p>For more details see Llinas_Sugimori_1980_soma_restVm.json</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<dl class="method">
+<dt id="cerebunit.validation_tests.cells.Purkinje.test_for_soma_restVm.SomaRestingVmTest.compute_score">
+<code class="descname">compute_score</code><span class="sig-paren">(</span><em>observation</em>, <em>prediction</em>, <em>verbose=False</em><span class="sig-paren">)</span><a class="headerlink" href="#cerebunit.validation_tests.cells.Purkinje.test_for_soma_restVm.SomaRestingVmTest.compute_score" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function like generate_pediction is called automatically by sciunit
+which RestingVmTest is a child of. This function must be named compute_score
+The prediction processed from “vm_soma” is compared against
+the experimental_data to get the binary score; 0 if the
+prediction correspond with experiment, else 1.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="cerebunit.validation_tests.cells.Purkinje.test_for_soma_restVm.SomaRestingVmTest.generate_prediction">
+<code class="descname">generate_prediction</code><span class="sig-paren">(</span><em>model</em>, <em>verbose=False</em><span class="sig-paren">)</span><a class="headerlink" href="#cerebunit.validation_tests.cells.Purkinje.test_for_soma_restVm.SomaRestingVmTest.generate_prediction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates resting Vm from soma.
+The function is automatically called by sciunit.Test which this test is a child of.
+Therefore as part of sciunit generate_prediction is mandatory.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="cerebunit.validation_tests.cells.Purkinje.test_for_soma_restVm.SomaRestingVmTest.validate_observation">
+<code class="descname">validate_observation</code><span class="sig-paren">(</span><em>observation</em>, <em>first_try=True</em><span class="sig-paren">)</span><a class="headerlink" href="#cerebunit.validation_tests.cells.Purkinje.test_for_soma_restVm.SomaRestingVmTest.validate_observation" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function is called automatically by sciunit and
+clones it into self.observation
+This checks if the experimental_data is of some desired
+form or magnitude.
+Not exactly this function but a version of this is already
+performed by the ValidationTestLibrary.get_validation_test</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">CerebUnit 0.0.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, Lungsi.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.1.
+    </div>
+  </body>
+</html>

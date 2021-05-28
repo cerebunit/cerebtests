@@ -1,0 +1,398 @@
+
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Hypothesis testing about proportions (HtestAboutProportions) &#8212; CerebUnit 0.0.1 documentation</title>
+    <link rel="stylesheet" href="../../_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "ignoreClass": "document", "processEscapes": true, "processClass": "math|output_area"}})</script>
+    <script type="text/javascript" src="../../_static/bizstyle.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Compute t-statistic (TScore)" href="../stat_scores/tScore.html" />
+    <link rel="prev" title="Hypothesis testing about medians (HtestAboutMedians)" href="aboutmedians.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../stat_scores/tScore.html" title="Compute t-statistic (TScore)"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="aboutmedians.html" title="Hypothesis testing about medians (HtestAboutMedians)"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">CerebUnit 0.0.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../contents.html" accesskey="U">How to run a validation test</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="aboutmedians.html"
+                        title="previous chapter">Hypothesis testing about medians (<code class="docutils literal notranslate"><span class="pre">HtestAboutMedians</span></code>)</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../stat_scores/tScore.html"
+                        title="next chapter">Compute t-statistic (<code class="docutils literal notranslate"><span class="pre">TScore</span></code>)</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/statistics/hypothesis_testings/aboutproportions.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-cerebunit.statistics.hypothesis_testings.aboutproportions">
+<span id="hypothesis-testing-about-proportions-htestaboutproportions"></span><span id="htestaboutproportions"></span><h1>Hypothesis testing about proportions (<code class="docutils literal notranslate"><span class="pre">HtestAboutProportions</span></code>)<a class="headerlink" href="#module-cerebunit.statistics.hypothesis_testings.aboutproportions" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="cerebunit.statistics.hypothesis_testings.aboutproportions.HtestAboutProportions">
+<em class="property">class </em><code class="descclassname">cerebunit.statistics.hypothesis_testings.aboutproportions.</code><code class="descname">HtestAboutProportions</code><span class="sig-paren">(</span><em>observation</em>, <em>prediction</em>, <em>test={'name': 'proportions_z_test_1pop'</em>, <em>'sample_statistic': 0.0</em>, <em>'side': 'not_equal'</em>, <em>'z_statistic': 0.0}</em><span class="sig-paren">)</span><a class="headerlink" href="#cerebunit.statistics.hypothesis_testings.aboutproportions.HtestAboutProportions" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Hypothesis Testing (significance testing) about proportions.</strong></p>
+<p>This is a parameteric test that assumes that individuals in the sample are chosen randomly and experiments equivalent to binomial experiments.</p>
+<p><strong>1. Verify necessary data conditions.</strong></p>
+<p>The verification is made based on the sample size requirement (the other condition being random sample or binomial experiment with independent trials; this is assumed).</p>
+<table class="docutils align-center">
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 36%" />
+<col style="width: 37%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Statistic name</p></th>
+<th class="head"><p>Single sample test</p></th>
+<th class="head"><p>Double sample test</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>sample size</p></td>
+<td><p><span class="math notranslate nohighlight">\(n\)</span> (observation)</p></td>
+<td><p><span class="math notranslate nohighlight">\(n_1\)</span> (observation)
+<span class="math notranslate nohighlight">\(n_2\)</span> (prediction)</p></td>
+</tr>
+<tr class="row-odd"><td><p>null value</p></td>
+<td><p><span class="math notranslate nohighlight">\(p_0\)</span> (prediction)</p></td>
+<td><p><span class="math notranslate nohighlight">\(p_0 = 0\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>proportions with</p></td>
+<td></td>
+<td><p><span class="math notranslate nohighlight">\(p_1\)</span> (observation)</p></td>
+</tr>
+<tr class="row-odd"><td><p>trait (succeses)</p></td>
+<td></td>
+<td><p><span class="math notranslate nohighlight">\(p_2\)</span> (prediction)</p></td>
+</tr>
+</tbody>
+</table>
+<p>Such that,</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(np_0 \geq lb \cap n(1-p_0) \geq lb\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(n_1p_1 \geq lb \cap n_1(1-p_1) \geq lb\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(n_2p_2 \geq lb \cap n_2(1-p_2) \geq lb\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(lb = 5\)</span> (default) alternative value is <span class="math notranslate nohighlight">\(lb = 10\)</span></p></li>
+</ul>
+<p><strong>2. Defining null and alternate hypotheses.</strong></p>
+<p><strong>For single sample test</strong></p>
+<table class="docutils align-center">
+<colgroup>
+<col style="width: 42%" />
+<col style="width: 58%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Statistic</p></th>
+<th class="head"><p>Interpretation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>sample statistic, <span class="math notranslate nohighlight">\(\hat{p}\)</span></p></td>
+<td><p>proportion of observation with the characteristic trait (successes)</p></td>
+</tr>
+<tr class="row-odd"><td><p>null value/population parameter, <span class="math notranslate nohighlight">\(p_0\)</span></p></td>
+<td><p>proportion of prediction taken as the specified value</p></td>
+</tr>
+<tr class="row-even"><td><p>null hypothesis, <span class="math notranslate nohighlight">\(H_0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\hat{p} = p_0\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>alternate hypothesis, <span class="math notranslate nohighlight">\(H_a\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\hat{p} \neq or &lt; or &gt; p_0\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p><em>For two sample test</em></p>
+<table class="docutils align-center">
+<colgroup>
+<col style="width: 46%" />
+<col style="width: 54%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Statistic</p></th>
+<th class="head"><p>Interpretation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>sample statistic, <span class="math notranslate nohighlight">\(\hat{p}_1-\hat{p}_2\)</span></p></td>
+<td><dl class="simple">
+<dt>difference between the proportions (observation,1, and</dt><dd><p>prediction, 2) with the characteristic trait (successes)</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-odd"><td><p>null value/population parameter, <span class="math notranslate nohighlight">\(p_0\)</span></p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>null hypothesis, <span class="math notranslate nohighlight">\(H_0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\hat{p}_1-\hat{p}_2 = 0\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>alternate hypothesis, <span class="math notranslate nohighlight">\(H_a\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\hat{p}_1-\hat{p}_2 \neq or &lt; or &gt; 0\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>3. Assuming H0 is true, find p-value.</strong></p>
+<p><em>For single sample test</em></p>
+<table class="docutils align-center">
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 69%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Statistic</p></th>
+<th class="head"><p>Interpretation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(n\)</span></p></td>
+<td><p>number of observations</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(x\)</span></p></td>
+<td><p>number of observations with characteristic trait (successes)</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\hat{p}\)</span></p></td>
+<td><p>sample statistic, <span class="math notranslate nohighlight">\(\hat{p} = \frac{x}{n}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(se_{\hat{p}}\)</span></p></td>
+<td><dl class="simple">
+<dt>standard error that <span class="math notranslate nohighlight">\(H_0\)</span> is true,</dt><dd><p><span class="math notranslate nohighlight">\(se_{\hat{p}} = \frac{ p_0(1-p_0) }{ n }\)</span></p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-even"><td><p>z_statistic, z</p></td>
+<td><p>z = <span class="math notranslate nohighlight">\(\frac{ \hat{p}-p_0 }{ se_{\hat{p}} }\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p><em>For two sample test</em></p>
+<table class="docutils align-center">
+<colgroup>
+<col style="width: 24%" />
+<col style="width: 76%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Statistic</p></th>
+<th class="head"><p>Interpretation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(n_1\)</span></p></td>
+<td><p>number of observations</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(n_2\)</span></p></td>
+<td><p>number of predictions</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(x_1\)</span></p></td>
+<td><p>number of observations with characteristic trait (successes)</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(x_2\)</span></p></td>
+<td><p>number of predictions with characteristic trait (successes)</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\hat{p}_1\)</span></p></td>
+<td><dl class="simple">
+<dt>proportion of observation with successes,</dt><dd><p><span class="math notranslate nohighlight">\(\hat{p}_1 = \frac{x_1}{n_1}\)</span></p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\hat{p}_2\)</span></p></td>
+<td><dl class="simple">
+<dt>proportion of predictions with successes,</dt><dd><p><span class="math notranslate nohighlight">\(\hat{p}_2 = \frac{x_2}{n_2}\)</span></p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\hat{p}\)</span></p></td>
+<td><dl class="simple">
+<dt>combined proportion assuming that <span class="math notranslate nohighlight">\(H_0: p_1 = p_2 = p\)</span> is true</dt><dd><p><span class="math notranslate nohighlight">\(\hat{p} = \frac{x_1+x_2}{n_1+n_2}\)</span></p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\hat{p}_1-\hat{p}_2\)</span></p></td>
+<td><p>sample statistic,</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(se_{\hat{p}_1-\hat{p}_2}\)</span></p></td>
+<td><dl class="simple">
+<dt>standard error that <span class="math notranslate nohighlight">\(H_0\)</span> is true,</dt><dd><p><span class="math notranslate nohighlight">\(se_{\hat{p}_1-\hat{p}_2}=\sqrt{\frac{\hat{p}(1-\hat{p})}{n_1}+\frac{\hat{p}(1-\hat{p})}{n_2} }\)</span></p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-odd"><td><p>z_statistic, z</p></td>
+<td><p>z = <span class="math notranslate nohighlight">\(\frac{\hat{p}_1-\hat{p}_2 - p_0}{se_{\hat{p}_1-\hat{p}_2}}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p><em>Note:</em></p>
+<ul class="simple">
+<li><p>Using z look up table for standard normal curve which will return its corresponding p.</p></li>
+<li><p>The p-value derived from z-statistic is approximate.</p></li>
+<li><p>For single sample test, exact p-value can be calculated from binomial distribution.</p></li>
+<li><p>The notation <span class="math notranslate nohighlight">\(\hat{p}\)</span> in single sample test represents sample statistic but not sample statistic for two sample test.</p></li>
+</ul>
+<p><strong>4. Report and Answer the question, based on the p-value is the result (true H0) statistically significant?</strong></p>
+<p>Answer is not provided by the class but it is up to the person viewing the reported result. The reports are obtained calling the attributes <code class="docutils literal notranslate"><span class="pre">.statistics</span></code> and <code class="docutils literal notranslate"><span class="pre">.description</span></code>. This is illustrated below.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ht</span> <span class="o">=</span> <span class="n">HtestAboutProportions</span><span class="p">(</span> <span class="n">observation</span><span class="p">,</span> <span class="n">prediction</span><span class="p">,</span> <span class="n">test_result</span><span class="p">,</span>
+                            <span class="n">side</span><span class="o">=</span><span class="s2">&quot;less_than&quot;</span> <span class="p">)</span>
+<span class="n">score</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="n">ht</span><span class="o">.</span><span class="n">outcome</span>
+<span class="n">score</span><span class="o">.</span><span class="n">statistics</span> <span class="o">=</span> <span class="n">ht</span><span class="o">.</span><span class="n">statistics</span>
+</pre></div>
+</div>
+<p><strong>Arguments</strong></p>
+<table class="docutils align-center">
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 28%" />
+<col style="width: 61%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Argument</p></th>
+<th class="head"><p>Representation</p></th>
+<th class="head"><p>Value type</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>first</p></td>
+<td><p>experiment/observation</p></td>
+<td><blockquote>
+<div><p>dictionary that must have keys;</p>
+</div></blockquote>
+<p><strong>“sample_size”</strong>, <strong>“success_numbers”</strong>,</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p>second</p></td>
+<td><p>model prediction</p></td>
+<td><blockquote>
+<div><p>float or dictionary; the later for two sample cases</p>
+</div></blockquote>
+<p>with keys: <strong>“sample_size”</strong>, <strong>“success_numbers”</strong></p>
+</td>
+</tr>
+<tr class="row-even"><td><blockquote>
+<div><p>third</p>
+</div></blockquote>
+<p>(keyword)</p>
+</td>
+<td><p>test result</p></td>
+<td><blockquote>
+<div><p>dictionary with keywords:</p>
+</div></blockquote>
+<p><strong>“name”</strong>: string, “proportions_z_test_1pop” or
+“proportions_z_test_2pop”
+<strong>“sample_statistic”</strong>: float;
+<strong>“z_statistic”</strong>: float;
+<strong>“side”</strong>: string, “not_equal”, “less_than” or
+“greater_than”;
+and any additional names that is specific to the test</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>This constructor method generated <code class="xref py py-attr docutils literal notranslate"><span class="pre">statistics</span></code> and <code class="xref py py-attr docutils literal notranslate"><span class="pre">outcome</span></code> (which is then assigned to <code class="xref py py-attr docutils literal notranslate"><span class="pre">descirption</span></code> within the validation test class where this hypothesis test class is implemented).</p>
+<dl class="staticmethod">
+<dt id="cerebunit.statistics.hypothesis_testings.aboutproportions.HtestAboutProportions.alternate_hypothesis">
+<em class="property">static </em><code class="descname">alternate_hypothesis</code><span class="sig-paren">(</span><em>side</em>, <em>symbol_null_value</em>, <em>symbol_sample_statistic</em><span class="sig-paren">)</span><a class="headerlink" href="#cerebunit.statistics.hypothesis_testings.aboutproportions.HtestAboutProportions.alternate_hypothesis" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the statement for the alternate hypothesis, Ha.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="cerebunit.statistics.hypothesis_testings.aboutproportions.HtestAboutProportions.null_hypothesis">
+<em class="property">static </em><code class="descname">null_hypothesis</code><span class="sig-paren">(</span><em>symbol_null_value</em>, <em>symbol_sample_statistic</em><span class="sig-paren">)</span><a class="headerlink" href="#cerebunit.statistics.hypothesis_testings.aboutproportions.HtestAboutProportions.null_hypothesis" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the statement for the null hypothesis, H0.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="cerebunit.statistics.hypothesis_testings.aboutproportions.HtestAboutProportions.test_outcome">
+<code class="descname">test_outcome</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cerebunit.statistics.hypothesis_testings.aboutproportions.HtestAboutProportions.test_outcome" title="Permalink to this definition">¶</a></dt>
+<dd><p>Puts together the returned values of <a class="reference internal" href="#cerebunit.statistics.hypothesis_testings.aboutproportions.HtestAboutProportions.null_hypothesis" title="cerebunit.statistics.hypothesis_testings.aboutproportions.HtestAboutProportions.null_hypothesis"><code class="xref py py-meth docutils literal notranslate"><span class="pre">null_hypothesis()</span></code></a>, <a class="reference internal" href="#cerebunit.statistics.hypothesis_testings.aboutproportions.HtestAboutProportions.alternate_hypothesis" title="cerebunit.statistics.hypothesis_testings.aboutproportions.HtestAboutProportions.alternate_hypothesis"><code class="xref py py-meth docutils literal notranslate"><span class="pre">alternate_hypothesis()</span></code></a>, and <code class="xref py py-meth docutils literal notranslate"><span class="pre">_compute_pvalue()</span></code>. Then returns the string value for <code class="docutils literal notranslate"><span class="pre">.outcome</span></code>.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../stat_scores/tScore.html" title="Compute t-statistic (TScore)"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="aboutmedians.html" title="Hypothesis testing about medians (HtestAboutMedians)"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">CerebUnit 0.0.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../contents.html" >How to run a validation test</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, Lungsi.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.1.
+    </div>
+  </body>
+</html>

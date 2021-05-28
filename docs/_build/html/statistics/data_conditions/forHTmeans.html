@@ -1,0 +1,244 @@
+
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Data condition for HT about means (NecessaryForHTMeans). Is t-Test valid? &#8212; CerebUnit 0.0.1 documentation</title>
+    <link rel="stylesheet" href="../../_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "ignoreClass": "document", "processEscapes": true, "processClass": "math|output_area"}})</script>
+    <script type="text/javascript" src="../../_static/bizstyle.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Data condition for HT about proportions (NecessaryForHTProportions). Is z-Test or \(\\chi^2\)-testvalid?" href="forHTproportions.html" />
+    <link rel="prev" title="Compute chi^2-statistic for chi^2 goodness-of-fit test on proportions of categories of a categorical variable (Chi2GOFScore)" href="../stat_scores/chi2GOFScore.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="forHTproportions.html" title="Data condition for HT about proportions (NecessaryForHTProportions). Is z-Test or \(\\chi^2\)-testvalid?"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../stat_scores/chi2GOFScore.html" title="Compute chi^2-statistic for chi^2 goodness-of-fit test on proportions of categories of a categorical variable (Chi2GOFScore)"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">CerebUnit 0.0.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../contents.html" accesskey="U">How to run a validation test</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Data condition for HT about means (<code class="docutils literal notranslate"><span class="pre">NecessaryForHTMeans</span></code>). Is t-Test valid?</a><ul>
+<li><a class="reference internal" href="#below-shows-a-rough-road-map">Below shows a rough road-map</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../stat_scores/chi2GOFScore.html"
+                        title="previous chapter">Compute chi^2-statistic for chi^2 goodness-of-fit test on proportions of categories of a categorical variable (<code class="docutils literal notranslate"><span class="pre">Chi2GOFScore</span></code>)</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="forHTproportions.html"
+                        title="next chapter">Data condition for HT about proportions (<code class="docutils literal notranslate"><span class="pre">NecessaryForHTProportions</span></code>). Is z-Test or <span class="math notranslate nohighlight">\(\\chi^2\)</span>-testvalid?</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/statistics/data_conditions/forHTmeans.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-cerebunit.statistics.data_conditions.forHTmeans">
+<span id="data-condition-for-ht-about-means-necessaryforhtmeans-is-t-test-valid"></span><span id="necessaryforhtmeans"></span><h1>Data condition for HT about means (<code class="docutils literal notranslate"><span class="pre">NecessaryForHTMeans</span></code>). Is t-Test valid?<a class="headerlink" href="#module-cerebunit.statistics.data_conditions.forHTmeans" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="cerebunit.statistics.data_conditions.forHTmeans.NecessaryForHTMeans">
+<em class="property">class </em><code class="descclassname">cerebunit.statistics.data_conditions.forHTmeans.</code><code class="descname">NecessaryForHTMeans</code><a class="headerlink" href="#cerebunit.statistics.data_conditions.forHTmeans.NecessaryForHTMeans" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Checks for situations for which Hypothesis Testing About Means is valid, i.e, is t-Test (or standard z-score) valid?</strong></p>
+<p><strong>Situation-1</strong></p>
+<p>For large sample sizes and randomly collected individuals one may assume that the population of the measurements (of interest) is normal. Thus condition for hypothesis testing about means is valid.</p>
+<p><strong>Situation-2</strong></p>
+<p>Hypothesis testing about means is also valid when there is not evidence of extreme outliers or skewed population shape. This is usually the case for population of the measurements that are approximately normal.</p>
+<p><strong>Implementation</strong></p>
+<table class="docutils align-center">
+<colgroup>
+<col style="width: 54%" />
+<col style="width: 46%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Method name</p></th>
+<th class="head"><p>Arguments</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#cerebunit.statistics.data_conditions.forHTmeans.NecessaryForHTMeans.ask" title="cerebunit.statistics.data_conditions.forHTmeans.NecessaryForHTMeans.ask"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ask()</span></code></a></p></td>
+<td><p>experimental_data</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cerebunit.statistics.data_conditions.forHTmeans.NecessaryForHTMeans.check_normal_population" title="cerebunit.statistics.data_conditions.forHTmeans.NecessaryForHTMeans.check_normal_population"><code class="xref py py-meth docutils literal notranslate"><span class="pre">check_normal_population()</span></code></a></p></td>
+<td><p>experimental_data</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cerebunit.statistics.data_conditions.forHTmeans.NecessaryForHTMeans.check_skew_population" title="cerebunit.statistics.data_conditions.forHTmeans.NecessaryForHTMeans.check_skew_population"><code class="xref py py-meth docutils literal notranslate"><span class="pre">check_skew_population()</span></code></a></p></td>
+<td><p>experimental_data</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="classmethod">
+<dt id="cerebunit.statistics.data_conditions.forHTmeans.NecessaryForHTMeans.ask">
+<em class="property">classmethod </em><code class="descname">ask</code><span class="sig-paren">(</span><em>question</em>, <em>experimental_data</em><span class="sig-paren">)</span><a class="headerlink" href="#cerebunit.statistics.data_conditions.forHTmeans.NecessaryForHTMeans.ask" title="Permalink to this definition">¶</a></dt>
+<dd><p>Depending on the question asked (<cite>normal?</cite> or <cite>skew?</cite>) this function checks if the distribution of the raw data is normal or skewed.</p>
+<blockquote>
+<div><p>Algorithm that asks if the distribution of an experimental data is normal.</p>
+</div></blockquote>
+<p><cite>question = normal?</cite></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>Given:</strong> experimental_data</div>
+<div class="line"><strong>get</strong> sample_size <span class="math notranslate nohighlight">\(\leftarrow\)</span> number of experimental data elements</div>
+<div class="line"><em>invoke</em> <a class="reference internal" href="#cerebunit.statistics.data_conditions.forHTmeans.NecessaryForHTMeans.check_normal_population" title="cerebunit.statistics.data_conditions.forHTmeans.NecessaryForHTMeans.check_normal_population"><code class="xref py py-meth docutils literal notranslate"><span class="pre">check_normal_population()</span></code></a></div>
+</div>
+</div></blockquote>
+<p>Algorithm that asks if the distribution is skewed (a data may not be bell-shaped but symmetric).</p>
+<p><cite>question = skew?</cite></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>Given:</strong> experimental_data</div>
+<div class="line"><em>invoke</em> <a class="reference internal" href="#cerebunit.statistics.data_conditions.forHTmeans.NecessaryForHTMeans.check_skew_population" title="cerebunit.statistics.data_conditions.forHTmeans.NecessaryForHTMeans.check_skew_population"><code class="xref py py-meth docutils literal notranslate"><span class="pre">check_skew_population()</span></code></a></div>
+</div>
+<p><em>Note:</em></p>
+<ul class="simple">
+<li><p>boolean return (<cite>True</cite> or <cite>False</cite>)</p></li>
+<li><p><cite>True</cite> if it is normal</p></li>
+<li><p><cite>True</cite> if it is skewed</p></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="cerebunit.statistics.data_conditions.forHTmeans.NecessaryForHTMeans.check_normal_population">
+<em class="property">static </em><code class="descname">check_normal_population</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#cerebunit.statistics.data_conditions.forHTmeans.NecessaryForHTMeans.check_normal_population" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tests if sample is from a normal distribution.</p>
+<p>Algorithm to check if population is normal</p>
+<div class="line-block">
+<div class="line"><strong>Given:</strong> data                                     </div>
+<div class="line"><strong>Parameter:</strong> <span class="math notranslate nohighlight">\(\alpha = 0.001\)</span>              </div>
+<div class="line"><strong>Compute:</strong> p <span class="math notranslate nohighlight">\(\leftarrow\)</span> normaltest(data) </div>
+<div class="line"><strong>if</strong> p &lt; <span class="math notranslate nohighlight">\(\alpha\)</span>                          </div>
+<div class="line-block">
+<div class="line">“data is normal”                             </div>
+</div>
+<div class="line"><strong>else</strong>                                            </div>
+<div class="line-block">
+<div class="line">“data is not normal”                         </div>
+</div>
+</div>
+<p><em>Note:</em></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\alpha\)</span> is an arbitrarily small value, here taken as equal to 0.001</p></li>
+<li><p><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.normaltest.html">scipy.stats.normaltest</a> is based on <a class="reference external" href="https://doi.org/10.1093/biomet/58.2.341">D’Agostino</a> &amp; <a class="reference external" href="https://doi.org/10.1093/biomet/60.3.613">Pearson’s</a> omnibus test of normality.</p></li>
+<li><p>“data is normal” =&gt; <cite>True</cite> and “data is not normal” =&gt; <cite>False</cite></p></li>
+</ul>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="cerebunit.statistics.data_conditions.forHTmeans.NecessaryForHTMeans.check_skew_population">
+<em class="property">static </em><code class="descname">check_skew_population</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#cerebunit.statistics.data_conditions.forHTmeans.NecessaryForHTMeans.check_skew_population" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tests if the data is symmetric (not skewed).</p>
+<p>Algorithm to check if population is not skewed</p>
+<div class="line-block">
+<div class="line"><strong>Given:</strong> data                                     </div>
+<div class="line"><strong>Parameter:</strong> <span class="math notranslate nohighlight">\(\beta = 0.001\)</span>              </div>
+<div class="line"><strong>Compute:</strong> s <span class="math notranslate nohighlight">\(\leftarrow\)</span> skew(data) </div>
+<div class="line"><strong>if</strong> s &gt; <span class="math notranslate nohighlight">\(\beta\)</span>                          </div>
+<div class="line-block">
+<div class="line">“data is skewed”                             </div>
+</div>
+<div class="line"><strong>else</strong>                                            </div>
+<div class="line-block">
+<div class="line">“data is not skewed”                         </div>
+</div>
+</div>
+<p><em>Note:</em></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\beta\)</span> is an arbitrarily small value, here taken as equal to 0.001</p></li>
+<li><p><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.skew.html">scipy.stats.skew</a> is based on <em>Zwillinger, D. and Kokoska, S. (2000). CRC Standard Probability and Statistics Tables and Formulae. Chapman &amp; Hall: New York. 2000. Section 2.2.24.1.</em> <a class="reference external" href="https://www.crcpress.com/CRC-Standard-Probability-and-Statistics-Tables-and-Formulae-Student-Edition/Kokoska-Zwillinger/p/book/9780849300264">ISBN: ISBN 9780849300264</a> that uses <a class="reference external" href="https://en.wikipedia.org/wiki/Skewness">Fisher-Pearson coefficient of skewness</a>.</p></li>
+<li><p>by default <cite>scipy.stats.skew</cite> is computed for <cite>bias = True</cite>. Fisher-Pearson standardized moment coefficient is the computed value for the corrected bias, i.e, <cite>bias = False</cite>.</p></li>
+<li><p>“data is skewed” =&gt; <cite>True</cite> and “data is not skewed” =&gt; <cite>False</cite></p></li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+<div class="section" id="below-shows-a-rough-road-map">
+<h2>Below shows a rough road-map<a class="headerlink" href="#below-shows-a-rough-road-map" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="../../_images/forHTmeans.png"><img alt="Conditions for HT about means" src="../../_images/forHTmeans.png" style="width: 400px;" /></a>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="forHTproportions.html" title="Data condition for HT about proportions (NecessaryForHTProportions). Is z-Test or \(\\chi^2\)-testvalid?"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../stat_scores/chi2GOFScore.html" title="Compute chi^2-statistic for chi^2 goodness-of-fit test on proportions of categories of a categorical variable (Chi2GOFScore)"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">CerebUnit 0.0.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../contents.html" >How to run a validation test</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, Lungsi.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.1.
+    </div>
+  </body>
+</html>

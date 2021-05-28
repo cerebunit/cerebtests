@@ -1,0 +1,198 @@
+
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>How to run a validation test &#8212; CerebUnit 0.0.1 documentation</title>
+    <link rel="stylesheet" href="_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "ignoreClass": "document", "processEscapes": true, "processClass": "math|output_area"}})</script>
+    <script type="text/javascript" src="_static/bizstyle.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="1. Load executive control" href="notebooks/run_a_validation.html" />
+    <link rel="prev" title="Welcome to CerebTests (CerebUnit)’s documentation!" href="index.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="notebooks/run_a_validation.html" title="1. Load executive control"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to CerebTests (CerebUnit)’s documentation!"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">CerebUnit 0.0.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">How to run a validation test</a></li>
+<li><a class="reference internal" href="#available-tests">Available tests</a></li>
+<li><a class="reference internal" href="#available-capabilities">Available Capabilities</a></li>
+<li><a class="reference internal" href="#statistics">Statistics</a><ul>
+<li><a class="reference internal" href="#id1">Statistical terminologies used in CerebUnit</a></li>
+<li><a class="reference internal" href="#hypothesis-testing">Hypothesis Testing</a></li>
+<li><a class="reference internal" href="#test-statistics-test-score">Test Statistics (Test Score)</a></li>
+<li><a class="reference internal" href="#checks-for-data-conditions-to-determine-appropriate-testing">Checks for Data Conditions (to determine appropriate testing)</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Welcome to CerebTests (CerebUnit)’s documentation!</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="notebooks/run_a_validation.html"
+                        title="next chapter">1. Load executive control</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/contents.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="how-to-run-a-validation-test">
+<h1>How to run a validation test<a class="headerlink" href="#how-to-run-a-validation-test" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/run_a_validation.html">1. Load executive control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/run_a_validation.html#2.-Load-dataset">2. Load dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/run_a_validation.html#3.-Load-desired-validation-test">3. Load desired validation test</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="available-tests">
+<h1>Available tests<a class="headerlink" href="#available-tests" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="validation_tests/table.html">Table of validation tests</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="available-capabilities">
+<h1>Available Capabilities<a class="headerlink" href="#available-capabilities" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="capabilities/table.html">Table of capabilities and capacities</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="statistics">
+<h1>Statistics<a class="headerlink" href="#statistics" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2><a class="reference external" href="_static/statistical_definitions/statistics_definitions.html">Statistical terminologies used in CerebUnit</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="hypothesis-testing">
+<h2>Hypothesis Testing<a class="headerlink" href="#hypothesis-testing" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="statistics/hypothesis_testings/aboutmeans.html">Hypothesis testing about means (<code class="docutils literal notranslate"><span class="pre">HtestAboutMeans</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="statistics/hypothesis_testings/aboutmedians.html">Hypothesis testing about medians (<code class="docutils literal notranslate"><span class="pre">HtestAboutMedians</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="statistics/hypothesis_testings/aboutproportions.html">Hypothesis testing about proportions (<code class="docutils literal notranslate"><span class="pre">HtestAboutProportions</span></code>)</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="test-statistics-test-score">
+<h2>Test Statistics (Test Score)<a class="headerlink" href="#test-statistics-test-score" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="statistics/stat_scores/tScore.html">Compute t-statistic (<code class="docutils literal notranslate"><span class="pre">TScore</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="statistics/stat_scores/zScore.html">Compute z-statistic (<code class="docutils literal notranslate"><span class="pre">ZScoreStandard</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="statistics/stat_scores/zSignScore.html">Compute z-statistic for Sign test (<code class="docutils literal notranslate"><span class="pre">ZScoreForSignTest</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="statistics/stat_scores/zTwoSampleRankSumScore.html">Compute z-statistic for Two Sample Rank-Sum test (<code class="docutils literal notranslate"><span class="pre">ZScoreForTwoSampleRankSumTest</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="statistics/stat_scores/zWilcoxSignedRankScore.html">Compute z-statistic for Wilcox Signed-Rank test (<code class="docutils literal notranslate"><span class="pre">ZScoreForWilcoxSignedRankTest</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="statistics/stat_scores/zPropScore.html">Compute z-statistic for z-test on proportions as the categorical variable (<code class="docutils literal notranslate"><span class="pre">ZScoreForProportionZTest</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="statistics/stat_scores/chi2Score.html">Compute chi^2-statistic for test on proportions as the categorical variable (<code class="docutils literal notranslate"><span class="pre">Chi2Score</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="statistics/stat_scores/fisherExactScore.html">Compute test-statistic for Fisher Exact Test on proportions as the categorical variable (<code class="docutils literal notranslate"><span class="pre">FisherExactScore</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="statistics/stat_scores/mcNemarScore.html">Compute test-statistic for McNemar-test on proportions as the categorical variable of discordant pairs (<code class="docutils literal notranslate"><span class="pre">McNemarScore</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="statistics/stat_scores/chi2GOFScore.html">Compute chi^2-statistic for chi^2 goodness-of-fit test on proportions of categories of a categorical variable (<code class="docutils literal notranslate"><span class="pre">Chi2GOFScore</span></code>)</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="checks-for-data-conditions-to-determine-appropriate-testing">
+<h2>Checks for Data Conditions (to determine appropriate testing)<a class="headerlink" href="#checks-for-data-conditions-to-determine-appropriate-testing" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="statistics/data_conditions/forHTmeans.html">Data condition for HT about means (<code class="docutils literal notranslate"><span class="pre">NecessaryForHTMeans</span></code>). Is t-Test valid?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="statistics/data_conditions/forHTproportions.html">Data condition for HT about proportions (<code class="docutils literal notranslate"><span class="pre">NecessaryForHTProportions</span></code>). Is z-Test or <span class="math notranslate nohighlight">\(\\chi^2\)</span>-testvalid?</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="notebooks/run_a_validation.html" title="1. Load executive control"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to CerebTests (CerebUnit)’s documentation!"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">CerebUnit 0.0.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, Lungsi.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.1.
+    </div>
+  </body>
+</html>
