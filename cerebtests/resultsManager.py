@@ -1,4 +1,4 @@
-# ~/cerebunit/cerebunit/resultsManager.py
+# ~/cerebtests/cerebtests/resultsManager.py
 import h5py   # to create HDF5 file
 import numpy  # to create string (Fixed-length ASCII) dataset
 import ast    # to convert string to dictionary for reading

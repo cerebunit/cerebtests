@@ -1,4 +1,4 @@
-# ~/cerebunit/cerebunit/validation_tests/cells/Purkinje/test_for_soma_Rin.py
+# ~/cerebtests/cerebtests/validation_tests/cells/Purkinje/test_for_soma_Rin.py
 #
 # =============================================================================
 # test_for_soma_Rin.py 
@@ -12,7 +12,7 @@ import sciunit
 import numpy
 import quantities as pq
 
-from cerebunit.capabilities.cells.measurements import ProducesSomaInputR
+from cerebtests.capabilities.cells.measurements import ProducesSomaInputR
 from cerebstats.data_conditions import NecessaryForHTMeans
 from cerebstats.stat_scores import TScore # if NecessaryForHTMeans passes
 from cerebstats.stat_scores import ZScoreForSignTest as ZScore

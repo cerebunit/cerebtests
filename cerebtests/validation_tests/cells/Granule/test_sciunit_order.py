@@ -1,4 +1,4 @@
-# ~/cerebunit/cerebunit/validation_tests/cells/Granule/test_for_restingVm.py
+# ~/cerebtests/cerebtests/validation_tests/cells/Granule/test_for_restingVm.py
 #
 # =============================================================================
 # test_for_restingVm.py 
@@ -21,7 +21,7 @@ import numpy
 import quantities as pq
 from scipy.stats import t as student_t
 
-from cerebunit.capabilities.cells.measurements import ProducesEphysMeasurement
+from cerebtests.capabilities.cells.measurements import ProducesEphysMeasurement
 from cerebstats.statScores import TScore
 from cerebstats.hypothesisTesting import HtestAboutMeans
 

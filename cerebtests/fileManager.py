@@ -1,12 +1,12 @@
 # =============================================================================
-# ~/cerebunit/cerebunit/file_manager.py
+# ~/cerebtests/cerebtests/file_manager.py
 #
 # created  18 September 2017 Lungsi
 # modified  
 #
 # This py-file contains file functions, initiated by
 #
-# from cerebunit import file_manager
+# from cerebtests import file_manager
 #
 # and individual file_manager initiated by:
 #

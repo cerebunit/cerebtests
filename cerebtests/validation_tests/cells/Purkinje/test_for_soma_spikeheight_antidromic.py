@@ -1,4 +1,4 @@
-# ~/cerebunit/cerebunit/validation_tests/cells/Purkinje/test_for_soma_spikeheight_antidromic.py
+# ~/cerebtests/cerebtests/validation_tests/cells/Purkinje/test_for_soma_spikeheight_antidromic.py
 #
 # =============================================================================
 # test_for_soma_spikeheight_antidromic.py 
@@ -20,7 +20,7 @@ import sciunit
 import numpy
 import quantities as pq
 
-from cerebunit.capabilities.cells.measurements import ProducesSomeSpikeHeightAntidromic
+from cerebtests.capabilities.cells.measurements import ProducesSomeSpikeHeightAntidromic
 from cerebstats.data_conditions import NecessaryForHTMeans
 from cerebstats.stat_scores import TScore # if NecessaryForHTMeans passes
 from cerebstats.stat_scores import ZScoreStandard

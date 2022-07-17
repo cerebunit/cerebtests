@@ -2,5 +2,5 @@
 
 ProducesElectricalResponse
 **************************
-.. automodule:: cerebunit.capabilities.cells.response
+.. automodule:: cerebtests.capabilities.cells.response
    :members:

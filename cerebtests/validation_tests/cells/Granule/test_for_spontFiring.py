@@ -1,4 +1,4 @@
-# ~/cerebunit/cerebunit/validation_tests/cells/Granule/test_for_spontFiring.py
+# ~/cerebtests/cerebtests/validation_tests/cells/Granule/test_for_spontFiring.py
 #
 # =============================================================================
 # test_for_spontFiring.py
@@ -17,7 +17,7 @@ import numpy
 import quantities as pq
 import scipy
 
-from cerebunit.capabilities.measurements_ephys import ProducesEphysMeasurement
+from cerebtests.capabilities.measurements_ephys import ProducesEphysMeasurement
 from cerebstats.statScore import TScore
 from cerebstats.hypothesisTesting import HtestAboutMeans
 

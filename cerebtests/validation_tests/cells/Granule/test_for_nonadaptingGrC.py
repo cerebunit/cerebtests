@@ -1,4 +1,4 @@
-# ~/cerebunit/cerebunit/validation_tests/cells/Granule/test_for_nonadaptingGrC.py
+# ~/cerebtests/cerebtests/validation_tests/cells/Granule/test_for_nonadaptingGrC.py
 #
 # =============================================================================
 # test_for_nonadaptingGrC.py
@@ -31,7 +31,7 @@ import numpy
 import quantities as pq
 from scipy.stats import t as student_t
 
-from cerebunit.capabilities.cells.measurements import ProducesSpikeFrequency
+from cerebtests.capabilities.cells.measurements import ProducesSpikeFrequency
 from cerebstats.statScores import Chi2Score
 from cerebstats.hypothesisTesting import HtestAboutMeans
 

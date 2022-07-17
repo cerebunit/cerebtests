@@ -8,7 +8,7 @@ Welcome to CerebUnit's documentation!
 
 CerebUnit is one of the four components for validating cerebellum models: two being `CerebModels <https://github.com/cerebunit/cerebmodels>`_ and `CerebData <https://github.com/cerebunit/cerebdata>`_, which does not require installation while `CerebStats <https://github.com/cerebunit/cerebstats>`_ and CerebUnit require installation.
 
-This is the documentation for the **CerebUnit** component.
+This is the documentation for the **CerebTests** component.
 
 .. toctree::
    :maxdepth: 2

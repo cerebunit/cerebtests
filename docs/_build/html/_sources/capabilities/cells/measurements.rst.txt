@@ -2,5 +2,5 @@
 
 ProducesEphysMeasurement
 ************************
-.. automodule:: cerebunit.capabilities.cells.measurements
+.. automodule:: cerebtests.capabilities.cells.measurements
    :members:

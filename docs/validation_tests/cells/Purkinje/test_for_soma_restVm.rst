@@ -9,5 +9,5 @@ Validate Resting membrane voltage from soma of Purkinje cell
    :width: 300
    :alt: Conditions for HT about means or medians depending on perspective
 
-.. automodule:: cerebunit.validation_tests.cells.Purkinje.test_for_soma_restVm
+.. automodule:: cerebtests.validation_tests.cells.Purkinje.test_for_soma_restVm
    :members:

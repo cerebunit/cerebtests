@@ -18,12 +18,12 @@ sys.path.append( os.path.dirname( os.getcwd() ) )
 
 # -- Project information -----------------------------------------------------
 
-project = 'CerebUnit'
+project = 'CerebTests'
 copyright = '2021, Lungsi'
 author = 'Lungsi'
 
 # The full version, including alpha/beta/rc tags
-release = '0.0.1'
+release = '0.0.2'
 
 
 # -- General configuration ---------------------------------------------------

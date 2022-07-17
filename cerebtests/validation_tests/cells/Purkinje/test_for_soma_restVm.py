@@ -1,4 +1,4 @@
-# ~/cerebunit/cerebunit/validation_tests/cells/Purkinje/test_for_soma_restVm.py
+# ~/cerebtests/cerebtests/validation_tests/cells/Purkinje/test_for_soma_restVm.py
 #
 # =============================================================================
 # test_for_soma_restVm.py 
@@ -12,7 +12,7 @@ import sciunit
 import numpy
 import quantities as pq
 
-from cerebunit.capabilities.cells.measurements import ProducesSomaRestingVm
+from cerebtests.capabilities.cells.measurements import ProducesSomaRestingVm
 from cerebstats.data_conditions import NecessaryForHTMeans
 from cerebstats.stat_scores import TScore # if NecessaryForHTMeans passes
 from cerebstats.stat_scores import ZScoreStandard
