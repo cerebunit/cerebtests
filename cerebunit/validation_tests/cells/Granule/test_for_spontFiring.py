@@ -86,6 +86,6 @@ class SpontaneousFiringTest(sciunit.Test):
         """
         score = TScore.compute( observation, prediction  )
         score.description = HtestAboutMeans( observation, prediction, score )
-        print score.hypotest
+        print(score.hypotest)
         return score
 

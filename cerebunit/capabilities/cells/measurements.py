@@ -42,6 +42,7 @@ class ProducesSomaRestingVm(sciunit.Capability):
     '''
     capacity (of getting soma resting membrane voltage) to fulfill the capability.
     '''
+
     def __init__(self):
         pass
 
@@ -51,10 +52,12 @@ class ProducesSomaRestingVm(sciunit.Capability):
     def produce_voltage_response(self):
         self.unimplemented()
 
+
 class ProducesSomaSpikeHeight(sciunit.Capability):
     '''
     capacity (of getting soma spike height) to fulfill the capability.
     '''
+
     def __init__(self):
         pass
 
@@ -64,10 +67,12 @@ class ProducesSomaSpikeHeight(sciunit.Capability):
     def produce_voltage_response(self):
         self.unimplemented()
 
+
 class ProducesSomeSpikeHeightAntidromic(sciunit.Capability):
     '''
     capacity (of getting soma spike height with antidromic stimulation) to fulfill the capability.
     '''
+
     def __init__(self):
         pass
 
@@ -77,10 +82,12 @@ class ProducesSomeSpikeHeightAntidromic(sciunit.Capability):
     def produce_voltage_response(self):
         self.unimplemented()
 
+
 class ProducesSomaInputR(sciunit.Capability):
     '''
     capacity (of getting soma input resistance) to fulfill the capability.
     '''
+
     def __init__(self):
         pass
 
@@ -89,11 +96,29 @@ class ProducesSomaInputR(sciunit.Capability):
 
     def produce_voltage_response(self):
         self.unimplemented()
+
+
+class ProducesSpikeFrequency(sciunit.Capability):
+    '''
+    capacity (of getting spike train freq.) to fulfill the capability.
+    '''
+
+    def __init__(self):
+        pass
+
+    def produce_spike_mean_frequency(self):
+        raise NotImplementedError("Must implement produce_spike_mean_frequency")
+
+    def produce_spike_instantaneous_frequency(self):
+        raise NotImplementedError("Must implement produce_spike_instantaneous_frequency")
+
+    def produce_voltage_response(self):
+        self.unimplemented()
 # ========================================================================
 
 
 # ======================Produce Electrical Capability=====================
-#class ProducesElectricalResponse(sciunit.Capability):
+# class ProducesElectricalResponse(sciunit.Capability):
 #    '''
 #    The model produces electrical responses.
 #    '''

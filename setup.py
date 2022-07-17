@@ -6,9 +6,9 @@ except ImportError:
 
 setup(
         name="cerebunit",
-        version="0.0.1",
+        version="0.0.2",
         author="Lungsi",
-        author_email="lungsi.sharma@unic.cnrs-gif.fr",
+        author_email="lungsi.ngwua@cnrs.fr",
         #packages=find_packages(),
         packages=["cerebunit",
                   #"cerebunit.file_manager",
